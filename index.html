@@ -1,0 +1,2066 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>化工原理 833 · 背诵 + 练习</title>
+<style>
+/* ==========================================================================
+   cloze-review / handbook.css
+   挖空复习手册通用样式。整份复制进 <style>，不要外链。
+   组件：hero / toolbar / section / block / call / table / q（题目）/ fc / plan / trap
+   ========================================================================== */
+:root{
+  --paper:#f4efe6; --card:#fffdf8; --ink:#211f1b; --ink2:#4a453d; --muted:#8b8174;
+  --line:#e5dbca; --red:#b3352b; --redbg:#fdf0ec; --blue:#1f5c8b; --bluebg:#eef4f9;
+  --green:#3f6f4f; --greenbg:#eff5ef; --gold:#9c6f1c; --purple:#6b4a7a;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+sup{font-size:.76em;vertical-align:baseline;position:relative;top:-.42em;font-weight:700;letter-spacing:.02em}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  font-size:15.5px;line-height:1.75;
+  background-image:linear-gradient(rgba(0,0,0,.018) 1px,transparent 1px);
+  background-size:100% 28px;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+
+/* ---------- HERO ---------- */
+.hero{background:#1c1a16;color:#f2ece0;position:relative;overflow:hidden;border-bottom:4px solid var(--red)}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(179,53,43,.28), transparent 42%),
+    radial-gradient(circle at 88% 82%, rgba(31,92,139,.22), transparent 45%);
+}
+.hero-inner{position:relative;padding:44px 20px 34px}
+.kicker{
+  display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.22em;
+  color:#c9bfa9;text-transform:uppercase;border:1px solid rgba(255,255,255,.22);
+  padding:5px 12px;border-radius:2px;
+}
+.kicker b{color:#e8c88a;font-weight:600}
+h1{
+  font-family:"Noto Serif SC","Source Han Serif SC","Songti SC",serif;
+  font-size:clamp(30px,5.2vw,52px);line-height:1.15;margin:16px 0 8px;font-weight:700;letter-spacing:.01em;
+}
+h1 em{font-style:normal;color:#e8b45a}
+.sub{color:#b9ae99;font-size:14.5px;max-width:660px;margin:0}
+.meta{display:flex;flex-wrap:wrap;gap:38px;margin-top:26px;padding-top:20px;border-top:1px solid rgba(255,255,255,.13)}
+.meta div{display:flex;flex-direction:column;gap:2px}
+.meta .n{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:22px;color:#f2ece0;line-height:1.2}
+.meta .l{font-size:11.5px;letter-spacing:.14em;color:#8f8674}
+#cd{color:#e8b45a}
+
+/* ---------- TOOLBAR ---------- */
+.cdbox{margin-top:16px;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:12.5px;color:#d9c8a6;letter-spacing:.06em}
+.cdbox b{color:#f2c98c;font-size:14px}
+.toolbar{position:sticky;top:0;z-index:60;background:rgba(244,239,230,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.tb-in{display:flex;align-items:center;gap:12px;padding:9px 20px}
+.chips{
+  display:flex;align-items:center;gap:6px;overflow-x:auto;flex:1 1 auto;min-width:0;scrollbar-width:none;
+  -webkit-mask-image:linear-gradient(to right,#000 96%,transparent);mask-image:linear-gradient(to right,#000 96%,transparent);
+}
+.chips::-webkit-scrollbar{display:none}
+.chip{
+  flex:0 0 auto;font-size:12.5px;padding:5px 11px;border-radius:20px;border:1px solid var(--line);
+  background:var(--card);color:var(--ink2);cursor:pointer;white-space:nowrap;transition:.16s;text-decoration:none;
+}
+.chip:hover{border-color:#c9bda8;color:var(--ink)}
+.chip.on{background:var(--ink);border-color:var(--ink);color:#f7f2e8}
+.tb-right{display:flex;gap:8px;flex:0 0 auto}
+.btn{
+  font-size:12.5px;padding:6px 12px;border-radius:4px;border:1px solid var(--line);
+  background:var(--card);color:var(--ink2);cursor:pointer;font-family:inherit;white-space:nowrap;
+}
+.btn:hover{border-color:#c9bda8}
+.btn.act{background:var(--red);border-color:var(--red);color:#fff}
+.btn.act2{background:var(--ink);color:#f6efe0;border-color:var(--ink)}
+.pbar{height:3px;background:#e8dfd0;position:relative}
+.pbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--green),#7aa87f);transition:width .4s}
+
+/* ---------- SECTION ---------- */
+main{padding:38px 0 90px}
+section{margin-bottom:56px;scroll-margin-top:74px}
+.shead{display:flex;align-items:flex-start;gap:16px;margin-bottom:22px;padding-bottom:14px;border-bottom:2px solid var(--ink)}
+.snum{
+  font-family:"Noto Serif SC",serif;font-size:44px;line-height:.9;color:transparent;
+  -webkit-text-stroke:1.4px #b3a284;font-weight:700;flex:0 0 auto;padding-top:3px;user-select:none;
+}
+.shead h2{font-family:"Noto Serif SC","Songti SC",serif;font-size:25px;margin:0 0 4px;font-weight:700;letter-spacing:.01em}
+.shead p{margin:0;color:var(--muted);font-size:13px}
+.done{
+  margin-left:auto;flex:0 0 auto;display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);
+  cursor:pointer;user-select:none;border:1px solid var(--line);padding:5px 10px;border-radius:20px;background:var(--card);
+}
+.done input{accent-color:var(--green);width:14px;height:14px;margin:0;cursor:pointer}
+.done.ok{color:var(--green);border-color:#bcd3c1;background:var(--greenbg)}
+
+/* ---------- BLOCK ---------- */
+.block{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:20px 22px;margin-bottom:16px;box-shadow:0 1px 0 rgba(0,0,0,.03)}
+.block.p3{border-left:4px solid var(--red)}
+.block.p2{border-left:4px solid #d9c9a8}
+.block.p1{border-left:4px solid #ddd6c8}
+.block h3{
+  font-size:17px;margin:0 0 12px;font-weight:700;line-height:1.55;
+  font-family:"Noto Serif SC","Songti SC",serif;
+}
+.block h3 .st{margin-right:8px}
+.block h3 .tag{margin-left:8px;vertical-align:2px}
+.st{font-size:12px;color:#d8cbb0;letter-spacing:1px;font-family:inherit}
+.p3 .st{color:var(--red)}
+.tag{font-size:10.5px;padding:2px 7px;border-radius:3px;font-weight:500;letter-spacing:.04em;font-family:"Noto Sans SC",sans-serif}
+.t-red{background:var(--redbg);color:var(--red)}
+.t-blue{background:var(--bluebg);color:var(--blue)}
+.t-green{background:var(--greenbg);color:var(--green)}
+.t-gold{background:#fbf2dd;color:var(--gold)}
+
+h4{font-size:14.5px;margin:16px 0 7px;color:var(--ink);font-weight:700}
+p{margin:8px 0}
+ul,ol{margin:8px 0;padding-left:22px}
+li{margin:4px 0}
+li::marker{color:#b0a48e}
+b,strong{font-weight:700;color:#151310}
+mark{background:linear-gradient(transparent 58%,#f6dfa8 58%);padding:0 1px;color:inherit}
+.en{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.9em;background:#f4efe4;padding:1px 5px;border-radius:3px;color:#4a4030;overflow-wrap:anywhere}
+
+/* ---------- CALLOUT ---------- */
+.call{border-radius:5px;padding:12px 15px;margin:12px 0;font-size:14.2px;line-height:1.7;border-left:3px solid}
+.c-blue{background:var(--bluebg);border-color:var(--blue);color:#173e5c}
+.c-red{background:var(--redbg);border-color:var(--red);color:#7d241c}
+.c-green{background:var(--greenbg);border-color:var(--green);color:#2b4e36}
+.c-gold{background:#fbf4e2;border-color:#c9971f;color:#6e4f12}
+.call .k{font-weight:700;letter-spacing:.05em;margin-right:6px}
+
+/* ---------- TABLE ---------- */
+.tw{overflow-x:auto;margin:12px 0;border:1px solid var(--line);border-radius:5px}
+table{border-collapse:collapse;width:100%;font-size:13.6px;min-width:460px;background:var(--card)}
+th{background:#f0e9db;text-align:left;padding:9px 12px;font-weight:700;border-bottom:1.5px solid #ddd1ba;white-space:nowrap;font-size:13px}
+td{padding:8px 12px;border-bottom:1px solid #efe7d8;vertical-align:top}
+tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#fbf6ec}
+td.c,th.c{text-align:center}
+
+/* ---------- DETAILS（可选：折叠答案） ---------- */
+details{background:var(--card);border:1px solid var(--line);border-radius:5px;margin:9px 0;overflow:hidden}
+details[open]{border-color:#d5c6ac;box-shadow:0 2px 8px rgba(80,60,30,.05)}
+summary{padding:9px 15px;cursor:pointer;font-size:14.2px;font-weight:600;list-style:none;display:flex;gap:10px;align-items:flex-start;line-height:1.6}
+summary::-webkit-details-marker{display:none}
+summary::before{
+  content:"?";flex:0 0 auto;width:19px;height:19px;border-radius:50%;background:#eee4d2;color:#8a7a5c;
+  font-size:12px;display:grid;place-items:center;margin-top:2px;font-weight:700;transition:.2s;
+}
+details[open] summary::before{content:"✓";background:var(--green);color:#fff}
+details[open] summary{border-bottom:1px dashed #e5dac6;background:#fdf9f0}
+.ans{padding:14px 17px 16px;font-size:14.2px}
+.ans p:first-child{margin-top:0}
+
+/* ---------- FLASHCARD / GRID ---------- */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:820px){.g2,.g3{grid-template-columns:1fr}}
+.fc{border:1px solid var(--line);border-radius:6px;padding:14px 16px;background:var(--card);position:relative;padding-left:46px}
+.fc .no{
+  position:absolute;left:12px;top:13px;width:24px;height:24px;border-radius:50%;background:var(--ink);
+  color:#f7f2e8;font-size:12px;display:grid;place-items:center;font-family:"JetBrains Mono",monospace;
+}
+.fc>b{display:block;font-size:14px;margin-bottom:3px}
+.fc>span{font-size:13.5px;color:var(--ink2)}
+
+/* ---------- PLAN ---------- */
+.plan{display:grid;grid-template-columns:98px 1fr;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.plan .t{
+  background:#f2ebdc;padding:12px 8px;font-family:"JetBrains Mono",monospace;font-size:12px;
+  white-space:nowrap;border-bottom:1px solid var(--line);display:flex;align-items:center;color:#6b604c;
+}
+.plan .c{padding:12px 16px;border-bottom:1px solid var(--line);font-size:14px;background:var(--card)}
+.plan .c b{color:var(--red)}
+.plan>div:nth-last-child(-n+2){border-bottom:none}
+
+/* ---------- TRAP LIST ---------- */
+.trap{display:grid;grid-template-columns:1fr 1fr;gap:0 22px}
+@media(max-width:760px){.trap{grid-template-columns:1fr}}
+.trap div{font-size:13.6px;padding:7px 0 7px 24px;border-bottom:1px dashed #e8decd;position:relative;line-height:1.6}
+.trap div::before{
+  content:"✕";position:absolute;left:0;top:8px;color:var(--red);font-weight:700;font-size:12px;
+  width:16px;height:16px;border:1.2px solid #e3bdb6;border-radius:3px;display:grid;place-items:center;line-height:1;
+}
+.trap div i{font-style:normal;color:#2f6b45;font-weight:600}
+
+/* ---------- 题目块 ---------- */
+.qb{margin-top:20px;padding-top:14px;border-top:1px dashed #d8c9b0}
+.qbh{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:12.5px;color:var(--gold);font-weight:700;margin-bottom:11px;letter-spacing:.01em}
+.qbh .n{background:var(--gold);color:#fff;font-family:"JetBrains Mono",monospace;font-size:11.5px;padding:2px 8px;border-radius:3px;letter-spacing:0}
+.qbh .mix{font-weight:400;color:var(--muted);font-size:11.5px}
+.qbl{display:flex;flex-direction:column;gap:10px}
+.q{display:grid;grid-template-columns:46px 1fr;gap:9px;font-size:13.2px;line-height:1.7;align-items:start}
+.qt{
+  font-family:"JetBrains Mono",monospace;font-size:10.5px;color:var(--gold);background:#fbf3e2;
+  border:1px solid #e8d5ae;border-radius:3px;text-align:center;padding:2px 1px;margin-top:2px;
+  white-space:nowrap;letter-spacing:-.02em;
+}
+.qx{min-width:0;color:var(--ink2)}
+.qx .stem{font-weight:600;color:var(--ink)}
+.qx .opt{color:var(--blue)}
+.qx .tf{display:inline-block;font-weight:700;color:#fff;background:var(--red);border-radius:2px;padding:0 5px;font-size:12px;margin-left:3px}
+.qx .tf.ok{background:var(--green)}
+.qtip{font-size:11.5px;color:var(--muted);margin:-4px 0 10px;padding-left:55px}
+@media(max-width:640px){
+  .q{grid-template-columns:38px 1fr;gap:7px;font-size:13px}
+  .qt{font-size:9.5px}
+  .qtip{padding-left:45px}
+}
+/* ---------- 分章背诵：考点清单 / 名词 / 简答 ---------- */
+.tw table.wide{min-width:560px}
+.tw td.num{text-align:center;font-family:"JetBrains Mono",monospace;font-size:12px;color:#6b604c}
+.klist{display:flex;flex-wrap:wrap;gap:6px;margin:-4px 0 22px}
+.klist span{font-size:11.5px;color:#6f6047;background:#fbf5e8;border:1px solid #e9dcc4;border-radius:3px;padding:3px 7px;line-height:1.45;white-space:nowrap}
+.klist b{color:#b4501f;font-weight:700;font-family:"JetBrains Mono",monospace;font-size:10px;margin-left:4px;letter-spacing:-.5px}
+.qx .term{color:var(--ink);font-weight:700;margin-right:7px;border-bottom:1px solid #d9c9ad;padding-bottom:1px}
+details.qa{margin:0;border:none;border-top:1px solid #eee2cd;border-radius:0;background:transparent;box-shadow:none}
+details.qa:first-child{border-top:none}
+details.qa[open]{background:#fffdf8;border-color:#eee2cd;box-shadow:none}
+details.qa summary{padding:10px 4px 10px 0;font-size:13.5px;font-weight:600;gap:9px;line-height:1.65}
+details.qa summary::before{margin-top:1px}
+details.qa[open] summary{background:transparent;border-bottom:1px dashed #e8dcc5}
+.qn{font-family:"JetBrains Mono",monospace;font-size:10px;color:#fff;background:var(--gold);border-radius:3px;padding:2px 5px;flex:0 0 auto;margin-top:1px;letter-spacing:0}
+.qq{flex:1 1 auto;min-width:0}
+.qs{flex:0 0 auto;color:#c08a3e;font-size:9.5px;letter-spacing:1px;margin-top:3px;font-weight:400}
+@media(max-width:520px){.qs{display:none}}
+@media(max-width:640px){
+  .tw table.wide{min-width:0;font-size:10.8px}
+  .tw table.wide th:nth-child(6),.tw table.wide td:nth-child(6){display:none}
+  .tw table.wide td:first-child,.tw table.wide th:first-child{white-space:nowrap}
+  .tw table.wide th,.tw table.wide td{padding:4px 5px}
+}
+.qab{padding:8px 4px 14px 28px;font-size:13.1px;line-height:1.85;color:var(--ink2)}
+.qab p{margin:4px 0}
+.qab b{color:#8c2b14;font-weight:700}
+@media(max-width:640px){
+  .klist span{font-size:10.8px;padding:2px 6px}
+  details.qa summary{font-size:13px}
+  .qab{font-size:12.8px;line-height:1.8;padding-left:22px}
+}
+.qtbl{
+  width:100%;max-width:100%;min-width:0;table-layout:fixed;border-collapse:collapse;margin:7px 0 2px;
+  font-size:12.2px;line-height:1.55;border:1px solid #e8ddc9;border-radius:4px;background:#fffdf7;
+}
+.qtbl th{background:#f6edda;color:#7a5a18;font-weight:700;padding:5px 8px;text-align:left;border-bottom:1px solid #e8ddc9;border-right:1px solid #efe5d2}
+.qtbl td{padding:5px 8px;border-bottom:1px solid #f2eada;border-right:1px solid #f2eada;vertical-align:top}
+.qtbl tr:last-child td{border-bottom:none}
+.qtbl th:last-child,.qtbl td:last-child{border-right:none}
+.qtbl td.rk{font-weight:600;color:var(--ink);background:#fcf8ef}
+.qtbl th,.qtbl td{word-break:break-word;overflow-wrap:anywhere}
+@media(max-width:640px){.qtbl{font-size:11.6px}.qtbl th,.qtbl td{padding:4px 6px}}
+
+/* ---------- 挖空（核心） ---------- */
+.qx.fillq{line-height:1.95}
+.qx.fillq .qnp{color:#a89e93}
+.qx.fillq .qbw{
+  color:#9c2f16;font-weight:700;border-bottom:2px solid #cd8668;padding:0 2px;margin:0 1px;
+  background:#fdf2ea;border-radius:2px 2px 0 0;overflow-wrap:anywhere}
+body.hidefill .qx.fillq .qbw{color:transparent;background:#e9dfd0;border-bottom-color:#d5c6ae;cursor:pointer}
+body.hidefill .qx .opt{color:transparent;background:#e9dfd0;border-radius:3px;padding:0 5px;cursor:pointer;user-select:none}
+body.hidefill .qx .tf{color:transparent;background:#e9dfd0;min-width:26px;text-align:center;cursor:pointer;user-select:none;padding:0 3px}
+body.hidefill .qx .tf.ok{background:#e9dfd0}
+/* 点开过的常驻显示 */
+body.hidefill .qx .opt.shown{color:var(--blue);background:transparent}
+body.hidefill .qx .tf.shown{color:#fff;background:var(--red)}
+body.hidefill .qx .tf.ok.shown{background:var(--green)}
+body.hidefill .qx.fillq .qbw.shown{color:#9c2f16;background:#fdf2ea;border-bottom-color:#cd8668}
+/* 答案速查表：整列盖住 */
+body.hidefill td .qbw{color:transparent;background:#e9dfd0;border-bottom-color:#d5c6ae;cursor:pointer}
+body.hidefill td .qbw.shown{color:#9c2f16;background:#fdf2ea;border-bottom-color:#cd8668}
+body.hidefill .anstable .ansc{color:transparent;background:#f8f2e6}
+body.hidefill .anstable .ansc.shown{color:var(--ink2);background:#fffdf8}
+
+/* ---------- 答案速查表 ---------- */
+.anstable table{table-layout:fixed}
+.anstable th:nth-child(1),.anstable td:nth-child(1){width:48px}
+.anstable td.ansc{font-size:14px;line-height:1.85;word-break:break-word;letter-spacing:.01em}
+.sec{font-family:"JetBrains Mono",monospace;font-size:11px;color:#b0a48f;background:#f7f0e2;border-radius:3px;padding:1px 5px}
+
+/* ---------- 排行 ---------- */
+.rankblock td.rk{font-family:"JetBrains Mono",monospace;color:var(--muted);font-size:12px}
+.rankblock .bar{height:6px;background:#efe6d6;border-radius:3px;overflow:hidden;min-width:60px}
+.rankblock .bar i{display:block;height:100%;border-radius:3px}
+
+/* ---------- 过滤 ---------- */
+body.only3 .block[data-p="2"],body.only3 .block[data-p="1"]{display:none}
+body.only3 .q[data-p="2"],body.only3 details.qa[data-p="2"]{display:none}
+.blkoff{display:none}
+main section.allyoff{display:none}
+.chip.off{opacity:.35}
+
+footer{border-top:1px solid var(--line);padding:26px 0 50px;color:var(--muted);font-size:12.5px;text-align:center}
+
+/* ---------- 手机 ---------- */
+@media(max-width:640px){
+  .hero-inner{padding:30px 20px 26px}
+  .tw table{min-width:0}
+  th{white-space:normal}
+  th,td{word-break:break-word;overflow-wrap:anywhere}
+  .meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(80px,1fr));gap:18px 10px;padding-top:16px}
+  .tb-in{flex-wrap:wrap;padding:8px 16px;gap:7px}
+  .chips{flex:1 1 100%;order:1;-webkit-mask-image:linear-gradient(to right,#000 92%,transparent);mask-image:linear-gradient(to right,#000 92%,transparent)}
+  .tb-right{order:2;margin-left:auto;flex-wrap:wrap}
+  .chip{font-size:12px;padding:5px 11px}
+  .btn{padding:6px 9px;font-size:12px}
+  .btn.pr{display:none}
+  .snum{font-size:34px}
+  .block{padding:16px 15px}
+  .shead{gap:10px}
+  /* 答案速查表转块状，避免横向滚动 */
+  .anstable table,.anstable tbody,.anstable tr,.anstable td{display:block;width:100%!important;max-width:100%;min-width:0!important}
+  .anstable thead{display:none}
+  .anstable tr{padding:8px 0 9px;border-bottom:1px solid #f1e8d8}
+  .anstable tr:last-child{border-bottom:none}
+  .anstable td{border:none;padding:0}
+  .anstable td.rk{font-size:11px;color:#a5731f;margin-bottom:2px;text-align:left}
+  .anstable td.ansc{font-size:13.5px;line-height:1.8}
+  .anstable td.opt-col{display:none}
+}
+
+/* ---------- 打印：答案强制显示 ---------- */
+@media print{
+  body{background:#fff;font-size:10.5pt;background-image:none}
+  .hero{background:#fff;color:#000;border-bottom:2px solid #000}
+  .hero::before{display:none}
+  .kicker{color:#555;border-color:#999}
+  .sub,.meta .l{color:#444}
+  .meta .n,#cd{color:#000}
+  .toolbar,.pbar,.no-print,.done{display:none!important}
+  .cdbox{display:none!important}
+  main{padding:0}
+  .block{break-inside:auto}
+  details,.call{break-inside:avoid}
+  details.qa{break-inside:auto}
+  details.qa .qab{break-inside:avoid}
+  table{break-inside:auto}
+  tr{break-inside:avoid}
+  .block,.call,table{box-shadow:none}
+  thead{display:table-header-group}
+  details{border:1px solid #ccc}
+  .shead{break-after:avoid}
+  section{break-before:auto;margin-bottom:20px}
+  a{color:#000;text-decoration:none}
+  body.hidefill .qx.fillq .qbw{color:#a2371f!important;background:#fdf4ee!important;border-bottom-color:#e0a88f!important}
+  body.hidefill .qx .opt{color:var(--blue)!important;background:transparent!important}
+  body.hidefill .qx .tf,body.hidefill .qx .tf.ok{color:#fff!important;background:var(--red)!important}
+  body.hidefill .qx .tf.ok{background:var(--green)!important}
+  body.hidefill td .qbw{color:#a2371f!important;background:#fdf4ee!important;border-bottom-color:#e0a88f!important}
+  body.hidefill .anstable .ansc{color:var(--ink2)!important;background:transparent!important}
+  .tw{overflow:visible}
+  .q{display:block;position:relative;padding-left:44px;break-inside:avoid}
+  .qt{position:absolute;left:0;top:2px;width:38px}
+  details.qa{border:none;border-top:1px solid #ddd}
+  .qb{break-inside:auto}
+}
+
+</style>
+<style>
+/* ==========================================================================
+   化工原理 833 · 练习系统样式（practice.css）
+   复用手册的 :root 变量；全部以 .px- / #practiceApp 为前缀，避免干扰背诵手册。
+   ========================================================================== */
+.hidden{display:none!important}
+#practiceApp{max-width:1180px;margin:0 auto;padding:0 20px 80px}
+#practiceApp .px-top{padding:30px 0 6px;text-align:center}
+#practiceApp .px-top h1{font-size:26px;margin:0;color:var(--ink)}
+#practiceApp .px-top p{color:var(--muted);font-size:14px;margin:8px 0 0}
+#practiceApp .px-tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:18px 0 22px}
+#practiceApp .px-tabs button{border:1px solid var(--line);background:var(--card);padding:8px 16px;border-radius:999px;cursor:pointer;font-size:14px;color:var(--ink2);font-family:inherit}
+#practiceApp .px-tabs button.active{background:var(--red);color:#fff;border-color:var(--red)}
+#practiceApp .px-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:0 0 14px}
+#practiceApp .px-card h2{font-size:18px;margin:0 0 10px}
+#practiceApp .px-muted{color:var(--muted);font-size:13.5px}
+#practiceApp .px-small{font-size:13px;color:var(--muted)}
+#practiceApp .px-btn{font-size:14px;padding:9px 18px;border-radius:6px;border:1px solid var(--red);background:var(--red);color:#fff;cursor:pointer;font-family:inherit}
+#practiceApp .px-btn.secondary{background:var(--card);color:var(--ink2);border-color:var(--line)}
+#practiceApp .px-btn.small{padding:6px 12px;font-size:13px}
+#practiceApp .px-btn:disabled{opacity:.5;cursor:not-allowed}
+#practiceApp .px-flex{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+#practiceApp .px-between{justify-content:space-between}
+#practiceApp .px-notice{background:#fff8e1;border:1px solid #f0dfa0;border-radius:10px;padding:12px 14px;margin:0 0 14px;font-size:14px}
+#practiceApp select,#practiceApp input[type=text],#practiceApp input[type=password]{padding:8px 10px;border:1px solid var(--line);border-radius:6px;font-size:14.5px;background:#fff;font-family:inherit}
+#practiceApp label{font-size:14px;color:var(--ink2)}
+#practiceApp input[type=radio]{accent-color:var(--red)}
+/* 练习题卡 */
+#practiceApp .px-qcard{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:0 0 14px}
+#practiceApp .px-qhead{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:6px}
+#practiceApp .px-qnum{font-weight:700;color:var(--red)}
+#practiceApp .px-badge{display:inline-block;font-size:12px;padding:2px 9px;border-radius:999px;background:#f3e8e9;color:var(--red)}
+#practiceApp .px-term{font-weight:700;font-size:16.5px;margin:4px 0 6px}
+#practiceApp .px-qq{font-size:16px;margin:4px 0 8px}
+#practiceApp .px-sent,#practiceApp .px-ans p{font-size:15.5px;line-height:2.1;margin:4px 0;text-align:justify}
+#practiceApp .px-plain{color:var(--ink)}
+#practiceApp input.px-blank{border:none;border-bottom:2px solid var(--red);border-radius:0;background:#fdf2ea;color:var(--red);font-weight:700;text-align:center;padding:1px 2px;margin:0 2px;font-size:15px;font-family:inherit;min-width:4ch}
+#practiceApp input.px-blank:focus{outline:none;background:#fde9dc;border-bottom-color:var(--red)}
+#practiceApp input.px-blank::placeholder{color:#d8b3a4;font-weight:400}
+/* 符号盘 */
+#practiceApp .px-symbar{position:sticky;top:52px;z-index:20;background:rgba(244,239,230,.96);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:8px;padding:8px 10px;margin:10px 0;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+#practiceApp .px-symbar .px-symlab{font-size:12.5px;color:var(--muted);margin-right:2px}
+#practiceApp .px-sym{border:1px solid var(--line);background:#fff;border-radius:6px;padding:4px 10px;font-size:15px;cursor:pointer;font-family:inherit;min-width:34px}
+#practiceApp .px-sym:active{background:#f3e8e9}
+/* 顶栏 / 进度 */
+#practiceApp .px-sticky{position:sticky;top:0;background:var(--paper);padding:12px 0 8px;z-index:30;border-bottom:1px solid var(--line)}
+#practiceApp .px-progress{height:8px;background:#e9dfd0;border-radius:99px;overflow:hidden;margin:8px 0}
+#practiceApp .px-progress>div{height:100%;background:var(--red);width:0%}
+#practiceApp #timer{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:17px;font-weight:700;color:var(--ink)}
+/* 判分着色（与肖八解析同色：绿=对，红=错） */
+#practiceApp .px-rb-ok{color:var(--green);font-weight:700;background:var(--greenbg);border-radius:3px;padding:0 3px}
+#practiceApp .px-rb-bad{color:var(--red);background:var(--redbg);border-radius:3px;padding:0 3px}
+#practiceApp .px-rb-bad s{opacity:.75}
+#practiceApp .px-rb-bad b{color:var(--green)}
+#practiceApp .px-score{font-size:44px;font-weight:800;color:var(--red);line-height:1.1}
+/* 答题卡弹窗 */
+#practiceApp .px-modal{position:fixed;inset:0;background:rgba(0,0,0,.45);display:flex;align-items:flex-start;justify-content:center;padding:40px 16px;z-index:80}
+#practiceApp .px-modal .px-box{background:var(--card);border-radius:12px;max-width:640px;width:100%;padding:20px;max-height:80vh;overflow:auto}
+#practiceApp .px-sheet{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+#practiceApp .px-sheet button{padding:9px 0;border:1px solid var(--line);background:#fff;border-radius:8px;cursor:pointer;font-size:13.5px;font-family:inherit}
+#practiceApp .px-sheet button.ans{background:var(--greenbg);border-color:var(--green)}
+/* 账号 */
+#practiceApp #authView{max-width:400px;margin:48px auto 0}
+#practiceApp #authView .px-card{padding:22px}
+#practiceApp #authView form p{margin:0 0 12px}
+#practiceApp #authView label{font-size:14px;color:var(--muted)}
+#practiceApp #authView input{width:100%;margin-top:4px}
+#practiceApp #userBar{margin:10px 0 0}
+@media(max-width:640px){
+  #practiceApp .px-sheet{grid-template-columns:repeat(4,1fr)}
+  #practiceApp input.px-blank{font-size:14.5px}
+}
+
+</style>
+</head>
+<body data-deadline="2026-12-20T14:00:00+08:00">
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div class="kicker">东北大学 833 · <b>名词挖空 + 简答提纲</b></div>
+    <h1>化工原理 833<br><em>分章背诵 + 练习</em></h1>
+    <p class="sub">按《重点》十二章划分 · <b style="color:#f6e6c8">112 条名词、85 道简答</b> · 名词关键词已挖空，简答可折叠 · 新增填空练习：每次随机抽空、自动判分</p>
+    <div class="meta">
+      <div><span class="n">112</span><span class="l">条名词</span></div>
+      <div><span class="n">442</span><span class="l">个空</span></div>
+      <div><span class="n">85</span><span class="l">道简答</span></div>
+    </div>
+    <div class="cdbox" id="cdbox" hidden>距初试 <b id="cd">—</b></div>
+  </div>
+</header>
+
+<div class="toolbar">
+  <div class="wrap tb-in">
+    <div class="chips">
+      <a class="chip" href="#s0">作战</a>
+      <a class="chip" href="#s1">01绪论</a>
+      <a class="chip" href="#s2">02流体</a>
+      <a class="chip" href="#s3">03两相流</a>
+      <a class="chip" href="#s4">04混合</a>
+      <a class="chip" href="#s5">05传热</a>
+      <a class="chip" href="#s6">06蒸发</a>
+      <a class="chip" href="#s7">07传质</a>
+      <a class="chip" href="#s8">08吸收</a>
+      <a class="chip" href="#s9">09蒸馏</a>
+      <a class="chip" href="#s10">10浸出</a>
+      <a class="chip" href="#s11">11萃取</a>
+      <a class="chip" href="#s12">12膜</a>
+    </div>
+    <div class="tb-right">
+      <button class="btn" id="modeRecite">背诵</button><button class="btn" id="modePractice">练习</button><button class="btn" id="bf">挡答案</button>
+      <button class="btn" id="f3">只看必考</button>
+      <button class="btn" id="ex">展开答案</button>
+      <button class="btn pr" onclick="window.print()">打印</button>
+    </div>
+  </div>
+  <div class="pbar"><i id="pb"></i></div>
+</div>
+
+<main class="wrap">
+<section id="s0">
+  <div class="shead">
+    <div class="snum">00</div>
+    <div><h2>分章作战表</h2><p>严格按《重点》的十二章划分；每章两条线——名词挖空、简答提纲</p></div>
+  </div>
+
+  <div class="call c-gold"><span class="k">怎么用</span>① 开<b>挡答案</b>，只看名词句子，卡住的红字点一下露一个——这是概念题的得分点。② 简答<b>只看题号与题目</b>，先口述 ①②③ 的<b>首词</b>，再展开对答案——这是 10 分题的骨架。③ 时间不够点<b>只看必考</b>，只留 ★★★★。④ 打印时简答自动全部展开。</div>
+
+  <div class="block p3" data-p="3">
+    <h3><span class="st">★★★★</span>十二章分值地图<span class="tag t-red">先看这张</span></h3>
+    <div class="tw"><table class="wide">
+      <thead><tr><th style="width:7%">章</th><th style="width:19%">名称</th><th style="width:9%">名词</th><th style="width:9%">简答</th><th style="width:28%">真题考情</th><th>最该先背</th></tr></thead>
+      <tbody>
+        <tr><td><b>01</b></td><td>绪论</td><td class="num">2</td><td class="num">4</td><td>低频但近年上升 · 约 10 分</td><td>单元操作、特点、分类</td></tr>
+        <tr><td><b>02</b></td><td>流体流动与输送</td><td class="num">18</td><td class="num">10</td><td><b>每年必考</b> · 20~30 分 · 全题型</td><td>雷诺数、伯努利、汽蚀、阻力</td></tr>
+        <tr><td><b>03</b></td><td>两相流的分离与输送</td><td class="num">16</td><td class="num">7</td><td><b>每年必考</b> · 20~30 分</td><td>沉降速度、恒压过滤、流态化</td></tr>
+        <tr><td><b>04</b></td><td>两相流的混合</td><td class="num">6</td><td class="num">9</td><td>中高频 · 约 10 分</td><td>射流分区、搅拌功率、打漩</td></tr>
+        <tr><td><b>05</b></td><td>传热学基础</td><td class="num">16</td><td class="num">9</td><td><b>每年必考</b> · 20~30 分</td><td>三传方式、给热系数、辐射</td></tr>
+        <tr><td><b>06</b></td><td>蒸发单元</td><td class="num">7</td><td class="num">7</td><td>几乎年年考 · 约 10 分</td><td>沸点升高、温差损失、多效流程</td></tr>
+        <tr><td><b>07</b></td><td>传质学基础</td><td class="num">13</td><td class="num">7</td><td>几乎年年考但非重点 · 近年分值小</td><td>双膜理论、气膜/液膜控制</td></tr>
+        <tr><td><b>08</b></td><td>吸收单元</td><td class="num">7</td><td class="num">7</td><td><b>每年必考</b> · 约 20 分</td><td>亨利定律、最小液气比、传质单元</td></tr>
+        <tr><td><b>09</b></td><td>蒸馏</td><td class="num">14</td><td class="num">8</td><td>考纲新增（26 年未考）· 约 15 分</td><td>精馏原理、图解法、回流比</td></tr>
+        <tr><td><b>10</b></td><td>浸出单元</td><td class="num">5</td><td class="num">6</td><td>近三年每年考 · 约 10 分</td><td>固液传质类型、控制步骤、设备</td></tr>
+        <tr><td><b>11</b></td><td>萃取单元</td><td class="num">6</td><td class="num">6</td><td>近三年每年考 · 约 10 分</td><td>相图杠杆、选择性系数、流程</td></tr>
+        <tr><td><b>12</b></td><td>膜分离</td><td class="num">2</td><td class="num">5</td><td>26 年新增 · 约 10 分</td><td>电渗析、超滤/微滤、液膜</td></tr>
+        <tr><td></td><td><b>合计</b></td><td class="num"><b>112</b></td><td class="num"><b>85</b></td><td colspan="2">名词 442 个空 · 简答按 ①②③ 拆到可直接背</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="block p3" data-p="3">
+    <h3><span class="st">★★★★</span>背诵顺序：按分值密度，不按章号</h3>
+    <div class="plan">
+      <div class="t">第一梯队</div><div class="c"><b>02 流体 · 05 传热 · 03 两相流 · 08 吸收</b>　四章占 80~110 分，名词与简答都最密，先啃。</div>
+      <div class="t">第二梯队</div><div class="c"><b>04 混合 · 06 蒸发 · 10 浸出 · 11 萃取</b>　每章约 10 分，简答多为"特点/分类/流程"，最容易拿满。</div>
+      <div class="t">第三梯队</div><div class="c"><b>07 传质 · 09 蒸馏 · 12 膜 · 01 绪论</b>　概念为主，优先背名词，简答记骨架即可。</div>
+      <div class="t">最后 30 分钟</div><div class="c">只看每章 <b>S 级名词</b>与<b>简答的 ① ② ③ 首词</b>，不再看细节。</div>
+    </div>
+  </div>
+
+  <div class="call c-blue"><span class="k">说明</span>本册只做<b>名词解释</b>与<b>简答题</b>；计算题型、公式表、一页纸速查仍在《化工原理833_挖空复习手册》里，两册配合用。</div>
+</section>
+
+<section id="s1">
+  <div class="shead">
+    <div class="snum">01</div>
+    <div><h2>绪论：单元操作</h2><p>低频但近年上升 · 10 分 · 基础理论题、单元操作原理题</p></div>
+    <label class="done"><input type="checkbox" data-k="s1">已掌握</label>
+  </div>
+
+  <div class="klist"><span>单元操作<b>★★★★</b></span><span>理论基础<b>★★★★</b></span><span>研究方法<b>★★★★</b></span><span>特点<b>★★★</b></span><span>分类<b>★★★</b></span><span>基本方法<b>★★★</b></span></div>
+
+<div class="block p3" data-p="3">
+    <h3><span class="st">★★★★</span>名词解释 · <span class="cnt">2</span> 条<span class="tag t-red">背诵</span></h3>
+    <div class="qbl">
+<div class="q"><span class="qt">名01</span><div class="qx fillq"><b class="term">单元操作</b><span class="qnp">化工生产中</span><span class="qbw">共有</span><span class="qnp">的、只改变物料的</span><span class="qbw">状态</span><span class="qnp">或</span><span class="qbw">物理性质</span><span class="qnp">而不改变其</span><span class="qbw">化学性质</span><span class="qnp">的基本操作，用以替</span><span class="qbw">化学反应</span><span class="qnp">创造适宜条件、或将反应产物</span><span class="qbw">后处理</span><span class="qnp">制取纯净产品，称为单元操作。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名02</span><div class="qx fillq"><b class="term">单元操作的物理本质</b><span class="qnp">各单元操作所发生的过程虽然多种多样，但从物理本质上说，都不外乎</span><span class="qbw">动量传递</span><span class="qnp">（单相或多相流动）、</span><span class="qbw">热量传递</span><span class="qnp">（传热）和</span><span class="qbw">质量传递</span><span class="qnp">（传质）三类，这是联系各单元操作的一条</span><span class="qbw">理论主线</span><span class="qnp">。</span></div></div>
+    </div>
+  </div>
+
+<div class="block p3" data-p="3">
+    <h3><span class="st">★★★★</span>简答题 · <span class="cnt">4</span> 道<span class="tag t-red">10 分题</span></h3>
+    <div class="qbl">
+<details class="qa"><summary><span class="qn">简01</span><span class="qq">单元操作有哪些特点？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 都是<b>物理性操作</b>——只改变物料的状态或物理性质，不改变其化学性质。</p><p>② 都是各类生产过程中<b>共有</b>的操作，但不同流程所含单元操作的数目、名称与排列顺序各异。</p><p>③ 作用于不同生产过程时<b>原理并无不同</b>，所用设备往往也是<b>通用</b>的。</p><p>④ 因其通用性，设备可系列化、放大规律可移植，这是"单元操作"这一抽象的价值所在。</p></div></details>
+<details class="qa"><summary><span class="qn">简02</span><span class="qq">单元操作按所遵循的基本规律如何分类？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 遵循<b>流体动力学</b>规律的：流体输送、沉降、过滤、物料混合（搅拌）等。</p><p>② 遵循<b>热量传递</b>规律的：加热、冷却、冷凝、蒸发等。</p><p>③ 遵循<b>质量传递</b>规律的：蒸馏、吸收、萃取、吸附、膜分离等；从工程目的看都是分离混合物，又称<b>分离操作</b>。</p><p>④ <b>同时遵循热、质传递</b>规律的：气体的增湿与减湿、结晶、干燥等。</p><p>⑤ 此外还有热力过程（制冷）、粉体工程（粉碎、颗粒分级、流态化）等。</p></div></details>
+<details class="qa"><summary><span class="qn">简03</span><span class="qq">单元操作的研究方法有哪两种？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① <b>实验研究方法（因次分析法）</b>——经验方法。不建立方程，直接用实验测取各变量间的关系，再用量纲分析把结果整理成特征数关联式，使实验结果能"由小见大""由此知彼"。</p><p>② <b>数学模型方法</b>——半理论半经验方法。对复杂实际问题作合理简化与等效（如把滤饼孔道等效为平行细管），建立方程，其中的修正系数由实验测定。</p><p>③ 两者不是对立的：模型给出函数形式，实验定参数，这是化工原理处理工程问题的基本套路。</p></div></details>
+<details class="qa" data-p="2"><summary><span class="qn">简04</span><span class="qq">化工原理处理工程问题的基本方法是什么？</span><span class="qs">★★★</span></summary><div class="qab"><p>① <b>衡算</b>——物料衡算（质量守恒）、能量衡算（能量守恒）、动量衡算（牛顿第二定律）；先划范围、定对象与基准，再列衡算式。</p><p>② <b>实验研究</b>——用因次分析组织实验，减少变量、便于推广。</p><p>③ <b>数学模型</b>——抓住主要因素、忽略次要因素，简化—建模—求解—实验修正。</p><p>④ <b>过程与设备并重</b>——既要掌握过程规律，也要解决设备结构与尺寸，最终回答"选型、计算、操作调节"三类工程问题。</p></div></details>
+    </div>
+  </div>
+
+</section>
+
+
+<section id="s2">
+  <div class="shead">
+    <div class="snum">02</div>
+    <div><h2>流体流动与输送</h2><p>每年 100% 必考 · 20~30 分 · 名解、简答、计算全考</p></div>
+    <label class="done"><input type="checkbox" data-k="s2">已掌握</label>
+  </div>
+
+  <div class="klist"><span>流体分类<b>★★★★</b></span><span>流线与迹线<b>★★★</b></span><span>理想流体<b>★★★★</b></span><span>密度与压力<b>★★★★</b></span><span>连续性/伯努利<b>★★★★</b></span><span>雷诺数<b>★★★★</b></span><span>边界层<b>★★★★</b></span><span>阻力损失<b>★★★★</b></span><span>量纲分析<b>★★★★</b></span><span>流量与流速<b>★★★★</b></span><span>黏性定律<b>★★★★</b></span><span>巴斯噶<b>★★★★</b></span><span>压力计<b>★★★★</b></span><span>泵压头与功率<b>★★★★</b></span><span>汽蚀气缚<b>★★★★</b></span><span>其他泵<b>★★★</b></span><span>风机压缩机<b>★★★★</b></span></div>
+
+<div class="block p3" data-p="3">
+    <h3><span class="st">★★★★</span>名词解释 · <span class="cnt">18</span> 条<span class="tag t-red">背诵</span></h3>
+    <div class="qbl">
+<div class="q" data-p="2"><span class="qt">名01</span><div class="qx fillq"><b class="term">流体质点</b><span class="qnp">指较</span><span class="qbw">微观粒子</span><span class="qnp">结构尺度大、同时较</span><span class="qbw">宏观特征尺寸</span><span class="qnp">小得多的</span><span class="qbw">流体分子团</span><span class="qnp">，是连续介质模型中作为</span><span class="qbw">最小</span><span class="qnp">考察单元的流体微团。</span></div></div>
+<div class="q"><span class="qt">名02</span><div class="qx fillq"><b class="term">理想流体</b><span class="qnp">指</span><span class="qbw">没有黏性</span><span class="qnp">的流体，即流动时</span><span class="qbw">没有内摩擦</span><span class="qnp">、不产生</span><span class="qbw">机械能损失</span><span class="qnp">的流体，是一种</span><span class="qbw">假想</span><span class="qnp">流体。</span></div></div>
+<div class="q"><span class="qt">名03</span><div class="qx fillq"><b class="term">雷诺数</b><span class="qnp">将流速 u、管径 d、密度 ρ、黏度 μ 组合成的数群</span><span class="qbw">duρ/μ</span><span class="qnp">称为雷诺数。它表征</span><span class="qbw">惯性力</span><span class="qnp">与</span><span class="qbw">黏性力</span><span class="qnp">之比：Re 大表示</span><span class="qbw">惯性力</span><span class="qnp">占主导、流动易</span><span class="qbw">紊乱</span><span class="qnp">；Re 小表示</span><span class="qbw">黏性力</span><span class="qnp">占主导、流动为</span><span class="qbw">层流</span><span class="qnp">。</span></div></div>
+<div class="q"><span class="qt">名04</span><div class="qx fillq"><b class="term">牛顿流体与非牛顿流体</b><span class="qnp">凡符合</span><span class="qbw">牛顿黏性定律</span><span class="qnp">（τ=μ·du/dy）的流体称牛顿流体，其黏度只随</span><span class="qbw">温度</span><span class="qnp">变化；不符合的称</span><span class="qbw">非牛顿</span><span class="qnp">流体，其</span><span class="qbw">表观黏度</span><span class="qnp">随剪切速率（或剪切时间）而变。</span></div></div>
+<div class="q"><span class="qt">名05</span><div class="qx fillq"><b class="term">边界层与边界层分离</b><span class="qnp">实际流体沿壁面流动时，壁面附近因</span><span class="qbw">黏性</span><span class="qnp">影响而存在</span><span class="qbw">速度梯度</span><span class="qnp">和剪应力的一层流体称边界层，一般以速度达到主体速度的</span><span class="qbw">99%</span><span class="qnp">处为其外缘。流体绕过</span><span class="qbw">非流线型</span><span class="qnp">物体时，因</span><span class="qbw">逆压梯度</span><span class="qnp">使边界层脱离壁面，称为边界层分离。</span></div></div>
+<div class="q"><span class="qt">名06</span><div class="qx fillq"><b class="term">稳定流动与不稳定流动</b><span class="qnp">若流场中任一点的</span><span class="qbw">流速</span><span class="qnp">、</span><span class="qbw">压力</span><span class="qnp">、密度等与流动有关的参数都</span><span class="qbw">不随时间</span><span class="qnp">改变，称稳定流动；只要有</span><span class="qbw">任一</span><span class="qnp">参数随时间变化，即为不稳定流动。</span></div></div>
+<div class="q"><span class="qt">名07</span><div class="qx fillq"><b class="term">离心泵的压头</b><span class="qnp">泵向</span><span class="qbw">单位重量</span><span class="qnp">液体提供的</span><span class="qbw">机械能</span><span class="qnp">称泵的压头（扬程），用 H 表示，单位</span><span class="qbw">m</span><span class="qnp">。其大小取决于泵的</span><span class="qbw">结构型式与尺寸</span><span class="qnp">（叶轮直径、叶片弯曲程度）、</span><span class="qbw">转速</span><span class="qnp">及流量，也与液体</span><span class="qbw">黏度</span><span class="qnp">有关。</span></div></div>
+<div class="q"><span class="qt">名08</span><div class="qx fillq"><b class="term">可压缩流体与不可压缩流体</b><span class="qnp">压力、温度改变时</span><span class="qbw">密度</span><span class="qnp">变化很小的流体称不可压缩流体（如</span><span class="qbw">液体</span><span class="qnp">）；密度有</span><span class="qbw">显著</span><span class="qnp">变化的称可压缩流体（如</span><span class="qbw">气体</span><span class="qnp">）。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名09</span><div class="qx fillq"><b class="term">巴斯噶定律</b><span class="qnp">液面上方</span><span class="qbw">压力</span><span class="qnp">改变时，液体内部各点的压力</span><span class="qbw">随之改变</span><span class="qnp">，且变化值</span><span class="qbw">相同</span><span class="qnp">。它是</span><span class="qbw">静力学方程</span><span class="qnp">与压力计原理的基础。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名10</span><div class="qx fillq"><b class="term">流线与迹线</b><span class="qnp">流线是</span><span class="qbw">同一瞬间</span><span class="qnp">不同质点速度方向连成的曲线，线上各点的</span><span class="qbw">切线</span><span class="qnp">方向即该点的速度方向；迹线是</span><span class="qbw">同一质点</span><span class="qnp">运动的</span><span class="qbw">轨迹</span><span class="qnp">。稳定流动时二者</span><span class="qbw">重合</span><span class="qnp">。</span></div></div>
+<div class="q"><span class="qt">名11</span><div class="qx fillq"><b class="term">离心泵的有效功率</b><span class="qnp">单位时间内流体从泵的</span><span class="qbw">叶轮</span><span class="qnp">实际获得的</span><span class="qbw">能量</span><span class="qnp">，Ne=</span><span class="qbw">QHρg</span><span class="qnp">，单位 W。</span></div></div>
+<div class="q"><span class="qt">名12</span><div class="qx fillq"><b class="term">离心泵的轴功率</b><span class="qnp">泵轴从</span><span class="qbw">电机</span><span class="qnp">获得的、传给泵的功率，用 N 表示；轴功率与有效功率之差为</span><span class="qbw">损失功率</span><span class="qnp">。</span></div></div>
+<div class="q"><span class="qt">名13</span><div class="qx fillq"><b class="term">离心泵的效率</b><span class="qnp">反映</span><span class="qbw">机械能</span><span class="qnp">的利用程度，η=</span><span class="qbw">Ne/N</span><span class="qnp">×100%，其中 Ne 为</span><span class="qbw">有效功率</span><span class="qnp">、N 为</span><span class="qbw">轴功率</span><span class="qnp">。</span></div></div>
+<div class="q"><span class="qt">名14</span><div class="qx fillq"><b class="term">层流与湍流</b><span class="qnp">流速很小时流体质点作</span><span class="qbw">直线</span><span class="qnp">运动、互不</span><span class="qbw">宏观混合</span><span class="qnp">，称层流；流速增大到临界值后质点出现</span><span class="qbw">脉动</span><span class="qnp">、互相</span><span class="qbw">掺混</span><span class="qnp">，称湍流。圆管内以 Re=</span><span class="qbw">2000</span><span class="qnp">（下临界）与</span><span class="qbw">4000</span><span class="qnp">（上临界）判别，工程上常以 Re=</span><span class="qbw">2000</span><span class="qnp"> 为界。</span></div></div>
+<div class="q"><span class="qt">名15</span><div class="qx fillq"><b class="term">汽蚀现象</b><span class="qnp">泵入口最低压强降至被输送液体的</span><span class="qbw">饱和蒸汽压</span><span class="qnp">时，液体</span><span class="qbw">汽化</span><span class="qnp">生成气泡；气泡随液体进入</span><span class="qbw">高压</span><span class="qnp">区又急剧</span><span class="qbw">凝结</span><span class="qnp">，周围液体高速冲向气泡中心，产生频率很高、瞬时压力很大的</span><span class="qbw">水力冲击</span><span class="qnp">，使叶轮表面</span><span class="qbw">疲劳剥蚀</span><span class="qnp">，这种现象称汽蚀。</span></div></div>
+<div class="q"><span class="qt">名16</span><div class="qx fillq"><b class="term">气缚现象</b><span class="qnp">离心泵启动时若泵壳与吸入管路内</span><span class="qbw">没有充满液体</span><span class="qnp">，因气体</span><span class="qbw">密度</span><span class="qnp">远小于液体，叶轮旋转产生的</span><span class="qbw">离心力</span><span class="qnp">不足以造成吸上液体所需的</span><span class="qbw">真空度</span><span class="qnp">，泵便吸不上液体，这种现象称气缚。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名17</span><div class="qx fillq"><b class="term">伯努利方程</b><span class="qnp">对</span><span class="qbw">不可压缩</span><span class="qnp">流体作</span><span class="qbw">稳定</span><span class="qnp">流动，以</span><span class="qbw">单位质量</span><span class="qnp">流体为基准的机械能衡算式：gz₁+p₁/ρ+u₁²/2 = gz₂+p₂/ρ+u₂²/2，即</span><span class="qbw">伯努利方程</span><span class="qnp">。它表明</span><span class="qbw">位能</span><span class="qnp">、</span><span class="qbw">静压能</span><span class="qnp">、</span><span class="qbw">动能</span><span class="qnp">之和沿流线</span><span class="qbw">守恒</span><span class="qnp">。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名18</span><div class="qx fillq"><b class="term">量纲分析法</b><span class="qnp">以</span><span class="qbw">量纲一致性</span><span class="qnp">原则（白金汉 </span><span class="qbw">π 定理</span><span class="qnp">）为依据，把影响过程的 n 个物理量组合成 </span><span class="qbw">n−m</span><span class="qnp"> 个独立的</span><span class="qbw">无量纲</span><span class="qnp">数群（特征数），再由实验确定其关联式的方法；m 为所涉及的</span><span class="qbw">基本量纲</span><span class="qnp">数目。</span></div></div>
+    </div>
+  </div>
+
+<div class="block p3" data-p="3">
+    <h3><span class="st">★★★★</span>简答题 · <span class="cnt">10</span> 道<span class="tag t-red">10 分题</span></h3>
+    <div class="qbl">
+<details class="qa"><summary><span class="qn">简01</span><span class="qq">混合流体密度如何计算？压力有哪几种表示方法？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 混合<b>液体</b>：ρm = 1/Σ(wᵢ/ρᵢ)（wᵢ 为质量分数）；若已知体积分数则 ρm = Σ(φᵢρᵢ)。</p><p>② 混合<b>气体</b>：ρm = Σ(yᵢρᵢ)（yᵢ 为体积分数），也可由 ρ = pM/(RT) 按平均摩尔质量算。</p><p>③ 压力三种表示：<b>绝对压</b> p、<b>表压</b> = p − p大气、<b>真空度</b> = p大气 − p（表压为负时用）。</p><p>④ 单位换算：1 atm = 101.325 kPa = 760 mmHg = 10.33 mH₂O = 1.033 kgf/cm²。</p></div></details>
+<details class="qa"><summary><span class="qn">简02</span><span class="qq">写出连续性方程与伯努利方程，说明各项物理意义及三种形式。</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 连续性方程：u₁A₁ρ₁ = u₂A₂ρ₂；不可压缩时 u₁A₁ = u₂A₂（体积流量守恒）。</p><p>② 伯努利方程（实际流体、有外功）：gz₁+p₁/ρ+u₁²/2+We = gz₂+p₂/ρ+u₂²/2+Σhf。</p><p>③ 三种基准：以<b>单位质量</b>流体计（J/kg）、以<b>单位重量</b>流体计（m 液柱，即压头形式）、以<b>单位体积</b>流体计（Pa）。</p><p>④ 各项意义：z 为<b>位能</b>（位压头）、p/ρ 为<b>静压能</b>（静压头）、u²/2 为<b>动能</b>（动压头）、We 为泵加入的外功、Σhf 为<b>阻力损失</b>。</p><p>⑤ 适用条件：稳定、不可压缩、连续、沿同一条流线（或缓变流截面）；截面应与流线垂直、选在未知量少且顺流处。</p></div></details>
+<details class="qa"><summary><span class="qn">简03</span><span class="qq">边界层分离对流体输送、传热和传质有什么影响？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 分离时壁面附近出现<b>回流区与旋涡</b>，边界层显著增厚，产生很大的<b>形体阻力</b>，泵耗增加。</p><p>② 对<b>传热</b>：旋涡使局部湍动增强、给热系数局部提高，但分离区整体流动死滞、平均给热系数下降；换热面设计应尽量避免在传热面上分离。</p><p>③ 对<b>传质</b>：同理，分离使传质边界层增厚、传质系数下降；但旋涡的更新作用又使局部传质增强，需具体分析。</p><p>④ 工程对策：采用流线型构件、减小扩角、避免急弯与突变，把分离控制在非传热传质面上。</p></div></details>
+<details class="qa"><summary><span class="qn">简04</span><span class="qq">光滑管内流动阻力损失产生的原因是什么？如何计算？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 根本原因：流体的<b>黏性</b>引起内摩擦，以及湍流时<b>涡流脉动</b>造成的机械能耗散。</p><p>② 直管阻力：hf = λ(l/d)(u²/2)；层流时 λ = 64/Re，与管壁粗糙度<b>无关</b>，hf ∝ u。</p><p>③ 湍流时 λ = f(Re, ε/d)；光滑管（层流底层厚度大于粗糙度）用<b>柏拉修斯式</b> λ = 0.3164/Re^0.25，适用 5000 < Re < 1×10⁵。</p><p>④ 局部阻力：hf′ = ζ(u²/2)，因管件、阀门处流速大小与方向突变产生涡流与撞击。</p><p>⑤ 总阻力：Σhf = Σ[λ(l/d)(u²/2)] + Σ[ζ(u²/2)]。</p></div></details>
+<details class="qa"><summary><span class="qn">简05</span><span class="qq">牛顿黏性定律的内容是什么？黏度与运动黏度有何区别？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① τ = μ·du/dy：相邻液层间的<b>内摩擦剪应力</b>与垂直于流动方向的<b>速度梯度</b>成正比。</p><p>② μ 为动力黏度，单位 Pa·s；它表示流体<b>抵抗剪切变形</b>的能力，是流体的物理性质。</p><p>③ 液体 μ 随温度升高而<b>减小</b>，气体 μ 随温度升高而<b>增大</b>。</p><p>④ 运动黏度 ν = μ/ρ，单位 m²/s，常见于雷诺数等特征数中。</p></div></details>
+<details class="qa" data-p="2"><summary><span class="qn">简06</span><span class="qq">U 管压差计的工作原理与计算方法。</span><span class="qs">★★★</span></summary><div class="qab"><p>① 原理：连通器内同一<b>连续、静止</b>的同种流体，同一水平面上压力相等（等压面）。</p><p>② 指示液与被测流体不互溶且密度更大；读数 R 对应两测压点的压差。</p><p>③ 气体压差：p₁ − p₂ ≈ ρ指示·gR；液体压差：p₁ − p₂ = (ρ指示 − ρ流体)gR。</p><p>④ 倒 U 管以气体为指示液，测液体小压差；斜管可把 R 放大 1/sinα 倍，测微压差。</p></div></details>
+<details class="qa"><summary><span class="qn">简07</span><span class="qq">离心泵的实际压头为什么低于理论压头？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 理论压头按<b>无限多叶片、理想流体</b>导出，H∞ = u₂cosα₂/g。</p><p>② <b>叶片数有限</b>→流道内产生环流（轴向涡），压头下降。</p><p>③ <b>黏性摩擦与冲击</b>→水力损失。</p><p>④ <b>泄漏</b>（叶轮与泵壳间隙、轴封）→容积损失。</p><p>⑤ <b>机械损失</b>（轴承、轴封摩擦）→机械效率；故 η = η容积·η水力·η机械。</p></div></details>
+<details class="qa"><summary><span class="qn">简08</span><span class="qq">汽蚀有何危害？如何防止？气缚如何防治？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 危害：噪声、振动，流量与压头下降；气泡溃灭的水力冲击使叶轮表面<b>剥蚀</b>，寿命骤降。</p><p>② 防汽蚀：降低<b>安装高度</b>；缩短、加粗吸入管，减少弯头与阀门以<b>减小吸入阻力</b>；降低液温（降低 pv）；提高吸入液面压力；选用 NPSHr 小的泵，安装高度留 0.5~1 m 余量。</p><p>③ 安装高度：Hg ≤ (p₀−pv)/(ρg) − (NPSH)r − Σhf,吸。</p><p>④ 防气缚：启动前<b>灌泵</b>（或设底阀、自吸装置），保证泵壳与吸入管充满液体，入口密封不漏气。</p></div></details>
+<details class="qa" data-p="2"><summary><span class="qn">简09</span><span class="qq">离心泵与往复泵的流量调节方法为何不同？</span><span class="qs">★★★</span></summary><div class="qab"><p>① 离心泵：H-Q 曲线单调下降，用<b>出口阀节流</b>调节流量（关小阀→流量减小），操作简单；但长期关死运行会过热，不宜。</p><p>② 往复泵：<b>正位移</b>特性，流量几乎与压头无关，关小出口阀会使压力骤升而损坏设备，必须用<b>旁路回流</b>调节。</p><p>③ 往复泵有<b>自吸</b>能力、可输送高黏液体；离心泵无自吸、流量大而压头低。</p></div></details>
+<details class="qa" data-p="2"><summary><span class="qn">简10</span><span class="qq">离心通风机、罗茨鼓风机、往复压缩机的工作原理与适用范围。</span><span class="qs">★★★</span></summary><div class="qab"><p>① <b>离心通风机</b>：叶轮高速旋转产生离心力，气体沿径向甩出、蜗壳扩压；大风量、低压（<15 kPa）。</p><p>② <b>罗茨鼓风机</b>：两个"8"字形转子啮合，把气体从吸入侧<b>容积式</b>推送到排出侧；流量基本恒定、压力较高（<80 kPa），不需内部润滑。</p><p>③ <b>往复压缩机</b>：活塞往复、容积周期变化；压比大时须<b>分级压缩+中间冷却</b>，适用于高压。</p></div></details>
+    </div>
+  </div>
+
+</section>
+
+
+<section id="s3">
+  <div class="shead">
+    <div class="snum">03</div>
+    <div><h2>两相流的分离与输送</h2><p>每年必考 · 20~30 分 · 名解、简答 + 一道 10 分计算</p></div>
+    <label class="done"><input type="checkbox" data-k="s3">已掌握</label>
+  </div>
+
+  <div class="klist"><span>自由/干扰沉降<b>★★★★</b></span><span>深层/滤饼过滤<b>★★★</b></span><span>聚式/散式<b>★★★</b></span><span>沉降速度<b>★★★</b></span><span>起始流化/带出<b>★★★★</b></span><span>助滤剂<b>★★★</b></span><span>离心沉降<b>★★★★</b></span><span>恒压过滤<b>★★★★</b></span><span>生产能力<b>★★★★</b></span><span>流态化阶段<b>★★★★</b></span><span>比阻/最佳周期<b>★★★</b></span><span>滤浆滤液滤饼<b>★★★</b></span><span>横穿/置换洗涤<b>★★★★</b></span><span>沟流/腾涌<b>★★★★</b></span><span>固定床/流化床<b>★★★</b></span><span>气固/膜过滤<b>★★★</b></span></div>
+
+<div class="block p3" data-p="3">
+    <h3><span class="st">★★★★</span>名词解释 · <span class="cnt">16</span> 条<span class="tag t-red">背诵</span></h3>
+    <div class="qbl">
+<div class="q"><span class="qt">名01</span><div class="qx fillq"><b class="term">过滤操作周期</b><span class="qnp">生产周期 = </span><span class="qbw">过滤</span><span class="qnp">时间 + </span><span class="qbw">洗涤</span><span class="qnp">时间 + </span><span class="qbw">辅助</span><span class="qnp">时间；在</span><span class="qbw">最大生产能力</span><span class="qnp">下的生产周期称最佳生产周期。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名02</span><div class="qx fillq"><b class="term">过滤比阻与压缩指数</b><span class="qnp">比阻 r 表征滤饼对滤液流动的</span><span class="qbw">阻力</span><span class="qnp">，单位</span><span class="qbw">m⁻²</span><span class="qnp">；不可压缩滤饼 r 为</span><span class="qbw">常数</span><span class="qnp">。可压缩滤饼 r=</span><span class="qbw">r₀Δp^s</span><span class="qnp">，s 为</span><span class="qbw">压缩指数</span><span class="qnp">，不可压缩时 s=</span><span class="qbw">0</span><span class="qnp">；s 越大表示可压缩性越</span><span class="qbw">大</span><span class="qnp">。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名03</span><div class="qx fillq"><b class="term">滤浆、滤液与滤饼</b><span class="qnp">待过滤的</span><span class="qbw">固体悬浮液</span><span class="qnp">称滤浆；截留在过滤介质上的</span><span class="qbw">固体微粒</span><span class="qnp">称滤饼；透过过滤介质与滤饼的</span><span class="qbw">清液</span><span class="qnp">称滤液。</span></div></div>
+<div class="q"><span class="qt">名04</span><div class="qx fillq"><b class="term">滤饼过滤与深层过滤</b><span class="qnp">颗粒直径</span><span class="qbw">大于</span><span class="qnp">介质孔径时，颗粒在介质表面</span><span class="qbw">架桥</span><span class="qnp">并累积成滤饼，称滤饼过滤；颗粒</span><span class="qbw">小于</span><span class="qnp">孔径、进入介质</span><span class="qbw">弯曲细长</span><span class="qnp">的孔道后被截留，称深层过滤。</span></div></div>
+<div class="q"><span class="qt">名05</span><div class="qx fillq"><b class="term">起始流化速度与带出速度</b><span class="qnp">床层</span><span class="qbw">开始流化</span><span class="qnp">时的流体表观速度称临界（起始）流化速度 u_mf；颗粒</span><span class="qbw">开始被带出</span><span class="qnp">时的表观速度称带出速度 u_t（即颗粒的</span><span class="qbw">沉降速度</span><span class="qnp">）。</span></div></div>
+<div class="q"><span class="qt">名06</span><div class="qx fillq"><b class="term">聚式流态化与散式流态化</b><span class="qnp">气固体系中气泡</span><span class="qbw">聚并</span><span class="qnp">、床层极不稳定、压降波动大，称聚式流态化；液固体系中颗粒</span><span class="qbw">均匀</span><span class="qnp">分散、床层界面平稳、压降稳定，称散式流态化。</span></div></div>
+<div class="q"><span class="qt">名07</span><div class="qx fillq"><b class="term">助滤剂</b><span class="qnp">预敷在过滤介质表面的</span><span class="qbw">一层颗粒</span><span class="qnp">（如硅藻土），可防止介质</span><span class="qbw">孔道堵塞</span><span class="qnp">、保持滤饼</span><span class="qbw">疏松</span><span class="qnp">，从而提高</span><span class="qbw">过滤速率</span><span class="qnp">。</span></div></div>
+<div class="q"><span class="qt">名08</span><div class="qx fillq"><b class="term">自由沉降与干扰沉降</b><span class="qnp">颗粒在</span><span class="qbw">无限</span><span class="qnp">流体中、不受其他颗粒影响的沉降称自由沉降；颗粒</span><span class="qbw">距离较近</span><span class="qnp">、即使不碰撞也相互</span><span class="qbw">影响</span><span class="qnp">的沉降称干扰沉降，其沉降速度</span><span class="qbw">小于</span><span class="qnp">自由沉降。</span></div></div>
+<div class="q"><span class="qt">名09</span><div class="qx fillq"><b class="term">沉降分离与沉降速度</b><span class="qnp">利用非均相混合物中不同</span><span class="qbw">直径或密度</span><span class="qnp">的颗粒在</span><span class="qbw">重力或离心力</span><span class="qnp">场中沉降速度不同而分离的操作称沉降分离；颗粒受力平衡后</span><span class="qbw">匀速</span><span class="qnp">下降的速度称沉降速度（终端速度）。</span></div></div>
+<div class="q"><span class="qt">名10</span><div class="qx fillq"><b class="term">横穿洗涤与置换洗涤</b><span class="qnp">横穿洗涤：洗水穿过</span><span class="qbw">整个滤饼</span><span class="qnp">及两侧滤布，路径为过滤时的</span><span class="qbw">两倍</span><span class="qnp">、流通面积为</span><span class="qbw">一半</span><span class="qnp">；置换洗涤：洗水</span><span class="qbw">置换</span><span class="qnp">滤饼孔隙中的滤液，路径与过滤</span><span class="qbw">相同</span><span class="qnp">、面积为</span><span class="qbw">全部</span><span class="qnp">。</span></div></div>
+<div class="q"><span class="qt">名11</span><div class="qx fillq"><b class="term">沟流与腾涌</b><span class="qnp">沟流：大直径床层中因颗粒堆积不匀或布气不良，气体沿</span><span class="qbw">局部通道</span><span class="qnp">上升，其余部分仍为</span><span class="qbw">固定床</span><span class="qnp">（死床）的现象。腾涌：聚式流化时小气泡合并成与</span><span class="qbw">床径</span><span class="qnp">相当的大气泡，把床层分成若干段、像</span><span class="qbw">活塞</span><span class="qnp">一样向上推进后崩裂的现象。</span></div></div>
+<div class="q"><span class="qt">名12</span><div class="qx fillq"><b class="term">可压缩滤饼与不可压缩滤饼</b><span class="qnp">滤饼空隙结构因颗粒</span><span class="qbw">坚硬</span><span class="qnp">而不因受压变形者，称不可压缩滤饼；受压后空隙率</span><span class="qbw">减小</span><span class="qnp">、过滤阻力</span><span class="qbw">增大</span><span class="qnp">者，称可压缩滤饼。</span></div></div>
+<div class="q"><span class="qt">名13</span><div class="qx fillq"><b class="term">固定床与流化床</b><span class="qnp">表观速度较低、颗粒</span><span class="qbw">静止不动</span><span class="qnp">的床层称固定床；在某一表观速度下床层</span><span class="qbw">膨胀</span><span class="qnp">到一定程度、颗粒</span><span class="qbw">悬浮</span><span class="qnp">于流体中且有明显</span><span class="qbw">上界面</span><span class="qnp">的床层称流化床。</span></div></div>
+<div class="q"><span class="qt">名14</span><div class="qx fillq"><b class="term">均相与非均相混合物</b><span class="qnp">均相混合物只有</span><span class="qbw">一个相</span><span class="qnp">，各物质之间</span><span class="qbw">无相界面</span><span class="qnp">，体系各处性质</span><span class="qbw">相同</span><span class="qnp">；非均相混合物含</span><span class="qbw">一个以上</span><span class="qnp">的相，</span><span class="qbw">相界面</span><span class="qnp">两侧物质性质不同（如悬浮液、乳浊液、含尘气体）。</span></div></div>
+<div class="q"><span class="qt">名15</span><div class="qx fillq"><b class="term">流化数</b><span class="qnp">带出速度与</span><span class="qbw">临界流化速度</span><span class="qnp">之比 u_t/u_mf，是表征流化床</span><span class="qbw">流动状态</span><span class="qnp">与操作范围的数群。</span></div></div>
+<div class="q"><span class="qt">名16</span><div class="qx fillq"><b class="term">固体流态化</b><span class="qnp">依靠</span><span class="qbw">流体流动</span><span class="qnp">的作用使固体颗粒</span><span class="qbw">悬浮</span><span class="qnp">在流体中、或随流体一起</span><span class="qbw">流动</span><span class="qnp">的过程。</span></div></div>
+    </div>
+  </div>
+
+<div class="block p3" data-p="3">
+    <h3><span class="st">★★★★</span>简答题 · <span class="cnt">7</span> 道<span class="tag t-red">10 分题</span></h3>
+    <div class="qbl">
+<details class="qa"><summary><span class="qn">简01</span><span class="qq">离心沉降的原理是什么？离心分离因数表示什么？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 颗粒在离心力场中受<b>离心力、浮力、阻力</b>三力作用，平衡时沿径向匀速沉降。</p><p>② 沉降速度 u_r = √[4d(ρs−ρ)u_t²/(3ξρr)]；层流时 u_r = d²(ρs−ρ)u_t²/(18μr)。</p><p>③ 离心分离因数 Kc = u_t²/(gr) = ω²r/g，即离心场强度与重力场强度之比，可达数百至数千。</p><p>④ 与重力沉降的关键差别：u_r 随旋转半径 r 变化，沉降过程<b>非恒定</b>；且 Kc 越大，分离越易。</p></div></details>
+<details class="qa"><summary><span class="qn">简02</span><span class="qq">恒压过滤方程如何导出？过滤问题作了什么简化？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 简化模型：把滤饼内曲折、不规则的空隙通道等效为<b>一束平行的细管</b>——细管总长与床层高成正比、内表面积等于全部颗粒表面积、流动空间等于全部空隙体积。</p><p>② 由康采尼方程得过滤基本方程：dV/dθ = A²Δp/[μrv(V+Ve)]，r 为比阻、v 为单位滤液体积对应的滤饼体积。</p><p>③ 恒压过滤时 Δp 恒定，积分得 q² + 2qeq = Kθ，K = 2Δp/(μrv)；q = V/A。</p><p>④ 可压缩滤饼把 r 写成 r = r₀Δp^s 代入，s 由实验测定。</p></div></details>
+<details class="qa"><summary><span class="qn">简03</span><span class="qq">过滤生产能力与最佳操作周期如何确定？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 生产能力 Q = V/(θ + θw + θD)，θD 为辅助（拆装、清洗）时间。</p><p>② 恒压过滤 V² = KA²θ，故 Q = A√(Kθ)/(θ + θD)。</p><p>③ 令 dQ/dθ = 0，得 <b>θ = θD</b>：过滤时间等于辅助时间时生产能力最大。</p><p>④ 此时 Qmax = (A/2)√(K/θD)；若洗涤时间不可忽略，则 θ + θw = θD。</p></div></details>
+<details class="qa"><summary><span class="qn">简04</span><span class="qq">固体流态化有哪几个阶段？流化床压降与气速的关系如何？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① <b>固定床阶段</b>：u 小，Δp 随 u 增大而增大，层流时 Δp ∝ u。</p><p>② <b>临界流化点</b>：u = u_mf，Δp 恰等于单位面积床层颗粒的净重力 Lmf(1−εmf)(ρp−ρ)g。</p><p>③ <b>流化床阶段</b>：u 继续增大，床层膨胀、空隙率增大，<b>Δp 基本恒定</b>，这是流化床正常操作的判据。</p><p>④ <b>颗粒输送阶段</b>：u 超过带出速度，颗粒被带走、上界面消失，Δp 反而下降。</p><p>⑤ 异常判读：Δp 异常偏低→<b>沟流</b>（气体短路）；Δp 剧烈波动、床层起伏→<b>腾涌</b>。</p></div></details>
+<details class="qa"><summary><span class="qn">简05</span><span class="qq">影响过滤速率的因素有哪些？助滤剂起什么作用？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① <b>推动力</b> Δp：恒压过滤时 Δp 越大速率越大，但可压缩滤饼的 s 会抵消部分效果。</p><p>② <b>滤浆性质</b>：浓度高、黏度大、颗粒细→阻力大、速率低；升温可降黏度。</p><p>③ <b>滤饼比阻</b>：可压缩滤饼受压后 r 增大，需控制压差。</p><p>④ <b>过滤介质阻力</b> Ve：介质堵塞或选用不当会使速率下降。</p><p>⑤ <b>助滤剂</b>：预敷一层坚硬颗粒（硅藻土、珍珠岩），防止介质孔道堵塞、保持滤饼疏松，提高速率；颗粒过细或胶质多的滤浆尤其有效。</p></div></details>
+<details class="qa" data-p="2"><summary><span class="qn">简06</span><span class="qq">旋风分离器的工作原理与主要性能是什么？</span><span class="qs">★★★</span></summary><div class="qab"><p>① 含尘气体由切向进口进入，在筒内形成<b>外旋流</b>向下、内旋流向上的双旋流。</p><p>② 颗粒受<b>离心力</b>被甩向器壁，沿壁面下落至灰斗；净化气体由顶部中心管排出。</p><p>③ 主要性能：<b>临界直径</b> dc（能全部分离的最小粒径）与<b>压降</b> Δp = ξρuᵢ²/2。</p><p>④ 特点：结构简单、无运动部件、耐高温；但压降较大、对细粉（<5 μm）效率低。</p></div></details>
+<details class="qa" data-p="2"><summary><span class="qn">简07</span><span class="qq">袋式除尘与膜过滤的机理有何不同？</span><span class="qs">★★★</span></summary><div class="qab"><p>① <b>袋式除尘</b>：含尘气体通过滤袋，靠粉尘层与滤料的<b>筛分、惯性碰撞、拦截、扩散</b>截留粉尘；属"滤饼过滤"，阻力随粉尘层增厚而上升，需定期清灰。</p><p>② <b>膜过滤</b>：以压力差为推动力，按<b>膜孔尺寸</b>进行筛分分离，无相变、可在常温下操作。</p><p>③ 差别：袋式处理气量大、精度受粉尘层影响；膜过滤精度高、通量小，且存在<b>浓差极化</b>与膜污染。</p></div></details>
+    </div>
+  </div>
+
+</section>
+
+<section id="s4">
+  <div class="shead">
+    <div class="snum">04</div>
+    <div><h2>两相流的混合</h2><p>中高频 · 约 10 分 · 基础理论题、单元操作原理题</p></div>
+    <label class="done"><input type="checkbox" data-k="s4">已掌握</label>
+  </div>
+
+  <div class="klist"><span>射流<b>★★★</b></span><span>紊动射流特征/分区<b>★★★★</b></span><span>射流分类/涡结构<b>★★★</b></span><span>动量积分方程<b>★★★</b></span><span>射流冶金应用<b>★★★</b></span><span>搅拌概念/作用<b>★★★★</b></span><span>搅拌功率<b>★★★★</b></span><span>打漩<b>★★★★</b></span><span>搅拌器类型<b>★★★★</b></span><span>放大原则<b>★★★★</b></span><span>搅拌特征数<b>★★★★</b></span><span>液液分散<b>★★★★</b></span><span>固液悬浮<b>★★★</b></span></div>
+
+<div class="block p3" data-p="3">
+    <h3><span class="st">★★★★</span>名词解释 · <span class="cnt">6</span> 条<span class="tag t-red">背诵</span></h3>
+    <div class="qbl">
+<div class="q" data-p="2"><span class="qt">名01</span><div class="qx fillq"><b class="term">射流</b><span class="qnp">流体从</span><span class="qbw">管口、孔口、狭缝</span><span class="qnp">射出，或靠</span><span class="qbw">机械推动</span><span class="qnp">，并与周围</span><span class="qbw">流体掺混</span><span class="qnp">的一股流体流动。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名02</span><div class="qx fillq"><b class="term">射流的分类</b><span class="qnp">按周围环境分</span><span class="qbw">自由射流</span><span class="qnp">与</span><span class="qbw">非自由（限制）射流</span><span class="qnp">；按流体形态分</span><span class="qbw">层流射流</span><span class="qnp">与</span><span class="qbw">紊动射流</span><span class="qnp">；按射流口形状分</span><span class="qbw">圆形</span><span class="qnp">射流、</span><span class="qbw">平面</span><span class="qnp">射流、矩形射流等。</span></div></div>
+<div class="q"><span class="qt">名03</span><div class="qx fillq"><b class="term">搅拌槽与搅拌功率</b><span class="qnp">安装搅拌器、用于实现搅拌操作的容器称</span><span class="qbw">搅拌槽</span><span class="qnp">；为达到规定搅拌目的而</span><span class="qbw">消耗</span><span class="qnp">的功率称搅拌功率 N。</span></div></div>
+<div class="q"><span class="qt">名04</span><div class="qx fillq"><b class="term">搅拌单元操作</b><span class="qnp">通过搅拌器使流体产生</span><span class="qbw">循环</span><span class="qnp">与</span><span class="qbw">强制对流</span><span class="qnp">，使气体、液体或悬浮颗粒在液相中</span><span class="qbw">混合均匀</span><span class="qnp">，以强化</span><span class="qbw">传热、传质或化学反应</span><span class="qnp">的操作。</span></div></div>
+<div class="q"><span class="qt">名05</span><div class="qx fillq"><b class="term">搅拌的目的</b><span class="qnp">① 使</span><span class="qbw">两种或多种互溶</span><span class="qnp">物料混合均匀；② 使</span><span class="qbw">不互溶</span><span class="qnp">液体混合（萃取、制乳浊液）；③ 使固体在液体中</span><span class="qbw">悬浮</span><span class="qnp">，促进固液反应；④ 使冷热流体</span><span class="qbw">密切接触</span><span class="qnp">，加快传热或传质；⑤ 促进液体与</span><span class="qbw">器壁</span><span class="qnp">间的传热，防止</span><span class="qbw">局部过热</span><span class="qnp">。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名06</span><div class="qx fillq"><b class="term">特征数</b><span class="qnp">由几个物理量组合而成的</span><span class="qbw">无量纲</span><span class="qnp">数群称特征数，其物理意义通常是</span><span class="qbw">两个同类物理量之比</span><span class="qnp">。</span></div></div>
+    </div>
+  </div>
+
+<div class="block p3" data-p="3">
+    <h3><span class="st">★★★★</span>简答题 · <span class="cnt">9</span> 道<span class="tag t-red">10 分题</span></h3>
+    <div class="qbl">
+<details class="qa"><summary><span class="qn">简01</span><span class="qq">紊动射流的分区结构包括哪几部分？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① <b>初始段</b>（射流核心区）：中心速度仍等于出口速度，边界层自喷口向外扩展，核心区逐渐收缩。</p><p>② <b>过渡段</b>：初始段与主体段之间的过渡，长度很短，分析中常忽略。</p><p>③ <b>主体段</b>（充分发展区）：核心消失，断面速度分布<b>相似</b>（自保持性），轴心速度沿程衰减。</p><p>④ 三个基本特征：边界<b>线性扩展</b>（半厚度 b ∝ x）、断面速度分布相似、等密度自由射流<b>动量守恒</b>；同时伴随对周围流体的<b>卷吸</b>与热量、质量的扩散。</p></div></details>
+<details class="qa" data-p="2"><summary><span class="qn">简02</span><span class="qq">紊动射流问题的分析方法主要有哪些？各有何优缺点？</span><span class="qs">★★★</span></summary><div class="qab"><p>① <b>量纲分析 + 实验</b>：整理实验资料得经验关系式。优点是能处理复杂射流、实用性强；缺点是经验性大、外推受限。</p><p>② <b>理论分析与数值模拟</b>：直接求解射流边界层微分方程组。优点是物理意义清楚、可给出全场；缺点是方程封闭与湍流模型依赖经验、计算量大。</p><p>③ <b>积分方程法</b>：先用实验确定断面速度分布，再代入动量、质量积分方程求解。优点是避免解复杂微分方程、简便有效；缺点是精度取决于所假设的速度剖面。</p></div></details>
+<details class="qa"><summary><span class="qn">简03</span><span class="qq">搅拌单元操作的作用是什么？搅拌性能受哪些因素影响？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 作用：<b>混合</b>（互溶液体）、<b>分散</b>（气液、液液）、<b>悬浮</b>（固液）、<b>强化传热</b>（更新壁面边界层）、<b>强化传质与反应</b>。</p><p>② 搅拌器因素：桨型（轴向流/径向流）、叶轮直径 D、转速 n、叶片数、层数。</p><p>③ 槽体几何：槽径 T、液深 H、D/T、H/T、挡板数目与宽度、导流筒。</p><p>④ 物性因素：密度、黏度、密度差、表面张力、固相含量与粒径。</p><p>⑤ 操作因素：通气量、加料位置、温度。</p></div></details>
+<details class="qa"><summary><span class="qn">简04</span><span class="qq">搅拌功率如何计算？受哪些因素影响？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 关联式：N = Po·ρn³D⁵，Po 为功率特征数；Po = K·Re^x·Fr^y（有挡板时 y=0）。</p><p>② 层流区（Re<10）：Po = 71/Re，故 N ∝ μn²D³，与密度无关。</p><p>③ 湍流区（Re>10⁴、全挡板）：Po = 常数，N ∝ ρn³D⁵，与黏度无关。</p><p>④ <b>物理因素</b>：ρ、μ、g（打漩时）。</p><p>⑤ <b>几何因素</b>：桨型、D/T、H/T、挡板数及宽度、叶轮离底距离、导流筒。</p><p>⑥ 工程上用<b>功率曲线</b>（φ–Re）查取：同一几何构型只有一条曲线，与槽大小无关。</p></div></details>
+<details class="qa"><summary><span class="qn">简05</span><span class="qq">什么是打漩现象？有何危害？如何避免？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 现象：平底圆槽、无挡板、搅拌器居中、液体黏度不大时，液体随桨叶一起旋转、沿壁面滑动，液面中央下凹成<b>抛物面</b>，即打漩。</p><p>② 危害：有效液层减小、混合效果变差；卷入气体、产生泡沫；径向流减弱；引起振动、功率白白消耗。</p><p>③ 避免：加<b>挡板</b>（2~6 块，宽为 (1/12~1/10)T）；搅拌器<b>偏心或倾斜</b>安装；加大 D/T、降低转速；设<b>导流筒</b>。</p><p>④ 全挡板条件：再增加挡板功率不再上升，此时 Po 为常数。</p></div></details>
+<details class="qa"><summary><span class="qn">简06</span><span class="qq">常用搅拌器有哪几类？各适用什么范围？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① <b>推进式</b>（轴向流）：流量大、压头低、剪切弱；适用低黏度液体的混合、固液悬浮、循环。</p><p>② <b>涡轮式</b>（径向流）：剪切强、湍动剧烈；适用气液分散、液液乳化、快速反应。</p><p>③ <b>桨式</b>：结构简单、剪切中等；适用低黏度混合、传热、溶解。</p><p>④ <b>锚式、螺带式、螺杆式</b>：贴近壁面、全槽循环；适用高黏度液体、强化夹套传热。</p></div></details>
+<details class="qa"><summary><span class="qn">简07</span><span class="qq">搅拌雷诺数、弗劳德数、功率特征数各表示什么？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① Re = D²nρ/μ：惯性力与<b>黏性力</b>之比，判别流动状态（层流/过渡/湍流）。</p><p>② Fr = n²D/g：惯性力与<b>重力</b>之比，反映<b>打漩</b>与表面波的影响。</p><p>③ Po = N/(ρn³D⁵)：无量纲功率，表示功率消耗的大小。</p><p>④ 三者关系：Po = K·Re^x·Fr^y，即功率曲线方程；全挡板时 Fr 影响消失。</p></div></details>
+<details class="qa"><summary><span class="qn">简08</span><span class="qq">搅拌设备放大的基本原则是什么？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 前提是<b>几何相似</b>：放大后各尺寸按同一比例放大。</p><p>② <b>运动相似</b>：速度场相似；<b>动力相似</b>：各力之比相似。</p><p>③ 工程判据（不可能同时满足，须按目的取舍）：单位体积功率 P/V 相等、叶端速度 πnD 相等、Re 相等、混合时间相等、传热系数相等。</p><p>④ 选判据原则：混合/悬浮控制→按 P/V 或叶端速度；传热控制→按给热系数关联式；反应控制→按混合时间。</p></div></details>
+<details class="qa" data-p="2"><summary><span class="qn">简09</span><span class="qq">液-液分散与固-液悬浮的机理是什么？</span><span class="qs">★★★</span></summary><div class="qab"><p>① <b>液滴破碎</b>：湍流中尺寸大于 Kolmogorov 微尺度的涡对液滴产生剪切与压差，使液滴变形破裂；d_max ∝ (σ/ρ)^0.6·ε^(−0.4)。</p><p>② <b>液滴聚并</b>：碰撞后液膜排液、破裂而合并，与表面活性剂、连续相黏度有关；破碎与聚并达到动态平衡时形成稳定分散体系。</p><p>③ <b>固-液悬浮</b>：靠槽底附近的强循环流把颗粒抬起。<b>临界悬浮转速</b> N_js 为全部颗粒离底、槽底无沉积的最低转速；<b>均匀悬浮</b>需更高转速。</p><p>④ 桨型：轴向流桨（如翼型、推进式）能耗低，适合悬浮；必要时加底挡板或导流筒。</p></div></details>
+    </div>
+  </div>
+
+</section>
+
+
+<section id="s5">
+  <div class="shead">
+    <div class="snum">05</div>
+    <div><h2>传热学基础</h2><p>必考 · 20~30 分 · 名解、简答 + 平壁/圆筒壁计算</p></div>
+    <label class="done"><input type="checkbox" data-k="s5">已掌握</label>
+  </div>
+
+  <div class="klist"><span>传热边界层<b>★★★★</b></span><span>灰体/黑体/白体<b>★★★★</b></span><span>黑度与吸收率<b>★★★★</b></span><span>给热系数影响因素<b>★★★★</b></span><span>多层壁导热<b>★★★★</b></span><span>提高对流换热<b>★★★★</b></span><span>热流量/温度场/效率<b>★★★★</b></span><span>角系数<b>★★★★</b></span><span>定性温度<b>★★★★</b></span><span>给热/传质系数<b>★★★★</b></span><span>反射率<b>★★★★</b></span><span>两固体辐射<b>★★★★</b></span><span>污垢热阻<b>★★★★</b></span><span>三大定律<b>★★★★</b></span><span>间壁传热<b>★★★★</b></span><span>特征数关联式<b>★★★★</b></span><span>颗粒/填料床传热<b>★★★★</b></span></div>
+
+<div class="block p3" data-p="3">
+    <h3><span class="st">★★★★</span>名词解释 · <span class="cnt">16</span> 条<span class="tag t-red">背诵</span></h3>
+    <div class="qbl">
+<div class="q" data-p="2"><span class="qt">名01</span><div class="qx fillq"><b class="term">对流传热系数与定性温度</b><span class="qnp">对流传热系数 α 是</span><span class="qbw">热通量</span><span class="qnp"> q 与壁面—流体</span><span class="qbw">温度差</span><span class="qnp">的比例系数，q = </span><span class="qbw">α(t−T)</span><span class="qnp">，单位 </span><span class="qbw">W/(m²·K)</span><span class="qnp">；确定物性参数所用的</span><span class="qbw">代表性</span><span class="qnp">温度称定性温度，常取流体进出口</span><span class="qbw">平均</span><span class="qnp">温度或</span><span class="qbw">膜温</span><span class="qnp">（壁温与流体平均温度之平均）。</span></div></div>
+<div class="q"><span class="qt">名02</span><div class="qx fillq"><b class="term">对流给热</b><span class="qnp">流体各部分质点发生</span><span class="qbw">相对位移</span><span class="qnp">而引起的热量传递，因而只能发生在</span><span class="qbw">流体</span><span class="qnp">中；按起因分</span><span class="qbw">自然对流</span><span class="qnp">与</span><span class="qbw">强制对流</span><span class="qnp">。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名03</span><div class="qx fillq"><b class="term">稳定温度场与不稳定温度场</b><span class="qnp">各点温度均</span><span class="qbw">不随时间</span><span class="qnp">变化的温度场称稳定温度场；各点温度</span><span class="qbw">随时间</span><span class="qnp">改变的温度场称不稳定温度场。</span></div></div>
+<div class="q"><span class="qt">名04</span><div class="qx fillq"><b class="term">灰体与黑体</b><span class="qnp">吸收率与</span><span class="qbw">波长无关</span><span class="qnp">、且数值</span><span class="qbw">小于 1</span><span class="qnp">的物体称灰体，其辐射能力 E = </span><span class="qbw">εE₀</span><span class="qnp">；能吸收</span><span class="qbw">全部</span><span class="qnp">辐射能（A=</span><span class="qbw">1</span><span class="qnp">）的物体称绝对黑体，其辐射能力为 </span><span class="qbw">E₀</span><span class="qnp">。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名05</span><div class="qx fillq"><b class="term">热流量与热通量</b><span class="qnp">单位时间内通过传热面传递的</span><span class="qbw">热量</span><span class="qnp">称热流量 Q，单位 </span><span class="qbw">W</span><span class="qnp">；单位时间内通过</span><span class="qbw">单位传热面积</span><span class="qnp">传递的热量称热通量 q，单位 </span><span class="qbw">W/m²</span><span class="qnp">。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名06</span><div class="qx fillq"><b class="term">给热系数和传质系数</b><span class="qnp">q = α(t−T) 中的比例系数 α 称</span><span class="qbw">给热系数</span><span class="qnp">；N_A = k_G(p_G−p_i) 中的 k_G 称</span><span class="qbw">气相传质系数</span><span class="qnp">，表示单位</span><span class="qbw">推动力</span><span class="qnp">下的传质通量。</span></div></div>
+<div class="q"><span class="qt">名07</span><div class="qx fillq"><b class="term">自然对流与强制对流</b><span class="qnp">流体内部因</span><span class="qbw">温差</span><span class="qnp">产生密度差、由</span><span class="qbw">浮升力</span><span class="qnp">引起的流动称自然对流；流体因</span><span class="qbw">外力</span><span class="qnp">（泵、风机、搅拌）作用而流动称强制对流。</span></div></div>
+<div class="q"><span class="qt">名08</span><div class="qx fillq"><b class="term">黑体与白体</b><span class="qnp">黑体：能</span><span class="qbw">吸收全部</span><span class="qnp">辐射能，即 A=1；白体（镜体）：能</span><span class="qbw">反射全部</span><span class="qnp">辐射能，即 R=1；实际物体的 A、R、D 之和为</span><span class="qbw">1</span><span class="qnp">。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名09</span><div class="qx fillq"><b class="term">传热效率</b><span class="qnp">换热器的实际换热量与</span><span class="qbw">最大可能</span><span class="qnp">换热量之比，ε = </span><span class="qbw">Q/Qmax</span><span class="qnp">，用以反映换热器的</span><span class="qbw">效能</span><span class="qnp">。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名10</span><div class="qx fillq"><b class="term">反射率</b><span class="qnp">投射到物体表面的总辐射能中被物体</span><span class="qbw">反射</span><span class="qnp">回去的能量所占的</span><span class="qbw">百分数</span><span class="qnp">。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名11</span><div class="qx fillq"><b class="term">吸收率</b><span class="qnp">投射到物体表面的总辐射能中被物体</span><span class="qbw">吸收</span><span class="qnp">的能量所占的</span><span class="qbw">百分数</span><span class="qnp">。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名12</span><div class="qx fillq"><b class="term">傅立叶定律</b><span class="qnp">描述</span><span class="qbw">导热</span><span class="qnp">现象的规律：q = </span><span class="qbw">−λ·dt/dn</span><span class="qnp">，即热通量与</span><span class="qbw">温度梯度</span><span class="qnp">成正比、方向</span><span class="qbw">相反</span><span class="qnp">；λ 为</span><span class="qbw">导热系数</span><span class="qnp">，单位 W/(m·K)。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名13</span><div class="qx fillq"><b class="term">牛顿冷却定律</b><span class="qnp">描述</span><span class="qbw">对流传热</span><span class="qnp">的规律：Q = </span><span class="qbw">αA(t_w−t)</span><span class="qnp">，即热流量与</span><span class="qbw">温度差</span><span class="qnp">成正比；它把复杂的对流传热问题归结为求</span><span class="qbw">给热系数</span><span class="qnp"> α。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名14</span><div class="qx fillq"><b class="term">斯蒂芬-波尔兹曼定律</b><span class="qnp">黑体辐射能力与其表面</span><span class="qbw">热力学温度</span><span class="qnp">的</span><span class="qbw">四次方</span><span class="qnp">成正比，E₀ = </span><span class="qbw">σT⁴</span><span class="qnp">，σ = </span><span class="qbw">5.67×10⁻⁸</span><span class="qnp"> W/(m²·K⁴)，称黑体辐射常数。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名15</span><div class="qx fillq"><b class="term">热辐射</b><span class="qnp">物体因</span><span class="qbw">受热</span><span class="qnp">而发射</span><span class="qbw">辐射能</span><span class="qnp">的现象；以</span><span class="qbw">电磁波</span><span class="qnp">传播，</span><span class="qbw">不需要</span><span class="qnp">任何介质，传递过程中伴有</span><span class="qbw">能量形式</span><span class="qnp">的转化。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名16</span><div class="qx fillq"><b class="term">膜状冷凝与滴状冷凝</b><span class="qnp">冷凝液能很好润湿壁面、铺展成</span><span class="qbw">液膜</span><span class="qnp">者称膜状冷凝，液膜靠</span><span class="qbw">重力</span><span class="qnp">沿壁下流、热阻较</span><span class="qbw">大</span><span class="qnp">；冷凝液不能润湿壁面、形成</span><span class="qbw">小液珠</span><span class="qnp">者称滴状冷凝，热阻</span><span class="qbw">小</span><span class="qnp">、给热系数可高</span><span class="qbw">数倍</span><span class="qnp">，但难以长期维持。</span></div></div>
+    </div>
+  </div>
+
+<div class="block p3" data-p="3">
+    <h3><span class="st">★★★★</span>简答题 · <span class="cnt">9</span> 道<span class="tag t-red">10 分题</span></h3>
+    <div class="qbl">
+<details class="qa"><summary><span class="qn">简01</span><span class="qq">传热的三种基本方式有何区别？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① <b>热传导（导热）</b>：依靠分子、原子或自由电子的微观运动传递热量，无宏观位移；发生在固体及静止流体中；规律为傅立叶定律 q=−λdt/dn。</p><p>② <b>热对流</b>：依靠流体各部分质点<b>相对位移</b>传递热量，只能发生在流体中；工程上是流体与壁面间的对流传热，规律为牛顿冷却定律。</p><p>③ <b>热辐射</b>：以<b>电磁波</b>传递能量，不需要介质、可在真空中传播，且伴随能量形式（内能↔辐射能）转化；规律为斯蒂芬-波尔兹曼定律。</p><p>④ 实际传热过程常是三者<b>串联组合</b>：对流 + 导热 + 辐射。</p></div></details>
+<details class="qa"><summary><span class="qn">简02</span><span class="qq">影响对流传热系数的因素有哪些？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① <b>流动原因</b>：自然对流 u 小、α 小；强制对流 u 大、α 大。</p><p>② <b>流体物性</b>：ρ、μ、λ、c_p；λ 越大、μ 越小、ρc_p 越大，α 越大。</p><p>③ <b>流动型态</b>：层流靠导热、热阻大；湍流时层流底层薄、α 大得多。</p><p>④ <b>传热面形状、大小与位置</b>：影响流型与边界层分离，用特征尺寸 l 表征。</p><p>⑤ <b>是否相变</b>：沸腾与冷凝的潜热远大于显热，α 通常更大，机理也不同。</p></div></details>
+<details class="qa"><summary><span class="qn">简03</span><span class="qq">怎样有效地提高总传热系数 K？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① K = 1/(1/α₁ + Σ(δ/λ) + 1/α₂ + Rf)，先算各项热阻，抓<b>最大热阻</b>。</p><p>② 若气体侧 α 小，则<b>提高气体侧</b>：加翅片、加大流速、增强湍动。</p><p>③ 减小<b>污垢热阻</b>：防垢、定期清洗、控制流速在不易结垢区间。</p><p>④ 减薄壁厚、选用 λ 大的材料；圆筒壁还应注意<b>临界直径</b>。</p><p>⑤ 提高流速、避免层流、防止边界层分离；但流速增大使阻力（泵功）上升，需经济权衡。</p></div></details>
+<details class="qa"><summary><span class="qn">简04</span><span class="qq">流体通过间壁的传热过程包括哪几步？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 热流体以<b>对流</b>把热量传给高温侧壁面。</p><p>② 热量以<b>导热</b>方式通过壁面（多层壁为串联导热）。</p><p>③ 壁面以<b>对流</b>把热量传给冷流体。</p><p>④ 三个环节<b>串联</b>，稳定时热流量相等，故 Q = KAΔtm，1/K = 1/α₁ + Σ(δ/λ) + 1/α₂。</p><p>⑤ 若有污垢，则在两侧各加污垢热阻 Rf₁、Rf₂。</p></div></details>
+<details class="qa"><summary><span class="qn">简05</span><span class="qq">两固体间的相互辐射换热如何计算？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 净换热量 Q = εs·C₀·A·[(T₁/100)⁴ − (T₂/100)⁴]，用绝对温度；C₀ = 5.67 W/(m²·K⁴)。</p><p>② <b>角系数</b> φ 表示表面 1 发出的辐射能落到表面 2 上的份额；两无限大平行板 φ=1。</p><p>③ <b>系统黑度</b> εs：无限大平行板 εs = 1/(1/ε₁ + 1/ε₂ − 1)；小物体被大物体包围 εs = 1/[1/ε₁ + (A₁/A₂)(1/ε₂ − 1)]。</p><p>④ 加<b>遮热板</b>可显著减小辐射换热（n 块同材质遮热板使换热量降为 1/(n+1)）。</p></div></details>
+<details class="qa"><summary><span class="qn">简06</span><span class="qq">什么是污垢热阻？如何计算与处理？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 污垢层附在壁面上，其导热系数很小，形成附加热阻 Rf。</p><p>② 计算：由实测 K 反推，Rf = 1/K污 − 1/K洁；或按经验值查取。</p><p>③ 影响因素：流速（太低易沉积、太高易冲刷）、温度、水质硬度、悬浮物浓度。</p><p>④ 设计时预留<b>污垢裕量</b>（加大面积），运行中定期清洗、加药阻垢。</p></div></details>
+<details class="qa"><summary><span class="qn">简07</span><span class="qq">自然对流常用准数有哪些？各表示什么？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① Nu = αl/λ：<b>努塞尔数</b>，待定准数，包含待求的 α。</p><p>② Re = luρ/μ：<b>雷诺数</b>，表征流动型态。</p><p>③ Pr = c_pμ/λ：<b>普兰特数</b>，反映流体物性对传热的影响（动量扩散与热量扩散之比）。</p><p>④ Gr = βgΔtl³ρ²/μ²：<b>格拉斯霍夫数</b>，表征自然对流中浮升力与黏性力之比。</p><p>⑤ 关联式形式：Nu = C·Re^a·Pr^b·Gr^k，C 与指数由实验确定。</p></div></details>
+<details class="qa"><summary><span class="qn">简08</span><span class="qq">多层平壁与圆筒壁的稳定导热如何计算？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 多层平壁：各层热流量相同，q = (t₁ − t_{n+1})/Σ(bᵢ/λᵢ)，界面温度由 q 逐层回代。</p><p>② 单层圆筒：Q = 2πλl(t₁−t₂)/ln(r₂/r₁)；单位管长热流量 q_l = 2πλΔt/ln(r₂/r₁)。</p><p>③ 多层圆筒：q_l = 2π(t₁−t_{n+1})/Σ[ln(r_{i+1}/rᵢ)/λᵢ]。</p><p>④ 圆筒壁加保温层存在<b>临界直径</b> d_c = 2λ/α：管径小于 d_c 时，加保温层反而增大散热，需注意。</p></div></details>
+<details class="qa" data-p="2"><summary><span class="qn">简09</span><span class="qq">颗粒群、填料床与流化床中的传热有何特点？</span><span class="qs">★★★</span></summary><div class="qab"><p>① <b>颗粒与流体</b>：Nu = 2 + 0.6Re^0.5Pr^(1/3)，颗粒小、流速低时 Nu→2（纯导热）。</p><p>② <b>填料床</b>：颗粒间接触形成导热网络，用<b>有效导热系数</b>描述；近壁处空隙率大，存在<b>壁给热系数</b>。</p><p>③ <b>流化床</b>：颗粒剧烈混合，床层温度均匀、接近等温；颗粒与气体间给热系数高，床层与壁面给热系数可达 200~500 W/(m²·K)。</p><p>④ 共同点：都不能用单一 α 简单描述，需引入有效导热系数或分区模型。</p></div></details>
+    </div>
+  </div>
+
+</section>
+
+
+<section id="s6">
+  <div class="shead">
+    <div class="snum">06</div>
+    <div><h2>蒸发单元</h2><p>几乎年年考 · 约 10 分 · 名解 + 简答（2014 年出过计算）</p></div>
+    <label class="done"><input type="checkbox" data-k="s6">已掌握</label>
+  </div>
+
+  <div class="klist"><span>单效/多效<b>★★★★</b></span><span>加热/二次蒸汽<b>★★★★</b></span><span>浓缩热/自蒸发<b>★★★</b></span><span>沸点升高/杜林<b>★★★★</b></span><span>温差损失<b>★★★★</b></span><span>蒸发操作特点<b>★★★★</b></span><span>多效优缺点<b>★★★★</b></span><span>生产能力/强度<b>★★★★</b></span><span>四种流程<b>★★★★</b></span><span>蒸发器定义特点分类<b>★★★</b></span><span>选用原则/辅助装置<b>★★★</b></span></div>
+
+<div class="block p3" data-p="3">
+    <h3><span class="st">★★★★</span>名词解释 · <span class="cnt">7</span> 条<span class="tag t-red">背诵</span></h3>
+    <div class="qbl">
+<div class="q"><span class="qt">名01</span><div class="qx fillq"><b class="term">自蒸发与浓缩热</b><span class="qnp">自蒸发（闪蒸）：多效并流时前一效溶液沸点</span><span class="qbw">较高</span><span class="qnp">，进入后一效即成</span><span class="qbw">过热</span><span class="qnp">状态而立即自行</span><span class="qbw">汽化</span><span class="qnp">。浓缩热：某些溶液（NaOH、H₂SO₄、CaCl₂）稀释时</span><span class="qbw">放热</span><span class="qnp">，故蒸发时除汽化潜热外还需供给与</span><span class="qbw">稀释热</span><span class="qnp">相应的热量。</span></div></div>
+<div class="q"><span class="qt">名02</span><div class="qx fillq"><b class="term">加热蒸汽与二次蒸汽</b><span class="qnp">工业上供给热能的加热流体（通常为水蒸气）称</span><span class="qbw">加热蒸汽</span><span class="qnp">（生蒸汽）；从溶液蒸出的蒸汽称</span><span class="qbw">二次蒸汽</span><span class="qnp">。</span></div></div>
+<div class="q"><span class="qt">名03</span><div class="qx fillq"><b class="term">单效蒸发与多效蒸发</b><span class="qnp">二次蒸汽</span><span class="qbw">不再利用</span><span class="qnp">、直接送冷凝器，称单效蒸发；把二次蒸汽送入</span><span class="qbw">压力较低</span><span class="qnp">的另一蒸发器作加热蒸汽、几个蒸发器</span><span class="qbw">串联</span><span class="qnp">，称多效蒸发，可提高加热蒸汽的</span><span class="qbw">利用率</span><span class="qnp">。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名04</span><div class="qx fillq"><b class="term">蒸发与真空蒸发</b><span class="qnp">蒸发是使含</span><span class="qbw">不挥发</span><span class="qnp">溶质的溶液</span><span class="qbw">沸腾汽化</span><span class="qnp">并移出蒸汽，从而提高溶质</span><span class="qbw">浓度</span><span class="qnp">的单元操作；在</span><span class="qbw">低于大气压</span><span class="qnp">下进行的蒸发称真空蒸发。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名05</span><div class="qx fillq"><b class="term">蒸发器的生产强度</b><span class="qnp">单位</span><span class="qbw">传热面积</span><span class="qnp">上单位时间蒸发的水量，U = </span><span class="qbw">W/A</span><span class="qnp">，单位 kg/(m²·s)，是评价蒸发器</span><span class="qbw">优劣</span><span class="qnp">的重要指标。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名06</span><div class="qx fillq"><b class="term">蒸发器的生产能力</b><span class="qnp">单位时间内蒸发的</span><span class="qbw">水量</span><span class="qnp"> W，单位 kg/s，即蒸发器的</span><span class="qbw">处理量</span><span class="qnp">。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名07</span><div class="qx fillq"><b class="term">蒸发器</b><span class="qnp">实现蒸发操作的</span><span class="qbw">换热设备</span><span class="qnp">，通过加热溶液提供溶剂</span><span class="qbw">汽化</span><span class="qnp">所需热量，使溶剂汽化分离而得到</span><span class="qbw">浓缩液</span><span class="qnp">或析出</span><span class="qbw">晶体</span><span class="qnp">。</span></div></div>
+    </div>
+  </div>
+
+<div class="block p3" data-p="3">
+    <h3><span class="st">★★★★</span>简答题 · <span class="cnt">7</span> 道<span class="tag t-red">10 分题</span></h3>
+    <div class="qbl">
+<details class="qa"><summary><span class="qn">简01</span><span class="qq">蒸发单元操作有哪些特点？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① <b>耗能大</b>：溶剂汽化潜热大、蒸发量大，能耗是首要指标（用单位蒸汽消耗量 D/W 衡量）。</p><p>② <b>溶液沸点升高</b>：溶质使沸点高于纯溶剂，使有效传热温差减小。</p><p>③ <b>物料热敏性</b>：高温易分解、变质，需真空操作、缩短停留时间（降膜、刮板）。</p><p>④ <b>易结晶、结垢、腐蚀</b>：影响传热与清洗，需选合适器型与材质。</p><p>⑤ <b>溶液性质沿程变化</b>：浓度、黏度升高，传热系数下降，故多效时后几效 K 明显降低。</p></div></details>
+<details class="qa"><summary><span class="qn">简02</span><span class="qq">蒸发过程中的温度差损失有哪些？原因是什么？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 总温度差损失 Δ = Δ′ + Δ″ + Δ‴，有效温差 = 总温差 − ΣΔ。</p><p>② <b>Δ′ 溶液沸点升高</b>：溶质使溶剂化学位降低、蒸气压下降，沸点升高；用杜林规则求。</p><p>③ <b>Δ″ 液柱静压</b>：蒸发器内保持一定液位，底层压力 p₀+ρgh/2 大于液面压力，沸点更高。</p><p>④ <b>Δ‴ 二次蒸汽流动阻力</b>：二次蒸汽经除沫器、管道至下一效或冷凝器时有压降，对应饱和温度下降。</p><p>⑤ 多效蒸发效数越多，ΣΔ 越大，有效温差越小，故效数受限制（一般 3~4 效）。</p></div></details>
+<details class="qa"><summary><span class="qn">简03</span><span class="qq">什么是杜林规则？如何用它求溶液沸点？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 内容：一定浓度的溶液，其沸点与<b>相同压力下标准液体（纯水）</b>的沸点呈<b>线性</b>关系：T_B = k·T_w + m。</p><p>② 用法：已知两个压力下溶液的沸点，即可定出该直线；再查任一压力下水的沸点，便得该压力下溶液沸点。</p><p>③ 简化：稀溶液沸点升高可近似认为<b>与压力无关</b>，直接把常压下的 Δ 加到对应水的沸点上。</p><p>④ 用途：计算 Δ′，进而确定有效温差与各效温度分布。</p></div></details>
+<details class="qa"><summary><span class="qn">简04</span><span class="qq">多效蒸发的并流、逆流、错流、平流各有何优缺点？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① <b>并流</b>：溶液与蒸汽同向。优点：靠效间压差流动、不需泵；进后一效时过热而<b>自蒸发</b>，多产二次蒸汽。缺点：后几效温度低、黏度大，K 下降明显。</p><p>② <b>逆流</b>：溶液与蒸汽反向，需泵输送。优点：各效黏度相差小、K 较高。缺点：二次蒸汽量减少、需泵、低温进高温出对热敏物料不利。</p><p>③ <b>错流</b>：部分并流、部分逆流，兼顾两者优点，但流程复杂、操作困难。</p><p>④ <b>平流</b>：各效分别进料、分别出完成液，溶液不在效间流动，适合<b>有结晶析出</b>的场合。</p></div></details>
+<details class="qa"><summary><span class="qn">简05</span><span class="qq">多效蒸发有哪些优缺点？效数为何受限？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 优点：二次蒸汽反复利用，单位蒸汽消耗量 D/W ≈ 1/n（n 为效数），显著<b>节能</b>。</p><p>② 缺点：设备投资随效数增加；温度差损失叠加，<b>有效温差</b>减小；生产能力下降；末效真空度要求高。</p><p>③ 效数受限的原因：ΔT 有限，每效至少要维持 5~10 ℃ 的有效温差，效数过多则每效温差过小、传热面积反而增大，经济上不合算。</p><p>④ 工业常用 2~4 效，并与热泵、额外蒸汽、冷凝水闪蒸等节能措施联用。</p></div></details>
+<details class="qa" data-p="2"><summary><span class="qn">简06</span><span class="qq">蒸发器有哪些主要类型？选用时应考虑什么？</span><span class="qs">★★★</span></summary><div class="qab"><p>① <b>循环型</b>：中央循环管式（标准式，结构简单、K 较低）、强制循环式（流速高、适合易结晶结垢物料，但动力消耗大）。</p><p>② <b>单程型</b>：升膜、降膜、刮板式——停留时间短，适合<b>热敏、高黏</b>物料；降膜不适合易结晶结垢。</p><p>③ 选用依据：物料黏度、热敏性、结晶与结垢倾向、腐蚀性、处理量、可用温差、以及是否需要浓缩到高浓度。</p><p>④ 辅助装置：除沫器、冷凝器、真空泵、预热器、冷凝水排放器。</p></div></details>
+<details class="qa" data-p="2"><summary><span class="qn">简07</span><span class="qq">真空蒸发有哪些优点？</span><span class="qs">★★★</span></summary><div class="qab"><p>① 降低溶液<b>沸点</b>，适合热敏性物料，减少分解与变质。</p><p>② 在加热蒸汽压力相同时，可<b>增大传热温差</b>，减小所需传热面积。</p><p>③ 减少设备向环境的<b>热损失</b>。</p><p>④ 缺点：需真空泵与冷凝器，增加设备与能耗；真空下溶液黏度增大，K 可能下降。</p></div></details>
+    </div>
+  </div>
+
+</section>
+
+<section id="s7">
+  <div class="shead">
+    <div class="snum">07</div>
+    <div><h2>传质学基础</h2><p>几乎年年考但非重点 · 近年分值小 · 基础理论题</p></div>
+    <label class="done"><input type="checkbox" data-k="s7">已掌握</label>
+  </div>
+
+  <div class="klist"><span>等摩尔/单向扩散<b>★★★★</b></span><span>液膜/气膜控制<b>★★★★</b></span><span>漂流因子/三传类比<b>★★★★</b></span><span>双膜理论及缺陷<b>★★★★</b></span><span>三理论 k-D 关系<b>★★★★</b></span><span>菲克定律<b>★★★★</b></span><span>接触方式分类<b>★★★</b></span><span>相际传质单元操作<b>★★★</b></span></div>
+
+<div class="block p3" data-p="3">
+    <h3><span class="st">★★★★</span>名词解释 · <span class="cnt">13</span> 条<span class="tag t-red">背诵</span></h3>
+    <div class="qbl">
+<div class="q" data-p="2"><span class="qt">名01</span><div class="qx fillq"><b class="term">多相物系的分离方法</b><span class="qnp">多相（非均相）物系主要用</span><span class="qbw">机械</span><span class="qnp">分离方法，如</span><span class="qbw">过滤</span><span class="qnp">、</span><span class="qbw">筛分</span><span class="qnp">、</span><span class="qbw">沉降</span><span class="qnp">、</span><span class="qbw">离心分离</span><span class="qnp">等，分离过程中物质</span><span class="qbw">不发生相变</span><span class="qnp">，靠</span><span class="qbw">颗粒尺寸或密度</span><span class="qnp">差异实现分离。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名02</span><div class="qx fillq"><b class="term">均相物系的分离方法</b><span class="qnp">均相物系须借助</span><span class="qbw">相变</span><span class="qnp">或</span><span class="qbw">选择性传递</span><span class="qnp">才能分离，如</span><span class="qbw">蒸馏</span><span class="qnp">、</span><span class="qbw">吸收</span><span class="qnp">、</span><span class="qbw">萃取</span><span class="qnp">、</span><span class="qbw">膜分离</span><span class="qnp">等，统称</span><span class="qbw">传质</span><span class="qnp">分离过程。</span></div></div>
+<div class="q"><span class="qt">名03</span><div class="qx fillq"><b class="term">等摩尔相互扩散</b><span class="qnp">二元气体 A、B 相互扩散时，A 与 B 的扩散通量</span><span class="qbw">大小相等、方向相反</span><span class="qnp">，即 N_A = </span><span class="qbw">−N_B</span><span class="qnp">，系统中</span><span class="qbw">无总体流动</span><span class="qnp">，故 J_A = N_A。</span></div></div>
+<div class="q"><span class="qt">名04</span><div class="qx fillq"><b class="term">单向扩散</b><span class="qnp">吸收时气相界面只允许溶质 A </span><span class="qbw">通过</span><span class="qnp">、惰性组分 B 不通过，为维持总压恒定便产生趋向界面的</span><span class="qbw">总体流动</span><span class="qnp">；此时 N_A 比纯分子扩散</span><span class="qbw">大</span><span class="qnp">，需乘以</span><span class="qbw">漂流因子</span><span class="qnp">。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名05</span><div class="qx fillq"><b class="term">表面更新理论</b><span class="qnp">气液界面的流体微元不断被</span><span class="qbw">新微元</span><span class="qnp">置换，无论其在表面停留时间长短，被更新的</span><span class="qbw">概率</span><span class="qnp">均相等；据此 k ∝ </span><span class="qbw">√D</span><span class="qnp">。</span></div></div>
+<div class="q"><span class="qt">名06</span><div class="qx fillq"><b class="term">液膜控制与气膜控制</b><span class="qnp">易溶气体（HCl、NH₃）溶解度系数 H </span><span class="qbw">大</span><span class="qnp">，总阻力集中于</span><span class="qbw">气膜</span><span class="qnp">，K_G ≈ </span><span class="qbw">k_G</span><span class="qnp">，称气膜控制；难溶气体（CO₂、H₂S）H </span><span class="qbw">小</span><span class="qnp">，阻力集中于</span><span class="qbw">液膜</span><span class="qnp">，K_L ≈ </span><span class="qbw">k_L</span><span class="qnp">，称液膜控制。</span></div></div>
+<div class="q"><span class="qt">名07</span><div class="qx fillq"><b class="term">溶解度</b><span class="qnp">气液两相在一定条件下接触足够长时间后达到</span><span class="qbw">平衡</span><span class="qnp">，此时液相中溶质的</span><span class="qbw">最大</span><span class="qnp">浓度称平衡溶解度，简称溶解度。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名08</span><div class="qx fillq"><b class="term">菲克定律及扩散系数</b><span class="qnp">J_A = </span><span class="qbw">−D_AB·dc_A/dz</span><span class="qnp">，即扩散通量与</span><span class="qbw">浓度梯度</span><span class="qnp">成正比、方向相反；二元体系中 D_AB = </span><span class="qbw">D_BA</span><span class="qnp"> = D，称</span><span class="qbw">互扩散系数</span><span class="qnp">。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名09</span><div class="qx fillq"><b class="term">传质</b><span class="qnp">物质在</span><span class="qbw">相际</span><span class="qnp">之间转移的过程，属</span><span class="qbw">物质传递</span><span class="qnp">过程，简称传质。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名10</span><div class="qx fillq"><b class="term">传质过程（给质过程）</b><span class="qnp">膜内的</span><span class="qbw">分子扩散</span><span class="qnp">与湍流区中的</span><span class="qbw">对流传质</span><span class="qnp">串联组成的复合过程，传质阻力与推动力（</span><span class="qbw">浓度差</span><span class="qnp">）主要集中在</span><span class="qbw">膜内</span><span class="qnp">。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名11</span><div class="qx fillq"><b class="term">传质通量</b><span class="qnp">单位时间通过设备单位</span><span class="qbw">截面积</span><span class="qnp">传递的物质</span><span class="qbw">质量</span><span class="qnp">（或摩尔量），即传质速率。</span></div></div>
+<div class="q"><span class="qt">名12</span><div class="qx fillq"><b class="term">三传类比</b><span class="qnp">动量、热量、质量三种传递都起源于</span><span class="qbw">分子交换</span><span class="qnp">和</span><span class="qbw">涡流脉动</span><span class="qnp">引起的质点交换，故可用</span><span class="qbw">摩擦系数</span><span class="qnp">、</span><span class="qbw">给热系数</span><span class="qnp">、</span><span class="qbw">给质系数</span><span class="qnp">之间的联系来描述，称三传类比。</span></div></div>
+<div class="q"><span class="qt">名13</span><div class="qx fillq"><b class="term">漂流因子</b><span class="qnp">p/</span><span class="qbw">p_Bm</span><span class="qnp"> 或 C/</span><span class="qbw">C_Bm</span><span class="qnp">，反映</span><span class="qbw">总体流动</span><span class="qnp">对传质速率的影响；其值为总体流动使传质速率较纯分子扩散</span><span class="qbw">增大</span><span class="qnp">的倍数，溶质浓度越</span><span class="qbw">高</span><span class="qnp">影响越大。</span></div></div>
+    </div>
+  </div>
+
+<div class="block p3" data-p="3">
+    <h3><span class="st">★★★★</span>简答题 · <span class="cnt">7</span> 道<span class="tag t-red">10 分题</span></h3>
+    <div class="qbl">
+<details class="qa"><summary><span class="qn">简01</span><span class="qq">双膜理论的要点与局限性是什么？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① <b>流动模型</b>：气液两相间有固定界面；界面两侧各有一层<b>层流膜</b>（气膜、液膜），膜外为湍流；膜厚随流动状况而变。</p><p>② <b>传质模型</b>：过程为<b>定态</b>；界面上无传质阻力、两相在界面处<b>瞬间达到平衡</b>；膜内以<b>分子扩散</b>传质；膜外湍流区阻力可忽略。</p><p>③ 结论：总阻力 = 气膜阻力 + 液膜阻力，1/K_G = 1/k_G + 1/(Hk_L)，故又称<b>双阻力模型</b>。</p><p>④ 局限：假定膜层稳定、界面固定，与喷射、鼓泡等<b>界面不断更新</b>的实际不符；由此得 k = D/δ（k ∝ D），而实验测得 k ∝ D^0.5~0.67。</p><p>⑤ 适用：湿壁塔、低气速填料塔等界面较固定的设备。</p></div></details>
+<details class="qa"><summary><span class="qn">简02</span><span class="qq">双膜、溶质渗透、表面更新三种理论给出的 k 与 D 关系有何不同？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① <b>双膜理论</b>：定态分子扩散通过当量膜，k = D/δ，即 <b>k ∝ D</b>。</p><p>② <b>溶质渗透理论</b>（Higbie）：微元在界面停留短暂时间 θ 内进行<b>非稳态</b>扩散，k ∝ √(D/θ)，即 <b>k ∝ D^0.5</b>。</p><p>③ <b>表面更新理论</b>（Danckwerts）：界面微元按概率被不断置换，用表面更新率 S 表征，k ∝ √(DS)，仍为 <b>k ∝ D^0.5</b>。</p><p>④ 递进关系：由"膜内定态"→"短暂非稳态"→"随机更新"，逐步逼近真实湍流传质；实验值多在 D^0.5~D^0.67 之间，支持后两模型。</p></div></details>
+<details class="qa" data-p="2"><summary><span class="qn">简03</span><span class="qq">传质分离过程如何分类？</span><span class="qs">★★★</span></summary><div class="qab"><p>① 按机理分：<b>平衡分离</b>（利用相平衡差异，如蒸馏、吸收、萃取、结晶）与<b>速率分离</b>（利用不同组分透过膜的速率差，如超滤、反渗透、电渗析）。</p><p>② 按相接触方式分：<b>连续接触式</b>（填料塔，气液在连续相界面接触）与<b>逐级接触式</b>（板式塔，每块板为一级，理论上离开该级的兩相达平衡）。</p><p>③ 按物系分：均相物系分离（蒸馏、吸收、萃取、膜）与非均相物系分离（过滤、沉降）。</p></div></details>
+<details class="qa" data-p="2"><summary><span class="qn">简04</span><span class="qq">连续接触式与逐级接触式设备有何区别？</span><span class="qs">★★★</span></summary><div class="qab"><p>① <b>连续接触式</b>（微分接触）：两相在塔内连续逆流接触，浓度沿塔高<b>连续变化</b>；用传质单元数 × 传质单元高度计算塔高（如填料塔）。</p><p>② <b>逐级接触式</b>：两相在每一级（塔板）充分接触后分离，离开该级的兩相接近<b>平衡</b>；用<b>理论级数</b>（板效率修正）计算（如板式塔）。</p><p>③ 差别：前者推动力沿塔高连续变化、计算用积分；后者按级计算、用梯级图解法。</p></div></details>
+<details class="qa"><summary><span class="qn">简05</span><span class="qq">为什么相际传质比间壁传热更复杂？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 传热是<b>两相各自对流 + 壁内导热</b>，界面明确；传质涉及<b>三组分以上</b>，平衡关系（溶解度）复杂且非线性。</p><p>② 传质有<b>总体流动</b>（漂流因子），扩散通量与主体流动耦合；传热无对应现象。</p><p>③ 相界面<b>不固定、面积难测</b>，界面上还可能有 Marangoni 效应、表面更新。</p><p>④ 常伴随<b>相变、溶解热、化学反应</b>，物性随浓度变化。</p><p>⑤ 因此传质系数比给热系数更难通用化，多依赖经验关联与实验测定。</p></div></details>
+<details class="qa" data-p="2"><summary><span class="qn">简06</span><span class="qq">分子传质（扩散）与分子传热（导热）有何异同？</span><span class="qs">★★★</span></summary><div class="qab"><p>① 相同：都是依靠<b>分子微观运动</b>传递；通量都与相应的<b>梯度</b>成正比（傅立叶 vs 菲克），数学形式同构，可类比求解。</p><p>② 不同：导热由<b>温度梯度</b>驱动、传递的是能量；扩散由<b>浓度梯度</b>驱动、传递的是物质。</p><p>③ 不同：扩散存在<b>总体流动</b>（单向扩散需乘漂流因子），导热无此项。</p><p>④ 不同：多组分扩散存在<b>交叉效应</b>（D_ij 矩阵），导热一般可独立叠加。</p></div></details>
+<details class="qa" data-p="2"><summary><span class="qn">简07</span><span class="qq">通过多孔介质的扩散如何分类？判据是什么？</span><span class="qs">★★★</span></summary><div class="qab"><p>① <b>费克型扩散</b>：孔径远大于分子平均自由程（d ≫ λ），分子间碰撞为主，扩散系数为液相/气相本体扩散系数。</p><p>② <b>努森扩散</b>：孔径远小于平均自由程（d ≪ λ），分子与孔壁碰撞为主，D_K = (d/3)√(8RT/πM)。</p><p>③ <b>过渡区扩散</b>：两者相当，1/D = 1/D_AB + 1/D_K。</p><p>④ 判据：努森数 Kn = λ/d；Kn ≪ 1 为费克型，Kn ≫ 1 为努森型。</p></div></details>
+    </div>
+  </div>
+
+</section>
+
+
+<section id="s8">
+  <div class="shead">
+    <div class="snum">08</div>
+    <div><h2>吸收单元</h2><p>每年必考 · 约 20 分 · 名解、简答 + 填料层高度计算</p></div>
+    <label class="done"><input type="checkbox" data-k="s8">已掌握</label>
+  </div>
+
+  <div class="klist"><span>传质单元/高度<b>★★★★</b></span><span>等温/非等温<b>★★★★</b></span><span>最小液气比<b>★★★★</b></span><span>亨利定律/速率方程<b>★★★★</b></span><span>单/多组分、吸收因数<b>★★★★</b></span><span>吸收基本理论<b>★★★★</b></span><span>传质方向与推动力<b>★★★★</b></span></div>
+
+<div class="block p3" data-p="3">
+    <h3><span class="st">★★★★</span>名词解释 · <span class="cnt">7</span> 条<span class="tag t-red">背诵</span></h3>
+    <div class="qbl">
+<div class="q"><span class="qt">名01</span><div class="qx fillq"><b class="term">传质单元与传质单元高度</b><span class="qnp">把填料层划分为若干</span><span class="qbw">高度相等</span><span class="qnp">的段，使每段内气相浓度的变化恰等于该段的</span><span class="qbw">平均推动力</span><span class="qnp">，这样一段填料层称一个传质单元；其高度称</span><span class="qbw">传质单元高度</span><span class="qnp"> H_OG，反映填料与设备</span><span class="qbw">传质效能</span><span class="qnp">的高低。</span></div></div>
+<div class="q"><span class="qt">名02</span><div class="qx fillq"><b class="term">等温吸收与非等温吸收</b><span class="qnp">溶质浓度低、吸收剂用量大、温度变化不大者称</span><span class="qbw">等温</span><span class="qnp">吸收；溶解热与反应热使温度明显升高者称</span><span class="qbw">非等温</span><span class="qnp">吸收。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名03</span><div class="qx fillq"><b class="term">单组分吸收与多组分吸收</b><span class="qnp">混合气中只有</span><span class="qbw">一个</span><span class="qnp">组分被吸收称单组分吸收；有</span><span class="qbw">两个以上</span><span class="qnp">组分同时被吸收称多组分吸收。</span></div></div>
+<div class="q"><span class="qt">名04</span><div class="qx fillq"><b class="term">物理吸收与化学吸收</b><span class="qnp">溶质仅靠</span><span class="qbw">物理溶解</span><span class="qnp">进入吸收剂、无化学反应者称物理吸收；溶质与吸收剂（或活性组分）发生</span><span class="qbw">化学反应</span><span class="qnp">者称化学吸收，其吸收速率与</span><span class="qbw">平衡</span><span class="qnp">均优于物理吸收。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名05</span><div class="qx fillq"><b class="term">低浓度吸收与高浓度吸收</b><span class="qnp">溶质在气液两相的摩尔分数均小于</span><span class="qbw">0.1</span><span class="qnp">时称低浓度吸收，可近似用</span><span class="qbw">亨利定律</span><span class="qnp">直线平衡关系；摩尔分数大于 </span><span class="qbw">0.1</span><span class="qnp">、吸收量多者称高浓度吸收。</span></div></div>
+<div class="q"><span class="qt">名06</span><div class="qx fillq"><b class="term">吸收因数与最小液气比</b><span class="qnp">吸收因数 A = </span><span class="qbw">L/(mG)</span><span class="qnp">，即操作线斜率与平衡线斜率之比，反映吸收的</span><span class="qbw">难易</span><span class="qnp">；操作线与平衡线</span><span class="qbw">相交或相切</span><span class="qnp">时的液气比称最小液气比，此时所需塔高趋于</span><span class="qbw">无穷大</span><span class="qnp">。</span></div></div>
+<div class="q"><span class="qt">名07</span><div class="qx fillq"><b class="term">吸收剂的选择</b><span class="qnp">应满足：对溶质</span><span class="qbw">溶解度大</span><span class="qnp">、</span><span class="qbw">选择性</span><span class="qnp">好、</span><span class="qbw">挥发度低</span><span class="qnp">、黏度小、无毒腐蚀、价廉且易</span><span class="qbw">再生</span><span class="qnp">。</span></div></div>
+    </div>
+  </div>
+
+<div class="block p3" data-p="3">
+    <h3><span class="st">★★★★</span>简答题 · <span class="cnt">7</span> 道<span class="tag t-red">10 分题</span></h3>
+    <div class="qbl">
+<details class="qa"><summary><span class="qn">简01</span><span class="qq">亨利定律有哪几种表达形式？相互间有何关系？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① p* = E·x（E 为亨利系数，Pa，随温度升高而增大）。</p><p>② p* = c/H（H 为溶解度系数，kmol/(m³·kPa)，随温度升高而减小）。</p><p>③ y* = m·x（m 为相平衡常数，m = E/P）。</p><p>④ Y* = m·X（摩尔比形式，低浓度时与 y*=mx 近似相等）。</p><p>⑤ 关系：E = mP；H = c总/E ≈ ρs/(M_s·E)；E 越大、H 越小，溶解度越小。</p></div></details>
+<details class="qa"><summary><span class="qn">简02</span><span class="qq">传质单元数与传质单元高度的物理意义是什么？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① Z = H_OG × N_OG：填料层高度 = 传质单元高度 × 传质单元数。</p><p>② <b>N_OG</b> 反映分离任务的<b>难度</b>：推动力越小、要求的浓度变化越大，N_OG 越大。</p><p>③ <b>H_OG</b> 反映设备与填料的<b>传质效能</b>：H_OG = G/(K_y·a)，阻力越大、比表面积越小，H_OG 越大。</p><p>④ 两者相互独立：N_OG 由工艺要求与平衡关系决定，H_OG 由设备与物性决定。</p></div></details>
+<details class="qa"><summary><span class="qn">简03</span><span class="qq">最小液气比如何确定？吸收剂用量如何选择？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 在 y–x 图上，操作线过 (x_a, y_a) 与 (x_b, y_b)；减小液气比使操作线向平衡线靠拢。</p><p>② 当操作线与平衡线<b>相交或相切</b>时，交点处推动力为零、所需塔高→∞，此时液气比为最小液气比。</p><p>③ 计算：(L/G)min = (y_b − y_a)/(x_b* − x_a)，x_b* 为与 y_b 平衡的液相组成。</p><p>④ 实际取 L/G = (1.1~2.0)(L/G)min：太小则塔高过大，太大则吸收剂循环与解吸费用增加。</p></div></details>
+<details class="qa"><summary><span class="qn">简04</span><span class="qq">如何判断传质方向与传质推动力？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 气相：比较实际组成 y 与平衡组成 y* = m·x（或 y* = E·x/P）。</p><p>② y > y* → <b>吸收</b>（溶质由气入液），推动力 Δy = y − y*；y < y* → <b>解吸</b>。</p><p>③ 液相：比较 x 与 x* = y/m；x < x* → 吸收，推动力 Δx = x* − x。</p><p>④ 结论：判断方向只看"实际组成偏离平衡的方向"，推动力就是偏离的量。</p></div></details>
+<details class="qa" data-p="2"><summary><span class="qn">简05</span><span class="qq">吸收剂的选择原则是什么？</span><span class="qs">★★★</span></summary><div class="qab"><p>① 对溶质<b>溶解度大</b>——吸收速率快、循环量小、出口气浓度低。</p><p>② 对溶质<b>选择性好</b>——对其他组分几乎不吸收。</p><p>③ <b>挥发度低</b>——减少溶剂损失与气相夹带。</p><p>④ 黏度小、不易起泡、腐蚀性小、无毒、价廉。</p><p>⑤ 易<b>再生</b>（升温或减压解吸），且再生后性能稳定。</p></div></details>
+<details class="qa"><summary><span class="qn">简06</span><span class="qq">对数平均推动力法如何求填料层高度？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 低浓度、平衡线为直线时，推动力沿塔高呈线性变化，取对数平均：Δy_m = (Δy₁ − Δy₂)/ln(Δy₁/Δy₂)。</p><p>② Δy₁ = y_b − y_b*（塔底），Δy₂ = y_a − y_a*（塔顶）。</p><p>③ Z = G/(K_y·a) × (y_b − y_a)/Δy_m = H_OG × N_OG。</p><p>④ 当 Δy₁/Δy₂ < 2 时可用算术平均代替，误差 <4%。</p></div></details>
+<details class="qa"><summary><span class="qn">简07</span><span class="qq">吸收的基本理论（传质模型）有哪几种？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① <b>双膜理论</b>：界面两侧层流膜、膜内定态分子扩散、界面平衡，k ∝ D；适合界面稳定的设备。</p><p>② <b>溶质渗透理论</b>：微元在界面短暂停留、非稳态扩散，k ∝ √D；适合液膜控制。</p><p>③ <b>表面更新理论</b>：界面微元随机更新，k ∝ √D；更接近湍流实际。</p><p>④ 三者都保留"界面平衡 + 膜/微元阻力"的框架，差别在膜内是否为定态、界面是否更新。</p></div></details>
+    </div>
+  </div>
+
+</section>
+
+
+<section id="s9">
+  <div class="shead">
+    <div class="snum">09</div>
+    <div><h2>蒸馏</h2><p>考纲新增（26 年未考）· 约 15 分 · 原理题 + 图解法</p></div>
+    <label class="done"><input type="checkbox" data-k="s9">已掌握</label>
+  </div>
+
+  <div class="klist"><span>蒸馏目的作用<b>★★★</b></span><span>理想二元气液平衡<b>★★★</b></span><span>蒸馏/精馏原理<b>★★★</b></span><span>简单/平衡蒸馏<b>★★★★</b></span><span>回流比/塔板/恒摩尔流<b>★★★</b></span></div>
+
+<div class="block p3" data-p="3">
+    <h3><span class="st">★★★★</span>名词解释 · <span class="cnt">14</span> 条<span class="tag t-red">背诵</span></h3>
+    <div class="qbl">
+<div class="q" data-p="2"><span class="qt">名01</span><div class="qx fillq"><b class="term">蒸馏</b><span class="qnp">利用液体混合物中各组分</span><span class="qbw">沸点（挥发度）</span><span class="qnp">的差异，实现混合物</span><span class="qbw">分离</span><span class="qnp">或</span><span class="qbw">提纯</span><span class="qnp">的单元操作。</span></div></div>
+<div class="q"><span class="qt">名02</span><div class="qx fillq"><b class="term">泡点与露点</b><span class="qnp">一定压力下液体混合物加热到</span><span class="qbw">开始汽化</span><span class="qnp">（出现第一个气泡）并保持相平衡的温度称</span><span class="qbw">泡点</span><span class="qnp">；混合蒸气</span><span class="qbw">开始冷凝</span><span class="qnp">（出现第一滴液滴）时的温度称</span><span class="qbw">露点</span><span class="qnp">。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名03</span><div class="qx fillq"><b class="term">挥发度与相对挥发度</b><span class="qnp">挥发度 v = </span><span class="qbw">p_A/x_A</span><span class="qnp">，表示组分挥发的</span><span class="qbw">难易</span><span class="qnp">程度，纯液体时等于</span><span class="qbw">饱和蒸气压</span><span class="qnp">；相对挥发度 α = </span><span class="qbw">v_A/v_B</span><span class="qnp">，即易挥发组分与难挥发组分挥发度之比，α </span><span class="qbw">></span><span class="qnp"> 1 才能用蒸馏分离。</span></div></div>
+<div class="q"><span class="qt">名04</span><div class="qx fillq"><b class="term">简单蒸馏</b><span class="qnp">又称</span><span class="qbw">微分</span><span class="qnp">蒸馏，是</span><span class="qbw">间歇</span><span class="qnp">操作的单级蒸馏：料液分批加入釜中加热汽化，蒸汽</span><span class="qbw">不断引出并冷凝</span><span class="qnp">，釜液与馏出液浓度随时间</span><span class="qbw">下降</span><span class="qnp">；全部馏出液的平均组成与釜残液</span><span class="qbw">不</span><span class="qnp">成平衡。</span></div></div>
+<div class="q"><span class="qt">名05</span><div class="qx fillq"><b class="term">平衡蒸馏</b><span class="qnp">又称</span><span class="qbw">闪蒸</span><span class="qnp">，是</span><span class="qbw">连续</span><span class="qnp">操作的单级蒸馏：料液加热后经节流阀</span><span class="qbw">减压</span><span class="qnp">，部分汽化，在分离器中使气液两相达到</span><span class="qbw">平衡</span><span class="qnp">后分开，得顶部与底部产品。</span></div></div>
+<div class="q"><span class="qt">名06</span><div class="qx fillq"><b class="term">精馏</b><span class="qnp">液体混合物经</span><span class="qbw">多次部分汽化</span><span class="qnp">和</span><span class="qbw">多次部分冷凝</span><span class="qnp">而分离的操作；通常在</span><span class="qbw">板式塔</span><span class="qnp">中进行，气液</span><span class="qbw">逆流</span><span class="qnp">接触、相际传热传质，塔顶得易挥发组分、塔底得难挥发组分。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名07</span><div class="qx fillq"><b class="term">回流比</b><span class="qnp">塔顶回流入塔的</span><span class="qbw">液体量</span><span class="qnp">与塔顶</span><span class="qbw">产品量</span><span class="qnp">之比，R = </span><span class="qbw">L/D</span><span class="qnp">；其大小影响分离效果与</span><span class="qbw">能耗</span><span class="qnp">。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名08</span><div class="qx fillq"><b class="term">进料板</b><span class="qnp">原料液进入的那层</span><span class="qbw">塔板</span><span class="qnp">，是</span><span class="qbw">精馏段</span><span class="qnp">与</span><span class="qbw">提馏段</span><span class="qnp">的分界。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名09</span><div class="qx fillq"><b class="term">灵敏板</b><span class="qnp">温度对流体</span><span class="qbw">组成</span><span class="qnp">变化非常敏感、组成稍有变化温度即明显变化的塔板，常作为</span><span class="qbw">调节</span><span class="qnp">回流量或再沸器热量的检测点。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名10</span><div class="qx fillq"><b class="term">理论板</b><span class="qnp">离开该板的蒸汽与液体呈</span><span class="qbw">平衡</span><span class="qnp">的塔板，是衡量实际塔板分离能力的</span><span class="qbw">理想</span><span class="qnp">标准。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名11</span><div class="qx fillq"><b class="term">精馏段</b><span class="qnp">进料板</span><span class="qbw">以上</span><span class="qnp">的塔段，其作用是自下降液体中提取</span><span class="qbw">易挥发</span><span class="qnp">组分、提高其浓度。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名12</span><div class="qx fillq"><b class="term">提馏段</b><span class="qnp">进料板</span><span class="qbw">以下</span><span class="qnp">的塔段，其作用是自上升蒸汽中提取</span><span class="qbw">难挥发</span><span class="qnp">组分、降低其在气相中的含量。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名13</span><div class="qx fillq"><b class="term">塔板</b><span class="qnp">板式塔的主要部件，用以使气液两相</span><span class="qbw">密切接触</span><span class="qnp">、进行相际</span><span class="qbw">传质</span><span class="qnp">，主要有</span><span class="qbw">泡罩</span><span class="qnp">塔板、</span><span class="qbw">浮阀</span><span class="qnp">塔板、</span><span class="qbw">筛板</span><span class="qnp">等。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名14</span><div class="qx fillq"><b class="term">最小回流比</b><span class="qnp">指定进料与产品组成下，回流比减小到某一值时所需理论板数趋于</span><span class="qbw">无穷大</span><span class="qnp">，该临界回流比称最小回流比 Rmin；操作回流比一般取 </span><span class="qbw">1.1~2.0</span><span class="qnp"> 倍 Rmin。</span></div></div>
+    </div>
+  </div>
+
+<div class="block p3" data-p="3">
+    <h3><span class="st">★★★★</span>简答题 · <span class="cnt">8</span> 道<span class="tag t-red">10 分题</span></h3>
+    <div class="qbl">
+<details class="qa" data-p="2"><summary><span class="qn">简01</span><span class="qq">蒸馏的目的与作用是什么？</span><span class="qs">★★★</span></summary><div class="qab"><p>① 分离<b>均相液体混合物</b>，得到较纯的组分（如精馏分离苯—甲苯）。</p><p>② 提纯产品、回收溶剂、脱除轻组分或重组分。</p><p>③ 依据是各组分<b>挥发度（沸点）</b>的差异，属传质分离过程。</p><p>④ 在冶金中用于 TiCl₄—SiCl₄ 提纯、蒸馏法回收金属氯化物等。</p></div></details>
+<details class="qa"><summary><span class="qn">简02</span><span class="qq">精馏的原理是什么？为什么必须有回流？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 一次部分汽化只能使气相稍富集易挥发组分，分离不彻底；把蒸汽<b>多次部分冷凝</b>、液体<b>多次部分汽化</b>，气相中易挥发组分逐级提高，最终可得近纯组分。</p><p>② 工业上把这一过程放在<b>精馏塔</b>内连续实现：上升蒸汽与下降液体逆流接触，液相中易挥发组分进入气相、气相中难挥发组分转入液相。</p><p>③ <b>回流</b>是精馏的必要条件：塔顶回流液为精馏段提供下降液流，使每块板上有液可接触；无回流则塔顶无液相、精馏段不复存在，分离无法实现。</p><p>④ 再沸器提供上升蒸汽，与回流共同构成"汽化—冷凝"的循环。</p></div></details>
+<details class="qa"><summary><span class="qn">简03</span><span class="qq">图解法求理论板数的步骤是什么？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 在 y–x 图上画出<b>平衡线</b> y = αx/[1+(α−1)x] 与<b>对角线</b>。</p><p>② 定出塔顶 (x_D, x_D)、塔底 (x_W, x_W) 与进料点，作<b>精馏段操作线</b>（截距 x_D/(R+1)）。</p><p>③ 作 <b>q 线</b>（进料热状况）与精馏段操作线交于 d 点，连 (x_W,x_W) 与 d 得<b>提馏段操作线</b>。</p><p>④ 从塔顶 (x_D,x_D) 起，在平衡线与操作线之间画<b>梯级</b>，每一直角梯级代表一块理论板。</p><p>⑤ 跨过 x ≤ x_W 即止，梯级数为理论板数；若含再沸器，则理论板数 = 梯级数 − 1，进料板为跨过 d 点的那一级。</p></div></details>
+<details class="qa"><summary><span class="qn">简04</span><span class="qq">简单蒸馏与平衡蒸馏有何区别？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① <b>操作方式</b>：简单蒸馏为间歇、微分操作；平衡蒸馏（闪蒸）为连续、单级操作。</p><p>② <b>相平衡</b>：简单蒸馏中釜液组成不断变化，任一瞬时蒸汽与当时釜液成平衡，但<b>全部馏出液的平均组成与残液不成平衡</b>；平衡蒸馏中气液两相在分离器内<b>达到平衡</b>后分离。</p><p>③ <b>产品</b>：简单蒸馏馏出液组成随时间下降、可分段收集；平衡蒸馏得组成固定的顶部、底部产品。</p><p>④ <b>分离效果</b>：相同汽化率下，简单蒸馏的平均馏出液浓度略<b>高</b>于平衡蒸馏的气相组成。</p></div></details>
+<details class="qa"><summary><span class="qn">简05</span><span class="qq">回流比如何影响精馏？最小回流比的意义是什么？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① R 增大：精馏段操作线斜率 R/(R+1) 增大、远离平衡线，推动力增大，<b>理论板数减少</b>；但回流液量与再沸器热负荷增大、<b>能耗上升</b>、塔径增大。</p><p>② R 减小：理论板数增多、设备投资增大，但能耗下降。</p><p>③ <b>Rmin</b>：操作线与平衡线相交（或相切）时的回流比，此时所需理论板数→∞；是理论上的下限，实际取 R = (1.1~2.0)Rmin。</p><p>④ 权衡：总费用（设备折旧 + 操作费）最低处对应<b>适宜回流比</b>。</p></div></details>
+<details class="qa"><summary><span class="qn">简06</span><span class="qq">恒摩尔流假定的内容与成立条件是什么？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 内容：精馏段内每块板的上升蒸汽摩尔流量<b>相等</b>（V₁=V₂=…=V），下降液体摩尔流量也相等（L₁=L₂=…=L）；提馏段同理。</p><p>② 成立条件：各组分的<b>摩尔汽化潜热相近</b>；显热变化可忽略；塔内无泄漏、无中间加料。</p><p>③ 作用：使操作线成为<b>直线</b>，可用两点式作图，大大简化计算。</p><p>④ 偏离时（如潜热差别大），操作线为曲线，需逐板计算。</p></div></details>
+<details class="qa"><summary><span class="qn">简07</span><span class="qq">相对挥发度如何影响分离难易？恒沸物为何不能分离？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① α = v_A/v_B = (y_A/x_A)/(y_B/x_B)；α > 1 时 y > x，气相富集易挥发组分，可分离。</p><p>② α 越<b>大</b>，平衡线离对角线越远，同样的分离要求所需理论板数越<b>少</b>，分离越容易。</p><p>③ α = 1 时 y = x，平衡线与对角线重合，<b>不能用普通蒸馏分离</b>。</p><p>④ 恒沸物在恒沸点处气液组成相同（α=1），故不能靠蒸馏分开，需用萃取、变压蒸馏等特殊方法。</p></div></details>
+<details class="qa" data-p="2"><summary><span class="qn">简08</span><span class="qq">塔板的作用与主要类型是什么？</span><span class="qs">★★★</span></summary><div class="qab"><p>① 作用：为气液两相提供<b>充分接触</b>的界面与足够的<b>停留时间</b>以实现相际传质；同时起<b>分布气体</b>、承受板上液层的作用。</p><p>② <b>泡罩塔板</b>：操作弹性大、效率稳定，但结构复杂、阻力大、造价高。</p><p>③ <b>浮阀塔板</b>：阀片随气量升降、操作弹性大、效率高，应用最广。</p><p>④ <b>筛板</b>：结构简单、造价低、阻力小，但操作弹性较小、易漏液。</p></div></details>
+    </div>
+  </div>
+
+</section>
+
+<section id="s10">
+  <div class="shead">
+    <div class="snum">10</div>
+    <div><h2>浸出单元</h2><p>近三年每年都考 · 约 10 分 · 基础理论题、单元操作原理题</p></div>
+    <label class="done"><input type="checkbox" data-k="s10">已掌握</label>
+  </div>
+
+  <div class="klist"><span>浸出目的作用<b>★★★</b></span><span>边界层作用<b>★★★</b></span><span>浸出分类<b>★★★</b></span><span>浸出过程与设备<b>★★★★</b></span><span>固液传质类型<b>★★★</b></span><span>控制步骤判定<b>★★★★</b></span><span>典型过程与设备特点<b>★★★★</b></span><span>传递方程<b>★★★</b></span></div>
+
+<div class="block p3" data-p="3">
+    <h3><span class="st">★★★★</span>名词解释 · <span class="cnt">5</span> 条<span class="tag t-red">背诵</span></h3>
+    <div class="qbl">
+<div class="q"><span class="qt">名01</span><div class="qx fillq"><b class="term">搅拌浸出</b><span class="qnp">磨细物料与浸出剂在</span><span class="qbw">机械搅拌</span><span class="qnp">或</span><span class="qbw">空气搅拌</span><span class="qnp">的浸出槽中混合、进行浸出反应的过程，是湿法冶金中最常用的浸出方式。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名02</span><div class="qx fillq"><b class="term">浸出</b><span class="qnp">借助</span><span class="qbw">溶液</span><span class="qnp">提取固体物料中的</span><span class="qbw">目的物</span><span class="qnp">（有价金属或杂质）的过程，即以</span><span class="qbw">溶剂</span><span class="qnp">为介质进行固体组分分离、通常有</span><span class="qbw">化学反应</span><span class="qnp">参与的过程，又称浸取、溶出。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名03</span><div class="qx fillq"><b class="term">酸浸与碱浸</b><span class="qnp">酸浸是用</span><span class="qbw">无机酸</span><span class="qnp">（H₂SO₄、HCl、HNO₃）水溶液作浸出剂，适于处理</span><span class="qbw">碱性</span><span class="qnp">化合物；碱浸是用</span><span class="qbw">强碱</span><span class="qnp">（NaOH、Na₂CO₃）水溶液作浸出剂，适于处理</span><span class="qbw">酸性</span><span class="qnp">化合物。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名04</span><div class="qx fillq"><b class="term">堆浸</b><span class="qnp">把矿石堆成</span><span class="qbw">矿堆</span><span class="qnp">，用浸出液</span><span class="qbw">喷淋</span><span class="qnp">，使其在</span><span class="qbw">向下渗透</span><span class="qnp">过程中选择性浸出有用成分，再从堆底</span><span class="qbw">富液</span><span class="qnp">中回收有用成分的方法。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名05</span><div class="qx fillq"><b class="term">高压浸出</b><span class="qnp">在</span><span class="qbw">加压</span><span class="qnp">条件下提高浸出温度与</span><span class="qbw">氧</span><span class="qnp">的分压（浓度），从而</span><span class="qbw">加快</span><span class="qnp">浸出速度的浸出方法，属强化浸出。</span></div></div>
+    </div>
+  </div>
+
+<div class="block p3" data-p="3">
+    <h3><span class="st">★★★★</span>简答题 · <span class="cnt">6</span> 道<span class="tag t-red">10 分题</span></h3>
+    <div class="qbl">
+<details class="qa"><summary><span class="qn">简01</span><span class="qq">浸出过程的目的与作用是什么？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 把矿石、精矿、焙烧料中的<b>有价金属</b>由固相转入液相，与不溶的脉石、杂质分离。</p><p>② 为后续的净化、电积、萃取等工序提供<b>组成合适的溶液</b>。</p><p>③ 属<b>固-液</b>两相流混合与传质过程，常伴随化学反应；是湿法冶金的<b>第一道关键工序</b>。</p><p>④ 兼有<b>选择性</b>要求：尽可能多浸出目的组分、少浸出杂质。</p></div></details>
+<details class="qa" data-p="2"><summary><span class="qn">简02</span><span class="qq">浸出如何分类？各适用于什么范围？</span><span class="qs">★★★</span></summary><div class="qab"><p>① 按<b>浸出剂</b>分：酸浸（硫酸、盐酸、硝酸，处理碱性化合物，如锌焙砂、氧化铜矿）；碱浸（NaOH、Na₂CO₃，处理酸性化合物，如铝土矿、黑钨矿）；盐浸（FeCl₃、NaCl 等）；水浸（可溶性盐）。</p><p>② 按<b>压力</b>分：常压浸出与加压（氧压）浸出；加压可提高温度与氧分压、加快反应。</p><p>③ 按<b>作业方式</b>分：间歇、连续、流态化、渗滤、堆浸、原地浸出。</p><p>④ 按<b>设备</b>分：槽（池）浸出、管道浸出、热磨浸出。</p></div></details>
+<details class="qa"><summary><span class="qn">简03</span><span class="qq">固-液反应有哪三种类型？第一种类型包括哪些步骤？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① <b>生成物可溶</b>：A(s)+B(aq)→P(aq)，固相外形随反应逐渐缩小至消失，称"<b>未反应核减缩型</b>"。</p><p>② <b>生成物为固态并附着在未反应核上</b>：A(s)+B(aq)→P(s)，如白钨矿酸分解生成 H₂WO₄。</p><p>③ <b>选择性浸溶某一组分</b>：如钛铁矿酸浸，Fe 进入溶液、TiO₂ 留在渣中。</p><p>④ 第一种类型的步骤：B 由本体<b>外扩散</b>穿过边界层到固体表面 → 被<b>吸附</b> → 表面<b>化学反应</b> → 产物<b>脱附</b> → 产物<b>反扩散</b>回本体。</p><p>⑤ 二、三类还要增加<b>内扩散</b>（穿过固体产物层或脉石孔隙）这一步。</p></div></details>
+<details class="qa"><summary><span class="qn">简04</span><span class="qq">固-液反应的速率控制步骤如何判定？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 连续反应的速率取决于<b>速率常数最小</b>的一步，即最难进行的一步，称速率控制步骤。</p><p>② <b>表观活化能法</b>：Ea ≈ 化学活化能（>40 kJ/mol）→ 表面化学反应控制；Ea ≈ 扩散活化能（8~20 kJ/mol）→ 扩散控制。</p><p>③ <b>搅拌强度法</b>：速率随搅拌明显增大→外扩散控制；搅拌到一定程度后速率不再变化→转为化学反应控制（或内扩散控制）。</p><p>④ <b>温度法</b>：速率对温度很敏感→化学反应控制；不敏感→扩散控制。</p><p>⑤ 控制步骤可随条件<b>转化</b>：升温、加大搅拌、减小粒度都可能改变控制步骤。</p></div></details>
+<details class="qa"><summary><span class="qn">简05</span><span class="qq">边界层在固-液反应中起什么作用？固-液传质有何特点？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 固体表面外侧存在一层<b>扩散边界层</b>（δ 约 0.001~0.05 cm），溶质只能以<b>分子扩散</b>通过，是外扩散的主要阻力。</p><p>② 边界层厚度随<b>搅拌强度</b>增大而减小并趋于极限值 δ；δ 越小，传质系数 D/δ 越大。</p><p>③ 传质特点：固相<b>不流动</b>、界面固定；反应面随反应进行而<b>内移</b>（缩核）；产物层会附加<b>内扩散</b>阻力；反应常伴随<b>放热与气体参与</b>。</p><p>④ 强化手段：加强搅拌、提高温度、减小粒度、提高浸出剂浓度、采用加压或机械活化。</p></div></details>
+<details class="qa"><summary><span class="qn">简06</span><span class="qq">主要浸出设备有哪些？各有什么特点？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① <b>机械搅拌浸出槽</b>：涡轮、锚式、螺旋桨等搅拌，通用性强、操作弹性大，但能耗较高。</p><p>② <b>空气搅拌槽（帕秋卡槽）</b>：压缩空气经中心管提升矿浆形成循环；结构简单、维修方便、利于气液固反应，但动力消耗约为机械搅拌的 3 倍，常用于贵金属浸出。</p><p>③ <b>管道浸出器</b>：矿浆高速（0.5~5 m/s）通过反应管，高度紊流、传热传质好、温度高，浸出时间远少于搅拌浸出。</p><p>④ <b>热磨浸出器</b>：磨矿与浸出同时进行，机械活化 + 剥离产物层，浸出速度与浸出率显著提高，尤其适合产物层扩散控制的过程。</p><p>⑤ <b>流态化浸出塔</b>：矿粒流态化，近似活塞流、便于多段逆流，单位生产能力可比搅拌浸出大 10 倍以上。</p></div></details>
+    </div>
+  </div>
+
+</section>
+
+
+<section id="s11">
+  <div class="shead">
+    <div class="snum">11</div>
+    <div><h2>萃取单元</h2><p>近三年每年都考 · 约 10 分 · 基础理论题、单元操作原理题</p></div>
+    <label class="done"><input type="checkbox" data-k="s11">已掌握</label>
+  </div>
+
+  <div class="klist"><span>基本概念与分类<b>★★★</b></span><span>三角形相图/杠杆规则<b>★★★★</b></span><span>分配/选择性系数<b>★★★★</b></span><span>萃取剂选择<b>★★★★</b></span><span>理论级数计算<b>★★★</b></span><span>三种流程特点<b>★★★</b></span></div>
+
+<div class="block p3" data-p="3">
+    <h3><span class="st">★★★★</span>名词解释 · <span class="cnt">6</span> 条<span class="tag t-red">背诵</span></h3>
+    <div class="qbl">
+<div class="q"><span class="qt">名01</span><div class="qx fillq"><b class="term">萃取</b><span class="qnp">利用液体混合物中各组分在</span><span class="qbw">液体溶剂</span><span class="qnp">中</span><span class="qbw">溶解度</span><span class="qnp">的差异，来分离或提纯物质的</span><span class="qbw">传质</span><span class="qnp">过程，称液-液萃取，简称萃取或抽提。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名02</span><div class="qx fillq"><b class="term">相与相比</b><span class="qnp">相是体系中具有相同</span><span class="qbw">物理性质和化学组成</span><span class="qnp">的均匀部分；相比是萃取过程中</span><span class="qbw">有机相</span><span class="qnp">与</span><span class="qbw">水相</span><span class="qnp">的体积比，用 </span><span class="qbw">O/A</span><span class="qnp"> 表示。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名03</span><div class="qx fillq"><b class="term">分配系数</b><span class="qnp">一定温度下三元混合液两液相达</span><span class="qbw">平衡</span><span class="qnp">时，溶质在</span><span class="qbw">萃取相 E</span><span class="qnp">与</span><span class="qbw">萃余相 R</span><span class="qnp">中的</span><span class="qbw">组成之比</span><span class="qnp">称分配系数，K_d = </span><span class="qbw">c_E/c_R</span><span class="qnp">。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名04</span><div class="qx fillq"><b class="term">萃取率</b><span class="qnp">被萃取物进入</span><span class="qbw">有机相</span><span class="qnp">的量占其在</span><span class="qbw">两相中总量</span><span class="qnp">的百分数，反映萃取的</span><span class="qbw">完全程度</span><span class="qnp">。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名05</span><div class="qx fillq"><b class="term">萃取剂与中性萃取剂</b><span class="qnp">萃取剂是能与被萃物形成</span><span class="qbw">溶于有机相</span><span class="qnp">的萃合物、从而把溶质从水相转入有机相的</span><span class="qbw">有机试剂</span><span class="qnp">；中性萃取剂靠</span><span class="qbw">电子给体</span><span class="qnp">与中性无机分子发生</span><span class="qbw">溶剂化</span><span class="qnp">作用而增大其在有机相中的溶解度。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名06</span><div class="qx fillq"><b class="term">杠杆规则</b><span class="qnp">两种溶液 U、V 混合成 Z 时，代表三者的点在一条</span><span class="qbw">直线</span><span class="qnp">上，且 ZU/ZV = </span><span class="qbw">V/U</span><span class="qnp">，即混合点按</span><span class="qbw">质量反比</span><span class="qnp">分割线段；是三角形相图上进行</span><span class="qbw">物料衡算</span><span class="qnp">的基本工具。</span></div></div>
+    </div>
+  </div>
+
+<div class="block p3" data-p="3">
+    <h3><span class="st">★★★★</span>简答题 · <span class="cnt">6</span> 道<span class="tag t-red">10 分题</span></h3>
+    <div class="qbl">
+<details class="qa"><summary><span class="qn">简01</span><span class="qq">溶剂萃取的基本概念与分类是什么？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 概念：用<b>萃取剂</b>把<b>溶质</b>从<b>稀释剂（原溶剂）</b>中提取出来的传质过程；萃取剂与稀释剂应不互溶或仅小部分互溶。</p><p>② 流程：<b>萃取</b>（混合—澄清—分相）+ <b>反萃取</b>（把溶质从有机相转入水相，使萃取剂再生）。</p><p>③ 按萃取剂类型分：<b>中性</b>（TBP、TOPO）、<b>酸性</b>（P204、P507）、<b>碱性</b>（胺类）萃取剂。</p><p>④ 按接触方式分：单级、多级错流、多级逆流、连续逆流（微分接触）。</p></div></details>
+<details class="qa"><summary><span class="qn">简02</span><span class="qq">三角形相图如何表示三元组成？杠杆规则如何应用？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 三个顶点分别代表纯溶质 A、纯稀释剂 B、纯萃取剂 S；边上点代表二元混合物，内部点代表三元混合物。</p><p>② 读数：过内点作两边的平行线，在第三边上截得的长度即为对应组分的质量分数；三者之和为 1。</p><p>③ <b>杠杆规则</b>：混合点 Z 在 U、V 的联线上，且 U/ZV = ZV线段…，即 m_U·ZU = m_V·ZV。</p><p>④ 应用：已知原料与溶剂量求混合点；由平衡联结线求平衡的两相组成与相对量。</p></div></details>
+<details class="qa"><summary><span class="qn">简03</span><span class="qq">分配系数与选择性系数有何意义？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 分配系数 K_d = c_E/c_R（平衡时溶质在两相的浓度之比），表示萃取剂对溶质的<b>溶解能力</b>。</p><p>② 选择性系数 β = (y_A/y_B)/(x_A/x_B) = K_A/K_B，表示萃取剂对 A、B 两组分<b>分离能力</b>的强弱。</p><p>③ β > 1 才能实现有效分离，β 越大分离越容易；β = 1 时不能分离。</p><p>④ 两者都随温度、浓度而变，工程上希望 K_A 大、β 大。</p></div></details>
+<details class="qa"><summary><span class="qn">简04</span><span class="qq">萃取剂的选择原则是什么？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 分子中有<b>萃取功能基</b>（O、N、P、S 等配位原子），能与被萃物形成萃合物。</p><p>② 有足够长的<b>烃链或芳环</b>，使萃取剂与萃合物易溶于有机相、难溶于水；相对分子质量常为 350~500。</p><p>③ 对溶质<b>分配系数大</b>、<b>选择性系数大</b>。</p><p>④ 与稀释剂<b>不互溶</b>、密度差与表面张力适中，便于分相、不易乳化。</p><p>⑤ 易<b>反萃再生</b>、挥发性低、无毒、腐蚀小、价廉、化学稳定。</p></div></details>
+<details class="qa" data-p="2"><summary><span class="qn">简05</span><span class="qq">单级、多级错流、多级逆流萃取各有何特点？</span><span class="qs">★★★</span></summary><div class="qab"><p>① <b>单级萃取</b>：原料与萃取剂一次混合、一次分相；流程最简单，但萃取率有限、溶剂用量大。</p><p>② <b>多级错流</b>：每级都加<b>新鲜萃取剂</b>，萃余相逐级被萃取；萃取率较高，但<b>溶剂用量大</b>、萃取液稀、回收能耗高。</p><p>③ <b>多级逆流</b>：原料与萃取剂<b>逆向</b>流动，第 1 级萃取剂与最浓料液接触、末级与最稀料液接触；可用<b>较少溶剂</b>达到较高萃取率，萃取液浓度高，工业上最常用。</p><p>④ 比较：同样的分离要求，逆流所需溶剂量最少、级数最少；错流溶剂总用量最大。</p></div></details>
+<details class="qa" data-p="2"><summary><span class="qn">简06</span><span class="qq">不互溶体系的理论级数如何计算？</span><span class="qs">★★★</span></summary><div class="qab"><p>① 前提：萃取剂与稀释剂完全不互溶，各级中 B、S 的量恒定，用质量比 X、Y 表示组成。</p><p>② 平衡关系 Y = f(X) 绘于 X–Y 图；单级操作线过点 (X_F, 0)、斜率 −B/S。</p><p>③ <b>错流</b>：每级单独作操作线（斜率 −B/S_i），由 X_{i−1} 求 X_i，逐级图解至 X_N ≤ 要求值。</p><p>④ <b>逆流</b>：操作线 Y_{i+1} = (B/S)X_i + [Y₁ − (B/S)X_F]，为一条直线；在平衡线与操作线之间逐级画梯级，直至 X_N ≤ 要求值，梯级数即理论级数。</p></div></details>
+    </div>
+  </div>
+
+</section>
+
+
+<section id="s12">
+  <div class="shead">
+    <div class="snum">12</div>
+    <div><h2>膜分离</h2><p>26 年新增 · 约 10 分 · 基础理论题、单元操作原理题</p></div>
+    <label class="done"><input type="checkbox" data-k="s12">已掌握</label>
+  </div>
+
+  <div class="klist"><span>电渗析/超滤/液膜原理<b>★★★</b></span><span>分离膜选择原则<b>★★★★</b></span><span>膜定义分类与应用<b>★★★</b></span></div>
+
+<div class="block p3" data-p="3">
+    <h3><span class="st">★★★★</span>名词解释 · <span class="cnt">2</span> 条<span class="tag t-red">背诵</span></h3>
+    <div class="qbl">
+<div class="q" data-p="2"><span class="qt">名01</span><div class="qx fillq"><b class="term">离子交换膜的分类</b><span class="qnp">按所含功能基团分：</span><span class="qbw">阳离子</span><span class="qnp">交换膜（带负电、选择性透过</span><span class="qbw">阳离子</span><span class="qnp">）、</span><span class="qbw">阴离子</span><span class="qnp">交换膜（带正电、透过</span><span class="qbw">阴离子</span><span class="qnp">）和</span><span class="qbw">两性</span><span class="qnp">离子交换膜（可同时透过</span><span class="qbw">阴阳离子</span><span class="qnp">）。</span></div></div>
+<div class="q" data-p="2"><span class="qt">名02</span><div class="qx fillq"><b class="term">膜的定义及分类</b><span class="qnp">广义上"膜"是分隔</span><span class="qbw">两相或两部分</span><span class="qnp">的屏障，能以特定形式</span><span class="qbw">截留和传递</span><span class="qnp">物质，可为固态、液态或固液组合。按相态分</span><span class="qbw">固膜、液膜、气膜</span><span class="qnp">；按材料分天然膜、无机膜、有机高分子膜、</span><span class="qbw">合成膜</span><span class="qnp">；按结构分</span><span class="qbw">整体膜、复合膜</span><span class="qnp">、均质膜、多孔膜；按分离过程分</span><span class="qbw">微滤、超滤、纳滤、反渗透、电渗析</span><span class="qnp">膜等。</span></div></div>
+    </div>
+  </div>
+
+<div class="block p3" data-p="3">
+    <h3><span class="st">★★★★</span>简答题 · <span class="cnt">5</span> 道<span class="tag t-red">10 分题</span></h3>
+    <div class="qbl">
+<details class="qa"><summary><span class="qn">简01</span><span class="qq">电渗析的基本原理是什么？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 在直流电场中交替排列<b>阳膜</b>与<b>阴膜</b>，两膜之间形成隔室并通入含盐溶液。</p><p>② 阳离子向阴极迁移，可透过阳膜、被阴膜阻挡；阴离子向阳极迁移，可透过阴膜、被阳膜阻挡。</p><p>③ 结果：某些隔室离子不断富集（<b>浓水室</b>），相邻隔室离子不断减少（<b>淡水室</b>），实现脱盐或浓缩。</p><p>④ 电极室发生氧化还原反应（阳极析氯/氧、阴极析氢），需排气与防腐；工业上采用数百对膜串联的膜堆。</p></div></details>
+<details class="qa"><summary><span class="qn">简02</span><span class="qq">超滤与微滤的原理是什么？两者有何区别？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 原理：都以<b>静压差</b>为推动力，溶剂与小于膜孔的小分子溶质透过膜成为渗透液，大于膜孔的溶质被截留成为浓缩液；分离性能由<b>膜孔尺寸与形状</b>决定。</p><p>② 区别（截留对象）：超滤截留相对分子质量 {500~10⁶} 的大分子与胶体；微滤截留更大的<b>分散颗粒</b>。</p><p>③ 区别（操作压差）：超滤 0.1~0.5 MPa；微滤 0.01~0.2 MPa。</p><p>④ 共同问题：<b>浓差极化</b>与凝胶层，使通量下降并出现<b>极限通量</b>。</p></div></details>
+<details class="qa"><summary><span class="qn">简03</span><span class="qq">液膜分离的原理是什么？有哪几种液膜？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① 原理：以一层很薄的<b>液体膜</b>隔开料液与接受液，依靠不同组分<b>透过液膜的速率差</b>实现分离；推动力是溶质在膜两侧界面<b>化学位</b>的差异。</p><p>② <b>单滴型</b>：单一球面薄层，分 O/W/O 水膜与 W/O/W 油膜；寿命短，多用于理论研究。</p><p>③ <b>乳状液型</b>：表面活性剂+流动载体+膜溶剂制成乳状液，分散于外相；传质比表面积大、膜薄、速率快，最具工业前景。</p><p>④ <b>支撑液膜</b>：膜相溶液吸附在多孔支撑体中；操作简单、易放大，但传质面积小、稳定性差。</p></div></details>
+<details class="qa"><summary><span class="qn">简04</span><span class="qq">分离膜的选择原则是什么？</span><span class="qs">★★★★</span></summary><div class="qab"><p>① <b>分离性能</b>：截留率（选择性）高、通量大。</p><p>② <b>化学稳定性</b>：耐酸、碱、氧化剂，耐有机溶剂，抗水解。</p><p>③ <b>机械强度</b>：耐压、耐冲刷，不易破损与压实。</p><p>④ <b>抗污染</b>：不易吸附蛋白质、胶体，易清洗、寿命长。</p><p>⑤ 成本低、易制备与装填，适应操作温度与 pH 范围。</p></div></details>
+<details class="qa" data-p="2"><summary><span class="qn">简05</span><span class="qq">膜分离过程按机理如何分类？</span><span class="qs">★★★</span></summary><div class="qab"><p>① <b>渗析分离</b>：膜两侧为料液与接受液，溶质或离子在<b>浓度差或电位差</b>推动下透过膜（扩散渗析、电渗析）。</p><p>② <b>过滤分离</b>：以<b>压力差</b>为推动力，小分子透过膜、大分子被截留（超滤、微滤、反渗透、气体渗透）。</p><p>③ <b>液膜分离</b>：料液、液膜、接受液三相，靠<b>透过速率差</b>分离。</p><p>④ 共同点：膜两侧两相<b>不存在平衡关系</b>，靠速率差分离，故统称<b>速率分离</b>过程。</p></div></details>
+    </div>
+  </div>
+
+</section>
+
+
+</main>
+
+<div id="practiceApp" hidden>
+  <!-- 账号登录 -->
+  <div id="authView" class="hidden">
+    <div class="px-card">
+      <h2 style="text-align:center;margin:0 0 4px">化工原理 833 · 填空练习</h2>
+      <p class="px-muted" style="text-align:center;margin:0 0 16px">登录账号后开始练习，记录、错空本按账号保存</p>
+      <div class="px-flex" style="margin-bottom:14px">
+        <button type="button" class="px-btn" id="authTabLogin" style="flex:1">登录</button>
+        <button type="button" class="px-btn secondary" id="authTabReg" style="flex:1">注册新账号</button>
+      </div>
+      <form id="loginForm">
+        <p><label>用户名<br><input type="text" id="loginUser" autocomplete="username" required></label></p>
+        <p><label>密码<br><input type="password" id="loginPass" autocomplete="current-password" required></label></p>
+        <p class="px-small" id="loginMsg" style="color:var(--red);min-height:18px;margin:0 0 10px"></p>
+        <button class="px-btn" type="submit" id="btnLogin" style="width:100%">登录</button>
+      </form>
+      <form id="regForm" class="hidden">
+        <p><label>用户名<br><input type="text" id="regUser" autocomplete="username" required placeholder="2—24 个字符"></label></p>
+        <p><label>密码<br><input type="password" id="regPass" autocomplete="new-password" required placeholder="至少 6 位"></label></p>
+        <p><label>确认密码<br><input type="password" id="regPass2" autocomplete="new-password" required placeholder="再输入一遍密码"></label></p>
+        <p class="px-small" id="regMsg" style="color:var(--red);min-height:18px;margin:0 0 10px"></p>
+        <button class="px-btn" type="submit" id="btnReg" style="width:100%">注册并进入</button>
+      </form>
+      <p class="px-small" style="margin:14px 0 0;text-align:center">每个账号的练习记录、错空本各自独立，保存在本浏览器。换设备前请先用「数据备份」导出。</p>
+    </div>
+  </div>
+
+  <!-- 练习主界面 -->
+  <div id="appShell" class="hidden">
+    <div class="px-top">
+      <h1>化工原理 833 · 填空练习</h1>
+      <p>112 条名词 · 85 道简答 · 空池 854 个 · 每道题每次随机抽一半空来挖，记住知识点而不是空的位置</p>
+    </div>
+    <div id="userBar" class="px-flex px-between">
+      <span class="px-small">当前账号：<strong id="userName"></strong></span>
+      <button type="button" class="px-btn secondary small" id="btnLogout">退出登录</button>
+    </div>
+    <nav class="px-tabs" id="pxTabs">
+      <button data-view="home" class="active">练习首页</button>
+      <button data-view="history">刷题记录</button>
+      <button data-view="wrong">错空本</button>
+      <button data-view="data">数据备份</button>
+    </nav>
+
+    <div id="pxMain">
+      <!-- 首页 -->
+      <section id="view-home">
+        <div id="resumeBox"></div>
+        <div class="px-card">
+          <h2>开始练习</h2>
+          <p class="px-muted">每道题从它的空池里随机抽约一半来挖（概念每题 2—5 个空，简答每题 2—4 个空），没抽到的空正常显示；每次开始都会重新随机抽，抽法一定和上次不同。做题中途刷新页面不会丢，已填内容会自动保存，首页可继续。</p>
+          <p><label>范围 <select id="setupChapter"></select></label></p>
+          <p class="px-flex">
+            <label><input type="radio" name="pxType" value="all" checked> 概念 + 简答</label>
+            <label><input type="radio" name="pxType" value="c"> 只练概念</label>
+            <label><input type="radio" name="pxType" value="s"> 只练简答</label>
+          </p>
+          <button class="px-btn" id="btnStart">开始练习</button>
+        </div>
+        <div class="px-card">
+          <h2>只练错空</h2>
+          <p class="px-muted" id="wrongSummary">还没有已判分的错空。</p>
+          <button class="px-btn" id="btnWrongPractice">只练错空</button>
+        </div>
+        <div class="px-card">
+          <h2>最近记录</h2>
+          <div id="recentList"><p class="px-muted">暂无记录。</p></div>
+        </div>
+      </section>
+
+      <!-- 练习 -->
+      <section id="view-practice" class="hidden">
+        <div class="px-sticky">
+          <div class="px-flex px-between">
+            <div><strong id="practiceTitle">练习</strong> <span class="px-badge" id="practiceMode">整章练习</span></div>
+            <div class="px-flex"><span id="timer">00:00</span><button class="px-btn secondary small" id="btnPause">暂停计时</button><button class="px-btn secondary small" id="btnSheet">答题卡</button></div>
+          </div>
+          <div class="px-progress"><div id="progressBar"></div></div>
+          <div class="px-small" id="progressText">已填 0 / 0 空</div>
+        </div>
+        <div class="px-symbar" id="symbolBar"><span class="px-symlab">符号盘（点一下插入到光标处）：</span></div>
+        <div id="questionList" style="margin-top:14px"></div>
+        <div class="px-flex">
+          <button class="px-btn" id="btnSubmit" style="flex:1">交卷并保存记录</button>
+          <button class="px-btn secondary" id="btnQuit">放弃本次</button>
+        </div>
+        <p class="px-small">在空里直接输入答案；带希腊字母、上下标的公式可用上方符号盘点选插入。判分会忽略全角/半角、大小写、空格和标点，上下标数字按普通数字算。交卷后本次作答、时间、分数和错空都会保存到「刷题记录」。</p>
+      </section>
+
+      <!-- 结果 -->
+      <section id="view-result" class="hidden">
+        <div class="px-card" id="resultCard"></div>
+        <div class="px-card"><h2>错空详情</h2><div id="wrongDetail"></div></div>
+        <div class="px-card"><h2>全部作答回顾</h2><div id="reviewList"></div></div>
+        <div class="px-flex">
+          <button class="px-btn" id="btnRedo">再练一次（重新随机抽空）</button>
+          <button class="px-btn secondary" id="btnBackHome">回首页</button>
+          <button class="px-btn secondary" id="btnGoHistory">看刷题记录</button>
+        </div>
+      </section>
+
+      <!-- 记录 -->
+      <section id="view-history" class="hidden">
+        <div class="px-card">
+          <div class="px-flex px-between"><h2>刷题记录</h2>
+            <div class="px-flex"><select id="historyFilter"><option value="">全部范围</option></select><button class="px-btn secondary small" id="btnExportCsv">导出 CSV</button></div>
+          </div>
+          <p class="px-small">每条记录：练习时间、用时、分数、错空题号 + 你填的答案。</p>
+          <div id="historyList"></div>
+        </div>
+      </section>
+
+      <!-- 错空本 -->
+      <section id="view-wrong" class="hidden">
+        <div class="px-card"><h2>错空本</h2>
+          <p class="px-muted">只汇总「已判分」的错空，按题号 + 空去重，显示最近一次你填错的答案。</p>
+          <div id="wrongList"></div>
+        </div>
+      </section>
+
+      <!-- 数据 -->
+      <section id="view-data" class="hidden">
+        <div class="px-card"><h2>数据备份</h2>
+          <p class="px-muted">各账号的记录、错空本互相独立，都保存在<strong>当前浏览器</strong>（localStorage），只跟随当前登录的账号。换电脑、换浏览器或清缓存会丢失，记得定期导出。导出的 JSON 可以在任何设备上导入恢复（导入到当前登录的账号名下）。</p>
+          <div class="px-flex"><button class="px-btn" id="btnExportJson">导出全部数据（JSON）</button><button class="px-btn secondary" id="btnImportJson">导入 JSON 恢复</button><input type="file" id="importFile" accept=".json,application/json" class="hidden"></div>
+          <p class="px-small" id="dataStats"></p>
+          <button class="px-btn secondary" id="btnClearAll" style="color:var(--red)">清空全部记录</button>
+        </div>
+        <div class="px-card"><h2>部署方法</h2>
+          <p class="px-muted">这就是一个单文件网页，不需要服务器、不用联网：<br>1. 双击文件直接在浏览器打开就能练；<br>2. 想随时练：把它上传到任意静态托管，如 GitHub Pages、Vercel、Netlify、阿里云 OSS / 腾讯云 COS 的静态网站，或直接放手机里用浏览器打开；<br>3. 记录存在打开它的那个浏览器里，换设备前先在「数据备份」导出 JSON，到新设备导入即可。</p>
+        </div>
+      </section>
+    </div>
+
+    <div class="px-modal hidden" id="sheetModal"><div class="px-box"><div class="px-flex px-between"><h2>答题卡</h2><button class="px-btn secondary small" id="btnCloseSheet">关闭</button></div><div class="px-sheet" id="sheetGrid"></div><p class="px-small">绿色 = 该题的空都已填，点击题号可跳转。</p></div></div>
+  </div>
+</div>
+
+
+<footer>
+  <div class="wrap">东北大学 833 化工原理 · 名词解释与简答题分章背诵 · 依据《重点》考点清单与《简明教程》整理</div>
+</footer>
+
+<script>
+/* ==========================================================================
+   cloze-review / handbook.js
+   功能：挡答案 / 单点揭示 / 只看必考 / 进度记忆 / 倒计时
+   依赖 DOM：#bf #f3 #pb .done input  [data-deadline]（可选）
+   ========================================================================== */
+(function () {
+  var body = document.body;
+
+  /* ---------- 倒计时（可选） ---------- */
+  var cd = document.getElementById('cd');
+  var dl = body.getAttribute('data-deadline');
+  var cdbox = document.getElementById('cdbox');
+  if (cd && dl) {
+    var t = new Date(dl);
+    if (cdbox) cdbox.hidden = false;
+    (function tick() {
+      var gap = t - new Date();
+      if (gap <= 0) { cd.textContent = '已开考'; return; }
+      var h = Math.floor(gap / 3600000), m = Math.floor(gap % 3600000 / 60000);
+      if (h >= 24) {
+        cd.textContent = Math.floor(h / 24) + ' 天 ' + (h % 24) + ' 小时';
+      } else {
+        cd.textContent = h + ' 小时 ' + (m < 10 ? '0' : '') + m + ' 分';
+      }
+      setTimeout(tick, 60000);
+    })();
+  } else if (cdbox) {
+    cdbox.hidden = true;
+  }
+
+  /* ---------- 挡答案 ---------- */
+  var bf = document.getElementById('bf');
+  if (bf) {
+    bf.addEventListener('click', function () {
+      body.classList.toggle('hidefill');
+      var on = body.classList.contains('hidefill');
+      bf.classList.toggle('act2', on);
+      bf.textContent = on ? '看答案' : '挡答案';
+      if (!on) {
+        document.querySelectorAll('.shown').forEach(function (x) { x.classList.remove('shown'); });
+      }
+    });
+  }
+
+  /* ---------- 点一下露出单个答案 ---------- */
+  document.addEventListener('click', function (e) {
+    if (!body.classList.contains('hidefill')) return;
+    var t = e.target;
+    if (!t.classList) return;
+    if (t.classList.contains('qbw') || t.classList.contains('opt') ||
+        t.classList.contains('tf') || t.classList.contains('ansc')) {
+      t.classList.toggle('shown');
+    }
+  });
+
+  /* ---------- 打印时展开全部简答 ---------- */
+  window.addEventListener('beforeprint', function () {
+    document.querySelectorAll('details').forEach(function (d) { d.open = true; });
+  });
+
+  /* ---------- 只看必考 ---------- */
+  function blockLive(b) {
+    if (b.offsetParent === null) return false;
+    var items = b.querySelectorAll('.q, details.qa');
+    if (!items.length) return true;
+    return [].some.call(items, function (i) { return i.offsetParent !== null; });
+  }
+  function syncEmpty() {
+    document.querySelectorAll('.block').forEach(function (b) { b.classList.remove('blkoff'); });
+    document.querySelectorAll('.block').forEach(function (b) {
+      if (!blockLive(b)) b.classList.add('blkoff');
+    });
+    document.querySelectorAll('.block').forEach(function (b) {
+      var c = b.querySelector('.cnt');
+      if (!c) return;
+      var n = [].filter.call(b.querySelectorAll('.q, details.qa'), function (i) { return i.offsetParent !== null; }).length;
+      c.textContent = n;
+    });
+    document.querySelectorAll('main section').forEach(function (s) {
+      var any = [].some.call(s.querySelectorAll('.block'), function (b) { return b.offsetParent !== null; });
+      s.classList.toggle('allyoff', !any);
+    });
+    document.querySelectorAll('.chips .chip[href^="#"]').forEach(function (a) {
+      var t = document.querySelector(a.getAttribute('href'));
+      if (t) a.classList.toggle('off', t.classList.contains('allyoff'));
+    });
+  }
+  var f3 = document.getElementById('f3');
+  if (f3) {
+    f3.addEventListener('click', function () {
+      body.classList.toggle('only3');
+      var on = body.classList.contains('only3');
+      f3.classList.toggle('act', on);
+      f3.textContent = on ? '显示全部' : '只看必考';
+      syncEmpty();
+    });
+  }
+
+  /* ---------- 展开 / 收起所有折叠 ---------- */
+  var ex = document.getElementById('ex'), opened = false;
+  if (ex) {
+    ex.addEventListener('click', function () {
+      opened = !opened;
+      document.querySelectorAll('details').forEach(function (d) { d.open = opened; });
+      ex.textContent = opened ? '收起答案' : '展开答案';
+      ex.classList.toggle('act', opened);
+    });
+  }
+
+  /* ---------- 进度 ---------- */
+  var boxes = document.querySelectorAll('.done input');
+  function upd() {
+    var n = 0;
+    boxes.forEach(function (b) { if (b.checked) n++; });
+    var pb = document.getElementById('pb');
+    if (pb) pb.style.width = (boxes.length ? n / boxes.length * 100 : 0) + '%';
+  }
+  boxes.forEach(function (b) {
+    var k = 'dcb_' + (b.dataset.k || b.id || Math.random());
+    if (localStorage.getItem(k) === '1') b.checked = true;
+    b.closest('.done').classList.toggle('ok', b.checked);
+    b.addEventListener('change', function () {
+      localStorage.setItem(k, b.checked ? '1' : '0');
+      b.closest('.done').classList.toggle('ok', b.checked);
+      upd();
+    });
+  });
+  upd();
+
+  /* ---------- 导航高亮（可选） ---------- */
+  var links = [].slice.call(document.querySelectorAll('.chips .chip[href^="#"]'));
+  if (links.length && 'IntersectionObserver' in window) {
+    var map = {};
+    links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) {
+        if (en.isIntersecting) {
+          links.forEach(function (a) { a.classList.remove('on'); });
+          var a = map[en.target.id];
+          if (a) a.classList.add('on');
+        }
+      });
+    }, { rootMargin: '-72px 0px -70% 0px' });
+    Object.keys(map).forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) io.observe(el);
+    });
+  }
+})();
+
+</script>
+<script>
+/* ==========================================================================
+化工原理 833 · 填空练习系统（practice.js）
+练习数据直接从本页背诵手册的 DOM 解析（单一事实来源，不另存题库）：
+- 概念题：.q >.qx.fillq，<span class="qnp"> 为正文，<span class="qbw"> 为原有空
+- 简答题：details.qa >.qab > p，<b> 为关键术语（空池）
+- 补充空：EXTRA_BLANKS（已人工核对 56 条），按 qnp 段序号拆分正文
+账号/记录/计时复用肖八页面的机制（PBKDF2-SHA256、本浏览器 localStorage、各账号独立）。
+========================================================================== */
+(function () {
+'use strict';
+
+/* ---------- 常量 ---------- */
+var LS_USERS = 'hg833_users_v1', LS_SESSION = 'hg833_session_v1';
+var LS_HIS = 'hg833_history_v1', LS_DRAFT = 'hg833_draft_v1';
+var EXTRA_BLANKS = [{"q":"s2:名08","seg":1,"term":"不可压缩"},{"q":"s2:名12","seg":1,"term":"有效功率"},{"q":"s2:名12","seg":1,"term":"轴功率"},{"q":"s2:名14","seg":0,"term":"流体质点"},{"q":"s2:名17","seg":3,"term":"机械能"},{"q":"s2:名18","seg":4,"term":"特征数"},{"q":"s3:名02","seg":2,"term":"不可压缩"},{"q":"s3:名08","seg":3,"term":"沉降速度"},{"q":"s3:名09","seg":2,"term":"沉降速度"},{"q":"s3:名12","seg":1,"term":"不可压缩"},{"q":"s3:名13","seg":1,"term":"固定床"},{"q":"s3:名13","seg":4,"term":"流化床"},{"q":"s3:名15","seg":1,"term":"流化床"},{"q":"s4:名05","seg":1,"term":"混合均匀"},{"q":"s5:名01","seg":0,"term":"对流传热"},{"q":"s5:名02","seg":1,"term":"热量传递"},{"q":"s5:名04","seg":0,"term":"吸收率"},{"q":"s5:名05","seg":3,"term":"热通量"},{"q":"s5:名06","seg":1,"term":"k_G","alias":["kG"]},{"q":"s5:名06","seg":3,"term":"传质通量"},{"q":"s5:名07","seg":2,"term":"自然对流"},{"q":"s5:名07","seg":3,"term":"强制对流"},{"q":"s5:名08","seg":1,"term":"辐射能"},{"q":"s5:名10","seg":0,"term":"辐射能"},{"q":"s5:名11","seg":0,"term":"辐射能"},{"q":"s5:名12","seg":2,"term":"热通量"},{"q":"s5:名16","seg":5,"term":"给热系数"},{"q":"s6:名03","seg":0,"term":"二次蒸汽"},{"q":"s6:名03","seg":2,"term":"加热蒸汽"},{"q":"s7:名04","seg":0,"term":"相界面"},{"q":"s7:名04","seg":2,"term":"分子扩散"},{"q":"s7:名05","seg":1,"term":"停留时间"},{"q":"s7:名06","seg":0,"term":"溶解度"},{"q":"s7:名10","seg":2,"term":"推动力"},{"q":"s7:名13","seg":3,"term":"分子扩散"},{"q":"s8:名01","seg":3,"term":"H_OG","alias":["HOG"]},{"q":"s8:名06","seg":1,"term":"平衡线"},{"q":"s9:名02","seg":1,"term":"相平衡"},{"q":"s9:名03","seg":4,"term":"易挥发"},{"q":"s9:名03","seg":4,"term":"难挥发"},{"q":"s9:名04","seg":3,"term":"随时间"},{"q":"s9:名06","seg":4,"term":"易挥发"},{"q":"s9:名06","seg":4,"term":"难挥发"},{"q":"s9:名07","seg":3,"term":"分离效果"},{"q":"s9:名10","seg":1,"term":"分离能力"},{"q":"s9:名11","seg":0,"term":"进料板"},{"q":"s9:名12","seg":0,"term":"进料板"},{"q":"s9:名13","seg":0,"term":"板式塔"},{"q":"s9:名14","seg":0,"term":"理论板"},{"q":"s9:名14","seg":0,"term":"回流比"},{"q":"s10:名01","seg":0,"term":"浸出剂"},{"q":"s10:名02","seg":2,"term":"有价金属"},{"q":"s10:名03","seg":1,"term":"浸出剂"},{"q":"s10:名04","seg":3,"term":"选择性"},{"q":"s11:名05","seg":4,"term":"溶解度"},{"q":"s12:名01","seg":1,"term":"选择性"}];
+var SYMBOLS = ['α','ρ','μ','π','λ','σ','ε','Δ','τ','²','³','⁴','₀','₁','₂','×','−','·','√','⁻'];
+var MAX_C = 5, MAX_S = 4; /* 每题最多挖空：概念 5、简答 4 */
+
+/* ---------- 小工具 ---------- */
+function load(k, d) { try { var v = JSON.parse(localStorage.getItem(k)); return v == null? d: v;} catch (e) { return d;}}
+function save(k, v) { localStorage.setItem(k, JSON.stringify(v));}
+function esc(s) { return String(s == null? '': s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');}
+function fmtDate(iso) { var d = new Date(iso); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0') + ' ' + String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0');}
+function fmtDur(s) { s = Math.max(0, Math.round(s)); var h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), ss = s % 60; return h? h + '时' + String(m).padStart(2, '0') + '分' + String(ss).padStart(2, '0') + '秒': String(m).padStart(2, '0') + '分' + String(ss).padStart(2, '0') + '秒';}
+function fmtClock(s) { s = Math.max(0, Math.floor(s)); return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0');}
+function shuffle(a) { var r = a.slice(); for (var i = r.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = r[i]; r[i] = r[j]; r[j] = t;} return r;}
+
+/* ---------- 答案归一化与判分 ---------- */
+var SUP = {'⁰':'0','¹':'1','²':'2','³':'3','⁴':'4','⁵':'5','⁶':'6','⁷':'7','⁸':'8','⁹':'9','⁻':'-'};
+var SUB = {'₀':'0','₁':'1','₂':'2','₃':'3','₄':'4','₅':'5','₆':'6','₇':'7','₈':'8','₉':'9'};
+function norm(s) {
+if (s == null) return '';
+s = String(s).trim();
+s = s.replace(/[\uFF01-\uFF5E]/g, function (c) { return String.fromCharCode(c.charCodeAt(0) - 0xFEE0);}).replace(/\u3000/g, ' ');
+s = s.toLowerCase();
+s = s.replace(/[×✕]/g, 'x').replace(/[−‐‑]/g, '-');
+s = s.split('').map(function (c) { return SUP[c] || SUB[c] || c;}).join('');
+s = s.replace(/[\s。，“”‘’、；：·,.;:!?'"()（）\[\]《》〈〉~～\-_\/\\=+*^]/g, '');
+return s;
+}
+function checkBlank(yours, correct, aliases) {
+var y = norm(yours);
+if (!y) return false;
+if (y === norm(correct)) return true;
+return (aliases || []).some(function (a) { return y === norm(a);});
+}
+
+/* ---------- 从 DOM 解析题库 ---------- */
+/* 把一段正文按若干术语拆成空/非空片段（每次扫描取最长匹配；术语在段内每次出现都挖空） */
+function splitSeg(text, terms) {
+var out = [], i = 0;
+while (i < text.length) {
+var best = null;
+for (var k = 0; k < terms.length; k++) {
+if (text.indexOf(terms[k].term, i) === i && (!best || terms[k].term.length > best.term.length)) best = terms[k];
+}
+if (best) { out.push({ t: best.term, blank: true, alias: best.alias || null}); i += best.term.length;}
+else {
+var j = i + 1;
+while (j < text.length) {
+var hit = false;
+for (var m = 0; m < terms.length; m++) { if (text.indexOf(terms[m].term, j) === j) { hit = true; break;}}
+if (hit) break;
+j++;
+}
+out.push({ t: text.slice(i, j), blank: false}); i = j;
+}
+}
+return out;
+}
+function segsFromNodes(parent, blankTag) {
+var segs = [];
+parent.childNodes.forEach(function (n) {
+if (n.nodeType === 3) { if (n.textContent.trim()) segs.push({ t: n.textContent, blank: false});}
+else if (n.nodeType === 1) {
+if (blankTag && n.tagName === blankTag) segs.push({ t: n.textContent, blank: true});
+else if (n.classList && n.classList.contains('qbw')) segs.push({ t: n.textContent, blank: true});
+else if (n.classList && (n.classList.contains('qnp') || n.classList.contains('term'))) { if (n.classList.contains('qnp')) segs.push({ t: n.textContent, blank: false});}
+else if (n.textContent.trim()) segs.push({ t: n.textContent, blank: false});
+}
+});
+return segs;
+}
+function buildQuestions() {
+var qs = [];
+var extrasByQ = {};
+EXTRA_BLANKS.forEach(function (e) { (extrasByQ[e.q] = extrasByQ[e.q] || []).push(e);});
+document.querySelectorAll('main > section[id^="s"]').forEach(function (sec) {
+var chId = sec.id;
+if (chId === 's0') return;
+var chTitle = ((sec.querySelector('h2') || {}).textContent || chId).trim();
+sec.querySelectorAll('.q').forEach(function (qEl) {
+var id = (qEl.querySelector('.qt') || {}).textContent.trim();
+var term = (qEl.querySelector('.term') || {}).textContent.trim();
+var box = qEl.querySelector('.qx.fillq');
+var segs = segsFromNodes(box, null);
+/* 应用补充空：按 qnp 段序号定位（qnp = 非空片段，按出现顺序编号） */
+var extras = extrasByQ[chId + ':' + id];
+if (extras && extras.length) {
+var bySeg = {};
+extras.forEach(function (e) { (bySeg[e.seg] = bySeg[e.seg] || []).push(e);});
+var qnpIdx = -1, rebuilt = [];
+segs.forEach(function (sg) {
+if (sg.blank) { rebuilt.push(sg); return;}
+qnpIdx++;
+var terms = bySeg[qnpIdx];
+if (terms && terms.length) rebuilt = rebuilt.concat(splitSeg(sg.t, terms));
+else rebuilt.push(sg);
+});
+segs = rebuilt;
+}
+qs.push({ kind: 'c', qid: chId + ':' + id, chapter: chId, chTitle: chTitle, id: id, term: term, segs: segs, p: qEl.dataset.p || null});
+});
+sec.querySelectorAll('details.qa').forEach(function (d) {
+var id = (d.querySelector('.qn') || {}).textContent.trim();
+var q = (d.querySelector('.qq') || {}).textContent.trim();
+var stars = ((d.querySelector('.qs') || {}).textContent || '').trim();
+var paras = [];
+d.querySelectorAll('.qab > p').forEach(function (p) { paras.push(segsFromNodes(p, 'B'));});
+qs.push({ kind: 's', qid: chId + ':' + id, chapter: chId, chTitle: chTitle, id: id, q: q, stars: stars, paras: paras, p: d.dataset.p || null});
+});
+});
+return qs;
+}
+var QUESTIONS = buildQuestions();
+function qById(qid) { return QUESTIONS.find(function (q) { return q.qid === qid;});}
+/* 某题的空池：每空一个 ref（概念=segs 下标；简答=段:句下标），附答案与别名 */
+function blankList(q) {
+var list = [];
+if (q.kind === 'c') {
+q.segs.forEach(function (sg, i) { if (sg.blank) list.push({ ref: i, answer: sg.t, alias: sg.alias || null});});
+} else {
+q.paras.forEach(function (para, pi) {
+para.forEach(function (sg, si) { if (sg.blank) list.push({ ref: pi + ':' + si, answer: sg.t, alias: sg.alias || null});});
+});
+}
+return list;
+}
+function blankByRef(q, ref) {
+if (q.kind === 'c') { var sg = q.segs[ref]; return { answer: sg.t, alias: sg.alias || null};}
+var parts = String(ref).split(':');
+var sg2 = q.paras[+parts[0]][+parts[1]];
+return { answer: sg2.t, alias: sg2.alias || null};
+}
+function qCtx(q) { return q.kind === 'c'? q.term: q.q;}
+
+/* ---------- 抽空：每题随机抽约一半，最少 2 个，概念最多 5、简答最多 4 ---------- */
+function sampleBlanks(poolSize, maxN) {
+var n = Math.min(poolSize, Math.min(maxN, Math.max(2, Math.ceil(poolSize / 2))));
+var idx = [];
+for (var i = 0; i < poolSize; i++) idx.push(i);
+return shuffle(idx).slice(0, n);
+}
+function sampleQuestion(q, forcedAnswers) {
+var pool = blankList(q);
+var maxN = q.kind === 'c'? MAX_C: MAX_S;
+var n = Math.min(pool.length, Math.min(maxN, Math.max(2, Math.ceil(pool.length / 2))));
+var forced = [];
+if (forcedAnswers && forcedAnswers.length) {
+pool.forEach(function (b, i) { if (forcedAnswers.indexOf(b.answer) >= 0) forced.push(i);});
+}
+var rest = [];
+pool.forEach(function (b, i) { if (forced.indexOf(i) < 0) rest.push(i);});
+var picked = forced.concat(shuffle(rest)).slice(0, Math.max(n, forced.length)); /* 错空必须全部进样，随机补空只补到上限 */
+return picked.map(function (i) { return pool[i].ref;});
+}
+
+/* ---------- 账号系统（与肖八同机制） ---------- */
+var currentUser = null, history = [];
+function ukey(base) { return currentUser? base + ':' + currentUser.key: base;}
+function initUserData() { history = load(ukey(LS_HIS), []);}
+function setAuthMsg(id, msg) { var n = document.getElementById(id); if (n) n.textContent = msg || '';}
+function switchAuthTab(which) {
+var login = which!== 'reg';
+document.getElementById('loginForm').classList.toggle('hidden',!login);
+document.getElementById('regForm').classList.toggle('hidden', login);
+document.getElementById('authTabLogin').classList.toggle('secondary',!login);
+document.getElementById('authTabReg').classList.toggle('secondary', login);
+setAuthMsg('loginMsg', ''); setAuthMsg('regMsg', '');
+}
+function showAuth(tab) {
+document.getElementById('appShell').classList.add('hidden');
+document.getElementById('authView').classList.remove('hidden');
+switchAuthTab(tab === 'reg'? 'reg': 'login');
+}
+function b64(buf) { return btoa(String.fromCharCode.apply(null, new Uint8Array(buf)));}
+async function hashPassword(pass, saltB64) {
+var salt = Uint8Array.from(atob(saltB64), function (c) { return c.charCodeAt(0);});
+var mk = await crypto.subtle.importKey('raw', new TextEncoder().encode(pass), 'PBKDF2', false, ['deriveBits']);
+var bits = await crypto.subtle.deriveBits({ name: 'PBKDF2', hash: 'SHA-256', salt: salt, iterations: 200000}, mk, 256);
+return b64(bits);
+}
+function randomSaltB64() { return b64(crypto.getRandomValues(new Uint8Array(16)));}
+function saveSession(key) { save(LS_SESSION, { key: key, at: new Date().toISOString()});}
+function enterApp() {
+initUserData();
+document.getElementById('authView').classList.add('hidden');
+document.getElementById('appShell').classList.remove('hidden');
+document.getElementById('userName').textContent = currentUser.name;
+renderHome();
+}
+function authBoot() {
+if (!window.crypto ||!crypto.subtle) {
+showAuth('login');
+setAuthMsg('loginMsg', '当前环境不支持安全加密（需 HTTPS 或本地打开文件），请换用现代浏览器访问。');
+return;
+}
+var users = load(LS_USERS, {});
+var sess = load(LS_SESSION, null);
+if (sess && users[sess.key]) { currentUser = { name: users[sess.key].name || sess.key, key: sess.key}; enterApp();}
+else { currentUser = null; showAuth(Object.keys(users).length? 'login': 'reg');}
+}
+
+/* ---------- 视图切换 ---------- */
+function showView(name) {
+  document.querySelectorAll('#pxMain > section').forEach(function (s) { s.classList.add('hidden'); });
+  document.getElementById('view-' + name).classList.remove('hidden');
+  document.querySelectorAll('#pxTabs button').forEach(function (b) { b.classList.toggle('active', b.dataset.view === name); });
+  if (name === 'home') renderHome();
+  if (name === 'history') renderHistory();
+  if (name === 'wrong') renderWrong();
+  if (name === 'data') renderData();
+  window.scrollTo(0, 0);
+}
+document.querySelectorAll('#pxTabs button').forEach(function (b) { b.addEventListener('click', function () { showView(b.dataset.view); }); });
+
+/* ---------- 背诵 / 练习模式切换 ---------- */
+var pxMode = 'recite';
+function setMode(mode) {
+  pxMode = mode;
+  /* 注意：practiceApp 用的是 hidden 属性（不是 hidden 类），必须改属性 */
+  document.querySelector('main.wrap').hidden = (mode === 'practice');
+  document.getElementById('practiceApp').hidden = (mode !== 'practice');
+  document.getElementById('modeRecite').classList.toggle('act', mode === 'recite');
+  document.getElementById('modePractice').classList.toggle('act', mode === 'practice');
+  if (mode === 'practice' && !currentUser) showAuth('login');
+  window.scrollTo(0, 0);
+}
+document.getElementById('modeRecite').addEventListener('click', function () { setMode('recite'); });
+document.getElementById('modePractice').addEventListener('click', function () { setMode('practice'); });
+
+/* ---------- 首页：练习设置 ---------- */
+var CHAPTERS = [
+  { id: 's1', t: '01 绪论：单元操作' }, { id: 's2', t: '02 流体流动与输送' },
+  { id: 's3', t: '03 两相流的分离与输送' }, { id: 's4', t: '04 两相流的混合' },
+  { id: 's5', t: '05 传热学基础' }, { id: 's6', t: '06 蒸发单元' },
+  { id: 's7', t: '07 传质学基础' }, { id: 's8', t: '08 吸收单元' },
+  { id: 's9', t: '09 蒸馏' }, { id: 's10', t: '10 浸出单元' },
+  { id: 's11', t: '11 萃取单元' }, { id: 's12', t: '12 膜分离' }
+];
+function chapterCounts() {
+  var c = {};
+  QUESTIONS.forEach(function (q) {
+    c[q.chapter] = c[q.chapter] || { c: 0, s: 0 };
+    c[q.chapter][q.kind]++;
+  });
+  return c;
+}
+function buildSetup() {
+  var counts = chapterCounts();
+  var sel = document.getElementById('setupChapter');
+  if (!sel.options.length) {
+    var tot = { c: 0, s: 0 };
+    QUESTIONS.forEach(function (q) { tot[q.kind]++; });
+    var o0 = document.createElement('option'); o0.value = 'all';
+    o0.textContent = '全部 12 章（概念 ' + tot.c + ' 道 · 简答 ' + tot.s + ' 道）';
+    sel.appendChild(o0);
+    CHAPTERS.forEach(function (ch) {
+      var n = counts[ch.id] || { c: 0, s: 0 };
+      var o = document.createElement('option'); o.value = ch.id;
+      o.textContent = ch.t + '（概念 ' + n.c + ' 道 · 简答 ' + n.s + ' 道）';
+      sel.appendChild(o);
+    });
+  }
+}
+function wrongBook() {
+  var map = new Map();
+  history.forEach(function (h) {
+    (h.wrong || []).forEach(function (w) {
+      var k = w.qid + '|' + w.blank;
+      var cur = map.get(k);
+      if (cur) { cur.count++; cur.yours = w.yours; cur.lastAt = h.endedAt; }
+      else map.set(k, { qid: w.qid, kind: w.kind, blank: w.blank, correct: w.correct, yours: w.yours, ctx: w.ctx, count: 1, lastAt: h.endedAt });
+    });
+  });
+  return Array.from(map.values()).sort(function (a, b) { return (a.qid < b.qid ? -1 : a.qid > b.qid ? 1 : 0); });
+}
+function renderHome() {
+  buildSetup();
+  var draft = load(ukey(LS_DRAFT), null);
+  document.getElementById('resumeBox').innerHTML = draft
+    ? '<div class="px-notice">你有一次未交卷的练习（' + esc(draft.title) + '，已填 ' + Object.keys(draft.answers || {}).filter(function (k) { return draft.answers[k]; }).length + '/' + draft.totalBlanks + ' 空，' + fmtDate(draft.startedAt) + '开始）。<button class="px-btn small" id="btnResume">继续做</button> <button class="px-btn secondary small" id="btnDropDraft">丢弃</button></div>'
+    : '';
+  if (draft) {
+    document.getElementById('btnResume').onclick = resumeDraft;
+    document.getElementById('btnDropDraft').onclick = function () { localStorage.removeItem(ukey(LS_DRAFT)); renderHome(); };
+  }
+  var wb = wrongBook();
+  var wrongQs = {};
+  wb.forEach(function (w) { wrongQs[w.qid] = true; });
+  document.getElementById('wrongSummary').textContent = wb.length
+    ? '错空共 ' + wb.length + ' 个（去重后），涉及 ' + Object.keys(wrongQs).length + ' 道题，可只练这些空。'
+    : '还没有已判分的错空。';
+  document.getElementById('btnWrongPractice').disabled = !wb.length;
+  var recent = history.slice(0, 3);
+  document.getElementById('recentList').innerHTML = recent.length
+    ? recent.map(function (h) { return '<p>' + fmtDate(h.endedAt) + ' · ' + esc(h.title) + ' · 用时 ' + fmtDur(h.durationSec) + ' · ' + h.score + ' / ' + h.max + ' 空 · 错 ' + h.wrong.length + ' 空</p>'; }).join('')
+    : '<p class="px-muted">暂无记录。</p>';
+}
+document.getElementById('btnWrongPractice').addEventListener('click', startWrongPractice);
+
+/* ---------- 会话与计时 ---------- */
+var session = null, timerId = null;
+function makeSession(title, chapter, type, mode, qlist, forcedMap) {
+  var sample = {};
+  qlist.forEach(function (q) { sample[q.qid] = sampleQuestion(q, forcedMap ? forcedMap[q.qid] : null); });
+  var totalBlanks = 0;
+  qlist.forEach(function (q) { totalBlanks += sample[q.qid].length; });
+  return {
+    title: title, chapter: chapter, type: type, mode: mode, qlist: qlist,
+    sample: sample, totalBlanks: totalBlanks, answers: {},
+    startedAt: new Date().toISOString(), elapsed: 0, paused: false, timerStart: Date.now()
+  };
+}
+function pickQuestions(chapter, type) {
+  var list = QUESTIONS.filter(function (q) {
+    if (chapter !== 'all' && q.chapter !== chapter) return false;
+    if (type === 'c' && q.kind !== 'c') return false;
+    if (type === 's' && q.kind !== 's') return false;
+    return true;
+  });
+  var order = {};
+  CHAPTERS.forEach(function (ch, i) { order[ch.id] = i; });
+  list.sort(function (a, b) { return (order[a.chapter] - order[b.chapter]) || (a.kind === b.kind ? (a.id < b.id ? -1 : 1) : (a.kind === 'c' ? -1 : 1)); });
+  return list;
+}
+function scopeLabel(chapter, type) {
+  var ch = chapter === 'all' ? '全部 12 章' : (CHAPTERS.find(function (c) { return c.id === chapter; }) || {}).t;
+  var tp = type === 'c' ? '概念' : type === 's' ? '简答' : '概念+简答';
+  return ch + ' · ' + tp;
+}
+function startPractice() {
+  var chapter = document.getElementById('setupChapter').value;
+  var type = (document.querySelector('input[name="pxType"]:checked') || {}).value || 'all';
+  var qlist = pickQuestions(chapter, type);
+  if (!qlist.length) { alert('这个范围没有题目。'); return; }
+  session = makeSession(scopeLabel(chapter, type), chapter, type, 'full', qlist, null);
+  showPractice();
+}
+document.getElementById('btnStart').addEventListener('click', startPractice);
+function startWrongPractice() {
+  var wb = wrongBook();
+  if (!wb.length) return;
+  var forcedMap = {};
+  wb.forEach(function (w) { (forcedMap[w.qid] = forcedMap[w.qid] || []).push(w.blank); });
+  var qlist = Object.keys(forcedMap).map(qById).filter(Boolean);
+  var order = {};
+  CHAPTERS.forEach(function (ch, i) { order[ch.id] = i; });
+  qlist.sort(function (a, b) { return (order[a.chapter] - order[b.chapter]) || (a.kind === b.kind ? (a.id < b.id ? -1 : 1) : (a.kind === 'c' ? -1 : 1)); });
+  session = makeSession('只练错空（' + qlist.length + ' 题）', 'wrong', 'all', 'wrong', qlist, forcedMap);
+  showPractice();
+}
+function resumeDraft() {
+  var d = load(ukey(LS_DRAFT), null);
+  if (!d) return;
+  var qlist = d.qlist.map(qById).filter(Boolean);
+  session = {
+    title: d.title, chapter: d.chapter, type: d.type, mode: d.mode, qlist: qlist,
+    sample: d.sample, totalBlanks: d.totalBlanks, answers: d.answers || {},
+    startedAt: d.startedAt, elapsed: d.elapsed || 0, paused: false, timerStart: Date.now()
+  };
+  showPractice();
+}
+function showPractice() {
+  showView('practice');
+  document.getElementById('practiceTitle').textContent = session.title;
+  document.getElementById('practiceMode').textContent = session.mode === 'wrong' ? '错题重练' : '整章练习';
+  renderQuestions();
+  updateProgress();
+  startTimer();
+}
+function startTimer() {
+  clearInterval(timerId);
+  timerId = setInterval(function () {
+    if (session && !session.paused) document.getElementById('timer').textContent = fmtClock(session.elapsed + (Date.now() - session.timerStart) / 1000);
+  }, 1000);
+  document.getElementById('timer').textContent = fmtClock(session.elapsed);
+  document.getElementById('btnPause').textContent = '暂停计时';
+}
+document.getElementById('btnPause').addEventListener('click', function () {
+  if (!session) return;
+  if (session.paused) { session.paused = false; session.timerStart = Date.now(); document.getElementById('btnPause').textContent = '暂停计时'; }
+  else { session.elapsed += (Date.now() - session.timerStart) / 1000; session.paused = true; document.getElementById('btnPause').textContent = '继续计时'; saveDraft(); }
+});
+function saveDraft() {
+  if (!session) return;
+  var elapsed = session.elapsed + (session.paused ? 0 : (Date.now() - session.timerStart) / 1000);
+  save(ukey(LS_DRAFT), {
+    title: session.title, chapter: session.chapter, type: session.type, mode: session.mode,
+    startedAt: session.startedAt, elapsed: elapsed, answers: session.answers,
+    sample: session.sample, totalBlanks: session.totalBlanks,
+    qlist: session.qlist.map(function (q) { return q.qid; })
+  });
+}
+var draftSaveT = null;
+function saveDraftSoon() { clearTimeout(draftSaveT); draftSaveT = setTimeout(saveDraft, 400); }
+
+/* ---------- 练习渲染：挖空变输入框 ---------- */
+function blankInputHtml(q, ref, b) {
+  var key = q.qid + '#' + ref;
+  var val = session.answers[key] || '';
+  var ans = b.answer || b.t || ''; /* 调用方有时传 blankList 项（.answer），有时传 seg（.t） */
+  var w = Math.max(4, Math.min(24, (ans.length || 4) + 1));
+  return '<input class="px-blank" type="text" data-key="' + esc(key) + '" value="' + esc(val) + '" style="width:' + w + 'ch" autocomplete="off" spellcheck="false" placeholder="？">';
+}
+function renderSegs(q, segs, sampledSet) {
+  var h = '';
+  segs.forEach(function (sg, i) {
+    if (!sg.blank) { h += esc(sg.t); return; }
+    if (sampledSet.has(i)) h += blankInputHtml(q, i, sg);
+    else h += '<span class="px-plain">' + esc(sg.t) + '</span>';
+  });
+  return h;
+}
+function renderQuestions() {
+  var list = document.getElementById('questionList');
+  list.innerHTML = '';
+  session.qlist.forEach(function (q, idx) {
+    var sampled = new Set(session.sample[q.qid] || []);
+    var card = document.createElement('div');
+    card.className = 'px-qcard';
+    card.id = 'pxq-' + idx;
+    var head = '<div class="px-qhead"><span class="px-qnum">' + esc(q.id) + '</span><span class="px-badge">' + esc(q.chTitle) + '</span><span class="px-badge">' + (q.kind === 'c' ? '概念' : '简答 ' + q.stars) + '</span><span class="px-muted">本题挖 ' + sampled.size + ' 空</span></div>';
+    if (q.kind === 'c') {
+      card.innerHTML = head + '<p class="px-term">' + esc(q.term) + '</p><p class="px-sent">' + renderSegs(q, q.segs, sampled) + '</p>';
+    } else {
+      var paras = q.paras.map(function (para) {
+        var set2 = new Set();
+        sampled.forEach(function (ref) { var p = String(ref).split(':'); set2.add(p[0] + ':' + p[1]); });
+        var h = '';
+        para.forEach(function (sg, si) {
+          if (!sg.blank) { h += esc(sg.t); return; }
+          var ref = null;
+          q.paras.forEach(function (pp, pi) { pp.forEach(function (s2, sj) { if (s2 === sg) ref = pi + ':' + sj; }); });
+          h += set2.has(ref) ? blankInputHtml(q, ref, sg) : '<span class="px-plain">' + esc(sg.t) + '</span>';
+        });
+        return '<p>' + h + '</p>';
+      }).join('');
+      card.innerHTML = head + '<p class="px-qq">' + esc(q.q) + '</p><div class="px-ans">' + paras + '</div>';
+    }
+    list.appendChild(card);
+  });
+}
+/* 输入：保存答案、进度、自动拓宽；符号盘插入 */
+var lastInput = null;
+document.getElementById('questionList').addEventListener('focusin', function (e) {
+  if (e.target && e.target.classList && e.target.classList.contains('px-blank')) lastInput = e.target;
+});
+document.getElementById('questionList').addEventListener('input', function (e) {
+  var t = e.target;
+  if (!t.classList || !t.classList.contains('px-blank')) return;
+  session.answers[t.dataset.key] = t.value;
+  t.style.width = Math.max(4, Math.min(32, (t.value.length || 4) + 1)) + 'ch';
+  updateProgress();
+  saveDraftSoon();
+});
+function updateProgress() {
+  var filled = Object.values(session.answers).filter(function (v) { return v && String(v).trim(); }).length;
+  document.getElementById('progressText').textContent = '已填 ' + filled + ' / ' + session.totalBlanks + ' 空';
+  document.getElementById('progressBar').style.width = (session.totalBlanks ? filled / session.totalBlanks * 100 : 0) + '%';
+}
+document.getElementById('symbolBar').innerHTML = SYMBOLS.map(function (s) { return '<button type="button" class="px-sym" data-sym="' + esc(s) + '">' + esc(s) + '</button>'; }).join('');
+document.getElementById('symbolBar').addEventListener('click', function (e) {
+  var b = e.target.closest ? e.target.closest('.px-sym') : null;
+  if (!b) return;
+  var inp = (document.activeElement && document.activeElement.classList && document.activeElement.classList.contains('px-blank'))
+    ? document.activeElement
+    : lastInput || document.querySelector('.px-blank');
+  if (!inp) return;
+  inp.focus();
+  var sym = b.dataset.sym;
+  if (inp.setRangeText) {
+    var st = inp.selectionStart == null ? inp.value.length : inp.selectionStart;
+    var en = inp.selectionEnd == null ? inp.value.length : inp.selectionEnd;
+    inp.setRangeText(sym, st, en, 'end');
+  } else inp.value += sym;
+  inp.dispatchEvent(new Event('input', { bubbles: true }));
+});
+/* 答题卡 */
+document.getElementById('btnSheet').addEventListener('click', function () {
+  var g = document.getElementById('sheetGrid');
+  g.innerHTML = '';
+  session.qlist.forEach(function (q, idx) {
+    var refs = session.sample[q.qid] || [];
+    var done = refs.every(function (ref) { var v = session.answers[q.qid + '#' + ref]; return v && String(v).trim(); });
+    var b = document.createElement('button');
+    b.textContent = q.id;
+    if (done) b.classList.add('ans');
+    b.onclick = function () {
+      document.getElementById('sheetModal').classList.add('hidden');
+      document.getElementById('pxq-' + idx).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+    g.appendChild(b);
+  });
+  document.getElementById('sheetModal').classList.remove('hidden');
+});
+document.getElementById('btnCloseSheet').addEventListener('click', function () { document.getElementById('sheetModal').classList.add('hidden'); });
+document.getElementById('btnQuit').addEventListener('click', function () {
+  if (confirm('放弃本次未交卷的练习？已填内容会保留在草稿里，可在首页继续。')) {
+    saveDraft(); clearInterval(timerId); session = null; showView('home');
+  }
+});
+
+/* ---------- 判分与交卷 ---------- */
+function evaluate(qlist, answers, sample) {
+  var score = 0, max = 0, correctBlanks = 0, wrong = [], unanswered = 0;
+  var wrongQids = {};
+  qlist.forEach(function (q) {
+    (sample[q.qid] || []).forEach(function (ref) {
+      var b = blankByRef(q, ref);
+      var key = q.qid + '#' + ref;
+      var yours = answers[key] || '';
+      max++;
+      if (!yours || !String(yours).trim()) unanswered++;
+      if (checkBlank(yours, b.answer, b.alias)) { score++; correctBlanks++; }
+      else {
+        wrong.push({ qid: q.qid, kind: q.kind, ref: ref, blank: b.answer, yours: yours || '未答', correct: b.answer, ctx: qCtx(q) });
+        wrongQids[q.qid] = true;
+      }
+    });
+  });
+  return { score: score, max: max, correctBlanks: correctBlanks, wrong: wrong, unanswered: unanswered, wrongQCount: Object.keys(wrongQids).length, totalQ: qlist.length };
+}
+document.getElementById('btnSubmit').addEventListener('click', function () {
+  var ev = evaluate(session.qlist, session.answers, session.sample);
+  if (ev.unanswered && !confirm('还有 ' + ev.unanswered + ' 个空没填，确定交卷吗？')) return;
+  var elapsed = session.elapsed + (session.paused ? 0 : (Date.now() - session.timerStart) / 1000);
+  var att = {
+    id: 'a' + Date.now(), title: session.title, chapter: session.chapter, type: session.type, mode: session.mode,
+    qlist: session.qlist.map(function (q) { return q.qid; }),
+    sample: session.sample, answers: JSON.parse(JSON.stringify(session.answers)),
+    startedAt: session.startedAt, endedAt: new Date().toISOString(), durationSec: Math.round(elapsed),
+    score: ev.score, max: ev.max, correctBlanks: ev.correctBlanks, wrong: ev.wrong,
+    unanswered: ev.unanswered, wrongQCount: ev.wrongQCount, totalQ: ev.totalQ
+  };
+  history.unshift(att);
+  save(ukey(LS_HIS), history);
+  localStorage.removeItem(ukey(LS_DRAFT));
+  clearInterval(timerId);
+  var sid = session;
+  session = null;
+  showResult(att, sid);
+});
+
+/* ---------- 结果与回顾 ---------- */
+function reviewHtml(q, answers, sample, wrongKeys) {
+  function segHtml(segs, refOf) {
+    var h = '';
+    segs.forEach(function (sg, i) {
+      if (!sg.blank) { h += esc(sg.t); return; }
+      var ref = refOf(i);
+      var sampled = (sample[q.qid] || []).some(function (r) { return String(r) === String(ref); });
+      if (!sampled) { h += esc(sg.t); return; }
+      var key = q.qid + '#' + ref;
+      var yours = answers[key] || '';
+      var ok = checkBlank(yours, sg.t, sg.alias || null);
+      if (ok) h += '<span class="px-rb-ok">' + esc(sg.t) + '</span>';
+      else h += '<span class="px-rb-bad">✗ <s>' + esc(yours || '未答') + '</s> → <b>' + esc(sg.t) + '</b></span>';
+    });
+    return h;
+  }
+  if (q.kind === 'c') {
+    return '<p class="px-term">' + esc(q.term) + '</p><p class="px-sent">' + segHtml(q.segs, function (i) { return i; }) + '</p>';
+  }
+  var paras = q.paras.map(function (para, pi) {
+    return '<p>' + segHtml(para, function (si) { return pi + ':' + si; }) + '</p>';
+  }).join('');
+  return '<p class="px-qq">' + esc(q.q) + '</p><div class="px-ans">' + paras + '</div>';
+}
+function showResult(att, sess) {
+  showView('result');
+  var pct = att.max ? Math.round(att.score / att.max * 100) : 0;
+  document.getElementById('resultCard').innerHTML =
+    '<p class="px-muted">' + esc(att.title) + ' · ' + fmtDate(att.endedAt) + ' · 用时 ' + fmtDur(att.durationSec) + '</p>'
+    + '<div class="px-score">' + att.score + ' <span style="font-size:18px;color:var(--muted)">/ ' + att.max + ' 空 · ' + pct + '%</span></div>'
+    + '<p>答对 ' + att.correctBlanks + ' / ' + att.max + ' 空 · 错 ' + att.wrong.length + ' 空（涉及 ' + att.wrongQCount + ' 道题）' + (att.unanswered ? ' · 未填 ' + att.unanswered + ' 空' : '') + '</p>';
+  document.getElementById('wrongDetail').innerHTML = att.wrong.length
+    ? att.wrong.map(function (w) {
+      var q = qById(w.qid);
+      return '<div class="px-card"><strong>' + esc(w.qid.split(':')[1]) + '</strong> <span class="px-muted">（' + esc(q ? q.chTitle : '') + '）</span><br><span class="px-muted">' + esc(w.ctx) + '</span><br>你填：<strong style="color:var(--red)">' + esc(w.yours) + '</strong>　正确答案：<strong style="color:var(--green)">' + esc(w.correct) + '</strong>' + (q ? reviewHtml(q, att.answers, att.sample, null) : '') + '</div>';
+    }).join('')
+    : '<p class="px-muted">本次没有错空，全部答对。</p>';
+  document.getElementById('reviewList').innerHTML = att.qlist.map(function (qid) {
+    var q = qById(qid);
+    if (!q) return '';
+    var refs = att.sample[qid] || [];
+    var okCount = refs.filter(function (ref) {
+      var b = blankByRef(q, ref);
+      return checkBlank(att.answers[qid + '#' + ref] || '', b.answer, b.alias);
+    }).length;
+    var mark = okCount === refs.length
+      ? '<span style="color:var(--green)">✓ 全对</span>'
+      : '<span style="color:var(--red)">✗ 对 ' + okCount + ' / ' + refs.length + ' 空</span>';
+    return '<div class="px-card"><strong>' + esc(q.id) + '</strong> ' + mark + ' <span class="px-muted">（' + esc(q.chTitle) + '）</span>' + reviewHtml(q, att.answers, att.sample, null) + '</div>';
+  }).join('');
+  document.getElementById('btnRedo').onclick = function () {
+    var qlist = att.qlist.map(qById).filter(Boolean);
+    if (att.mode === 'wrong') {
+      var forcedMap = {};
+      wrongBook().forEach(function (w) { (forcedMap[w.qid] = forcedMap[w.qid] || []).push(w.blank); });
+      session = makeSession(att.title, att.chapter, att.type, 'wrong', qlist, forcedMap);
+    } else {
+      session = makeSession(att.title, att.chapter, att.type, att.mode, qlist, null);
+    }
+    showPractice();
+  };
+  document.getElementById('btnBackHome').onclick = function () { showView('home'); };
+  document.getElementById('btnGoHistory').onclick = function () { showView('history'); };
+}
+
+/* ---------- 刷题记录 ---------- */
+function renderHistory() {
+  var sel = document.getElementById('historyFilter');
+  if (sel.options.length <= 1) {
+    CHAPTERS.forEach(function (ch) { var o = document.createElement('option'); o.value = ch.id; o.textContent = ch.t; sel.appendChild(o); });
+  }
+  var f = sel.value;
+  var list = history.filter(function (h) { return !f || h.chapter === f || (f === 'wrong' && h.mode === 'wrong'); });
+  document.getElementById('historyList').innerHTML = list.length ? list.map(function (h) {
+    var wrongStr = h.wrong.length ? h.wrong.map(function (w) { return w.qid.split(':')[1] + '：你填' + w.yours + '/应填' + w.correct; }).join('；') : '无';
+    return '<div class="px-card"><strong>' + esc(h.title) + '</strong> · ' + fmtDate(h.endedAt) + '<br>用时 ' + fmtDur(h.durationSec) + ' · ' + h.score + ' / ' + h.max + ' 空 · 答对 ' + h.correctBlanks + ' 空<br><span class="px-muted">错空：' + esc(wrongStr) + '</span><br><div style="margin-top:8px"><button class="px-btn secondary small" data-del="' + h.id + '">删除</button> <button class="px-btn secondary small" data-viewatt="' + h.id + '">查看详情</button></div></div>';
+  }).join('') : '<p class="px-muted">暂无记录。</p>';
+  document.querySelectorAll('[data-del]').forEach(function (b) {
+    b.onclick = function () { if (confirm('删除这条记录？')) { history = history.filter(function (h) { return h.id !== b.dataset.del; }); save(ukey(LS_HIS), history); renderHistory(); } };
+  });
+  document.querySelectorAll('[data-viewatt]').forEach(function (b) {
+    b.onclick = function () { var h = history.find(function (x) { return x.id === b.dataset.viewatt; }); if (h) showResult(h, null); };
+  });
+}
+document.getElementById('historyFilter').addEventListener('change', renderHistory);
+document.getElementById('btnExportCsv').addEventListener('click', function () {
+  var rows = [['练习时间', '范围', '类型', '用时（秒）', '得分', '满分', '答对空数', '总空数', '错空（题号:你的答案/正确答案）']];
+  history.forEach(function (h) {
+    rows.push([fmtDate(h.endedAt), h.title, h.type, h.durationSec, h.score, h.max, h.correctBlanks, h.max, h.wrong.map(function (w) { return w.qid.split(':')[1] + ':' + w.yours + '/' + w.correct; }).join('; ')]);
+  });
+  var csv = '﻿' + rows.map(function (r) { return r.map(function (c) { return '"' + String(c).replace(/"/g, '""') + '"'; }).join(','); }).join('\n');
+  download(new Blob([csv], { type: 'text/csv;charset=utf-8' }), 'huagong833-history.csv');
+});
+function download(blob, name) { var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name; a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); }, 2000); }
+
+/* ---------- 错空本 ---------- */
+function renderWrong() {
+  var wb = wrongBook();
+  document.getElementById('wrongList').innerHTML = wb.length ? wb.map(function (w) {
+    var q = qById(w.qid);
+    return '<div class="px-card"><strong>' + esc(w.qid.split(':')[1]) + '</strong> <span class="px-muted">（' + esc(q ? q.chTitle : '') + '）</span> · 错过 ' + w.count + ' 次<br><span class="px-muted">' + esc(w.ctx) + '</span><br>你填：<strong style="color:var(--red)">' + esc(w.yours) + '</strong>　正确答案：<strong style="color:var(--green)">' + esc(w.correct) + '</strong>' + (q ? reviewHtml(q, {}, {}, null) : '') + '</div>';
+  }).join('') + '<button class="px-btn" id="btnWrong2">只练这些错空</button>' : '<p class="px-muted">暂无错空。</p>';
+  var b = document.getElementById('btnWrong2');
+  if (b) b.onclick = startWrongPractice;
+}
+
+/* ---------- 数据备份 ---------- */
+function renderData() {
+  document.getElementById('dataStats').textContent = '当前账号「' + (currentUser ? currentUser.name : '') + '」：练习记录 ' + history.length + ' 条 · 错空（去重）' + wrongBook().length + ' 个。';
+}
+document.getElementById('btnExportJson').addEventListener('click', function () {
+  download(new Blob([JSON.stringify({ account: currentUser ? currentUser.name : '', history: history, exportedAt: new Date().toISOString() }, null, 2)], { type: 'application/json' }), 'huagong833-backup-' + (currentUser ? currentUser.key : 'user') + '.json');
+});
+document.getElementById('btnImportJson').addEventListener('click', function () { document.getElementById('importFile').click(); });
+document.getElementById('importFile').addEventListener('change', function (e) {
+  var f = e.target.files[0];
+  if (!f) return;
+  var r = new FileReader();
+  r.onload = function () {
+    try {
+      var d = JSON.parse(r.result);
+      if (d.history) history = d.history;
+      save(ukey(LS_HIS), history);
+      renderData();
+      alert('已导入到当前账号「' + (currentUser ? currentUser.name : '') + '」：记录 ' + history.length + ' 条。');
+      showView('home');
+    } catch (err) { alert('导入失败：文件不是有效的备份 JSON。'); }
+  };
+  r.readAsText(f);
+  e.target.value = '';
+});
+document.getElementById('btnClearAll').addEventListener('click', function () {
+  if (confirm('确定清空「当前账号」的全部练习记录吗？（只影响当前账号，不影响其他账号）请先导出备份！')) {
+    history = [];
+    save(ukey(LS_HIS), history);
+    localStorage.removeItem(ukey(LS_DRAFT));
+    renderData(); renderHome();
+  }
+});
+
+/* ---------- 账号绑定 ---------- */
+document.getElementById('authTabLogin').addEventListener('click', function () { switchAuthTab('login'); });
+document.getElementById('authTabReg').addEventListener('click', function () { switchAuthTab('reg'); });
+document.getElementById('btnLogout').addEventListener('click', function () {
+  if (confirm('退出登录？你的记录会保留在本浏览器，下次登录同一账号即可继续。')) { localStorage.removeItem(LS_SESSION); location.reload(); }
+});
+document.getElementById('loginForm').addEventListener('submit', async function (e) {
+  e.preventDefault();
+  var name = document.getElementById('loginUser').value.trim();
+  var pass = document.getElementById('loginPass').value;
+  setAuthMsg('loginMsg', '');
+  if (!name || !pass) { setAuthMsg('loginMsg', '请输入用户名和密码。'); return; }
+  var btn = document.getElementById('btnLogin'); btn.disabled = true;
+  try {
+    var key = name.toLowerCase();
+    var u = load(LS_USERS, {})[key];
+    if (!u) throw new Error('用户名或密码不正确');
+    var h = await hashPassword(pass, u.salt);
+    if (h !== u.hash) throw new Error('用户名或密码不正确');
+    currentUser = { name: u.name || name, key: key };
+    saveSession(key);
+    enterApp();
+  } catch (err) { setAuthMsg('loginMsg', (err && err.message) || '登录失败，请重试。'); }
+  btn.disabled = false;
+});
+document.getElementById('regForm').addEventListener('submit', async function (e) {
+  e.preventDefault();
+  var name = document.getElementById('regUser').value.trim();
+  var pass = document.getElementById('regPass').value;
+  var pass2 = document.getElementById('regPass2').value;
+  setAuthMsg('regMsg', '');
+  if (name.length < 2 || name.length > 24) { setAuthMsg('regMsg', '用户名需要 2—24 个字符。'); return; }
+  if (/\s/.test(name)) { setAuthMsg('regMsg', '用户名里不能有空格。'); return; }
+  if (pass.length < 6) { setAuthMsg('regMsg', '密码至少 6 位。'); return; }
+  if (pass !== pass2) { setAuthMsg('regMsg', '两次输入的密码不一致。'); return; }
+  var btn = document.getElementById('btnReg'); btn.disabled = true;
+  try {
+    var key = name.toLowerCase();
+    var users = load(LS_USERS, {});
+    if (users[key]) throw new Error('这个用户名已经被注册了，换一个试试。');
+    var salt = randomSaltB64();
+    var hash = await hashPassword(pass, salt);
+    users[key] = { name: name, salt: salt, hash: hash, createdAt: new Date().toISOString() };
+    save(LS_USERS, users);
+    currentUser = { name: name, key: key };
+    if (Object.keys(users).length === 1) {
+      var moved = [];
+      [[LS_HIS, '刷题记录'], [LS_DRAFT, '未交卷草稿']].forEach(function (p) {
+        var raw = localStorage.getItem(p[0]);
+        if (raw !== null) { localStorage.setItem(p[0] + ':' + key, raw); moved.push(p[1]); }
+      });
+      if (moved.length) setTimeout(function () { alert('已把本浏览器升级前的' + moved.join('、') + '迁移到「' + name + '」账号名下。'); }, 60);
+    }
+    saveSession(key);
+    enterApp();
+  } catch (err) { setAuthMsg('regMsg', (err && err.message) || '注册失败，请重试。'); }
+  btn.disabled = false;
+});
+
+/* ---------- 启动 ---------- */
+authBoot();
+if (typeof window !== 'undefined') window.__HG_TEST__ = { norm: norm, checkBlank: checkBlank, sampleBlanks: sampleBlanks, sampleQuestion: sampleQuestion, splitSeg: splitSeg, buildQuestions: buildQuestions, blankList: blankList, blankByRef: blankByRef, evaluate: evaluate, QUESTIONS: QUESTIONS, EXTRA_BLANKS: EXTRA_BLANKS };
+})();
+
+</script>
+</body>
+</html>
